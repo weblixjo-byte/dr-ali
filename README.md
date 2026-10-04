@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# مبادرة المنح الدراسية للطلاب الأكثر حاجة (Scholarship Portal)
 
-## Getting Started
+منظومة متكاملة وموقع مؤسسي لإدارة مبادرة خيرية تقدم **6 منح دراسية** للطلاب الجامعيين الأكثر حاجة اقتصادية، تم بناؤها باستخدام **Next.js (App Router)**، **TypeScript**، **Tailwind CSS**، ومكتبة **MongoDB الرسمية**.
 
-First, run the development server:
+---
 
+## 📌 مميزات المنظومة وقواعدها الصارمة
+
+1. **الموقع العام (RTL باللغة العربية):**
+   - تصميم مؤسسي رسمي (خلفية بيضاء، خط Noto Sans Arabic، ألوان كحلية هادئة، تباين عالي وسهولة وصول).
+   - صفحة موحدة تشمل: التعريف بالمبادرة، تفاصيل المنحة، معايير الأهلية ودرجة الحاجة، آلية الاختيار (5 خطوات)، سجل الشفافية الحية، الأسئلة الشائعة، واستمارة التقديم.
+   - استمارة تقديم من 4 خطوات مع حفظ المسودة في الذاكرة (Memory-only) دون تخزين أرقام الدخل الحساسة في `localStorage`.
+   - أسئلة شرطية ذكية (معاشات الأب المتوفى بدلاً من الراتب، تفاصيل دخل الطالب عند وجوده، متوسط الدخل الموسمي على 12 شهراً، التمييز بين 0 و"غير معروف" و"لا ينطبق").
+   - إصدار رقم طلب مرجعي فريد (`APP-2026-XXXX`) وإيصال رسمي قابل للطباعة (`window.print()`) يستبعد البيانات المالية الحساسة لضمان خصوصية الطالب.
+
+2. **نظام المفاضلة واحتساب درجة الحاجة (100 نقطة):**
+   - احتساب حتمي، رقمي، شفاف، وقابل للتفسير على الخادم بدون استخدام أي ذكاء اصطناعي أو تحليل نصوص.
+   - أوزان معتمدة قابلة للضبط:
+     - **55 نقطة:** انخفاض دخل الفرد الشهري في الأسرة مقارنة بسقف الحاجة المعتمد.
+     - **20 نقطة:** نسبة الرسوم الدراسية غير المغطاة إلى رسوم الفترة.
+     - **15 نقطة:** عبء المصاريف الأساسية المؤهلة (إيجار، علاج مزمن، رعاية ونقل).
+     - **10 نقاط:** هشاشة مصدر الإعالة أو فقده الفعلي (وفاة الأب لا تمنح الدرجة القصوى تلقائياً إذا توفر معاش أو دعم بديل كافٍ).
+   - توليد مبررات نصية باللغة العربية تشرح أسباب احتساب كل نقطة بالتفصيل.
+   - كشف التعادل الحرج عند المركز السادس وإلزام الحسم اليدوي من قبل اللجنة.
+
+3. **لوحة الإدارة والتحكم (`/admin`):**
+   - محمية بجلسات مشفرة وموقعة (JWT عبر مكتبة `jose` داخل ملفات تعريف ارتباط HttpOnly آمنة).
+   - جدول الطلبات مع ترقيم خادمي (Server-side Pagination) وفلاتر وبحث شامل.
+   - قائمة مفاضلة مستقلة للبيانات المصرح بها، وقائمة للطلبات المؤهلة والمتحقق منها مع إبراز أعلى 6 مرشحين.
+   - **سقف الـ 6 منح محمي على مستوى قاعدة البيانات (Database-level Concurrency Guard):** يُمنع قبول أكثر من 6 مستفيدين حتى في حال النقر المتزامن لأكثر من مسؤول.
+   - تسجيل سبب التجاوز (`skippedReason`) إلزامي في حال تجاوزت اللجنة مرشحاً أعلى درجة.
+   - قائمة تدقيق وتحقق مكتبي (Verification Checklist) وتدوين ملاحظات اللجنة.
+   - أداة تسجيل تصحيح البيانات مع حفظ القيمة السابقة والجديدة والسبب واسم المسؤول وإعادة احتساب الدرجة آلياً.
+   - تصدير ملفات Excel بصيغة CSV مدعومة بالعربية (UTF-8 BOM) ومحمية ضد هجمات Formula Injection (`=`, `+`, `-`, `@`).
+
+4. **الأمان والخصوصية:**
+   - اتصال MongoDB حصري على الخادم (`MONGODB_URI` السري دون كشفه للمتصفح).
+   - حماية من الإرسال الآلي (Honeypot + فحص سرعة الإرسال + In-memory Rate Limiting).
+   - مفتاح Idempotency لمنع تكرار إرسال الطلب عند النقر المزدوج أو إعادة المحاولة.
+   - التحقق الصارم من الـ Schema عبر `Zod` مع حجب ومنع حقول `score` أو `status` أو `reviewerNotes` من القبول العام.
+   - لا يتم تسجيل أو طباعة بيانات الدخل أو معلومات الهوية الحساسة في سجلات الخادم (Logs).
+
+---
+
+## 🛠️ المتطلبات الفنية والتشغيل
+
+- **Node.js**: الإصدار 18 فما فوق (تم اختباره على Node v24).
+- **قاعدة البيانات**: MongoDB Atlas Free Tier (M0) أو خادم MongoDB محلي.
+
+---
+
+## 🚀 التشغيل المحلي (Local Development)
+
+### 1. تثبيت الحزم
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. إعداد ملف البيئة
+قم بنسخ ملف `.env.example` إلى `.env.local`:
+```bash
+cp .env.example .env.local
+```
+وقم بملء المتغيرات:
+- `MONGODB_URI`: رابط الاتصال بقاعدة بيانات MongoDB Atlas.
+- `ADMIN_JWT_SECRET`: مفتاح أمان عشوائي لا يقل عن 32 حرفاً.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. إنشاء أول مسؤول في لوحة الإدارة
+لا توجد حسابات افتراضية مسبقة لضمان الأمان. شغّل السكربت التفاعلي:
+```bash
+npm run create-admin
+```
+سيطلب منك إدخال اسم المستخدم، الاسم الظاهر، وكلمة المرور (مشفرة بواسطة Bcrypt).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. إدراج بيانات تجريبية وهمية للتطوير (اختياري)
+لتجربة الفرز والمفاضلة بحالات دراسية ومالية واقعية ومتنوعة:
+```bash
+npm run seed
+```
 
-## Learn More
+### 5. تشغيل خادم التطوير
+```bash
+npm run dev
+```
+افتح المتصفح على: `http://localhost:3000`  
+لوحة الإدارة متاحة على: `http://localhost:3000/admin`
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 تشغيل الاختبارات الآلية
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+المنظومة مزودة بحزمة اختبارات تغطي كافة القواعد الـ 12 المشروطة:
+```bash
+npm run test
+```
+تشمل الاختبارات:
+- ارتفاع أولوية الحاجة مع انخفاض دخل الفرد.
+- عدم احتساب دخل الطالب مرتين.
+- المعالجة الآمنة للدخل الصفري والرسوم الصفرية (تجنب القسمة على صفر).
+- عدم اعتبار البيانات المجهولة صفر دخل.
+- موازنة حالة وفاة الأب بوجود الدعم البديل أو المعاش.
+- تقدم أي طلب جديد أعلى درجة في الترتيب تلقائياً.
+- كشف التعادل عند المركز السادس.
+- عزل بيانات الإدارة ومنع حقن الحالات أو الدرجات من قبل الزائر.
+- منع حفظ الطلبات المكررة عبر Idempotency.
+- منع قبول أكثر من 6 مستفيدين في قاعدة البيانات.
+- حماية المستفيدين المعتمدين من التغيير التلقائي.
+- حماية ملفات CSV من Formula Injection.
+- فحص كاشف البوتات (Honeypot).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ☁️ النشر على منصة Vercel و MongoDB Atlas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### أ. إعداد MongoDB Atlas (الخطة المجانية M0):
+1. سجّل الدخول على [MongoDB Atlas](https://www.mongodb.com/atlas).
+2. أنشئ مجموعة مجانية جديدة (M0 Cluster - Shared).
+3. من تبويب **Database Access**: أنشئ مستخدم قاعدة بيانات مع كلمة مرور قوية وصلاحية `Read and write to any database`.
+4. من تبويب **Network Access**: أضف عنوان IP: `0.0.0.0/0` (Allow Access from Anywhere) للسماح لدوال Vercel Serverless بالاتصال بقاعدة البيانات.
+5. اضغط على **Connect > Drivers > Node.js** وانسخ رابط الاتصال وضع اسم قاعدة البيانات (مثال: `scholarship_db`).
+
+### ب. النشر على Vercel:
+1. ارفع المشروع إلى مستودع GitHub خاص (Private Repository).
+2. افتح [Vercel Dashboard](https://vercel.com) واختر **Add New > Project**.
+3. استورد المستودع.
+4. في قسم **Environment Variables** أضف المتغيرات التالية:
+   - `MONGODB_URI`: رابط اتصال Atlas.
+   - `MONGODB_DB_NAME`: `scholarship_db`.
+   - `ADMIN_JWT_SECRET`: المفتاح المشفر (32 حرفاً أو أكثر).
+5. اضغط **Deploy**.
+6. بعد اكتمال النشر، شغّل سكربت إنشاء المسؤول محلياً باستخدام رابط قاعدة بيانات الإنتاج لإنشاء حساب المدير:
+   ```bash
+   MONGODB_URI="رابط_الإنتاج" npm run create-admin
+   ```
+
+---
+
+## 💾 النسخ الاحتياطي والاستعادة (Backup & Restore)
+
+نظراً لأن الخطة المجانية M0 من Atlas لا تتضمن نسخاً احتياطياً تلقائياً لنقاط زمنية محددة، تم تضمين سكربت مستقل لأخذ لقطات JSON كاملة واستعادتها:
+
+### لأخذ نسخة احتياطية:
+```bash
+npm run backup
+```
+يتم إنشاء مجلد مؤرخ داخل `backups/backup-YYYY-MM-DD/` يتضمن مجموعات:
+`applications.json`, `settings.json`, `criteria.json`, `admins.json`, `audit_logs.json`, `corrections.json`.
+
+### لاستعادة نسخة سابقة:
+```bash
+npm run restore backups/backup-2026-XX-XX
+```
+
+---
+
+## ⚖️ معايير الأولوية واعتماد النتائج
+
+1. **قبل فتح التقديم:** تدخل الإدارة عبر `/admin` للتأكد من المرجع الشهري لدخل الفرد ومطابقة الأوزان وتحديد تواريخ الدورة.
+2. **أثناء التقديم:** تتقدم الطلبات آلياً وفق الدرجة الكلية.
+3. **بعد إغلاق التقديم:** تقوم اللجنة بمراجعة أعلى 6 طلبات في قائمة "الطلبات المؤهلة والمتحقق منها".
+4. **اعتماد المقبولين:** يتم الاعتماد يدوياً لكل مرشح مع اشتراط توثيق سبب التجاوز إن وُجد.
+5. **بعد اعتماد الـ 6 مستفيدين:** يقفل النظام تلقائياً مقاعد المنحة ويحمي القائمة من أي تعديل آلي.
