@@ -31,17 +31,18 @@ const DB_NAME = process.env.MONGODB_DB_NAME || 'scholarship_db';
 let clientPromise: Promise<MongoClient>;
 
 export function getMongoClientPromise(): Promise<MongoClient> {
-  if (!uri) {
-    throw new Error('تعذر الاتصال: لم يتم ضبط متغير البيئة MONGODB_URI على الخادم.');
+  const currentUri = process.env.MONGODB_URI?.trim() || uri;
+  if (!currentUri) {
+    throw new Error('لم يتم ضبط متغير البيئة MONGODB_URI في إعدادات Vercel. يرجى إضافته في Environment Variables.');
   }
 
   if (process.env.NODE_ENV === 'development') {
     if (!global._mongoClientPromise) {
-      const client = new MongoClient(uri, {
+      const client = new MongoClient(currentUri, {
         maxPoolSize: 10,
         minPoolSize: 1,
-        serverSelectionTimeoutMS: 5000,
-        connectTimeoutMS: 10000,
+        serverSelectionTimeoutMS: 10000,
+        connectTimeoutMS: 15000,
       });
       global._mongoClientPromise = client.connect();
     }
@@ -49,11 +50,11 @@ export function getMongoClientPromise(): Promise<MongoClient> {
   } else {
     // In serverless / production environments
     if (!global._mongoClientPromise) {
-      const client = new MongoClient(uri, {
+      const client = new MongoClient(currentUri, {
         maxPoolSize: 10,
         minPoolSize: 1,
-        serverSelectionTimeoutMS: 5000,
-        connectTimeoutMS: 10000,
+        serverSelectionTimeoutMS: 10000,
+        connectTimeoutMS: 15000,
       });
       global._mongoClientPromise = client.connect();
     }

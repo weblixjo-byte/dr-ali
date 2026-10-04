@@ -80,9 +80,22 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error('Error during admin login:', (error as Error).message);
+    const rawMsg = (error as Error).message || '';
+    console.error('Error during admin login:', rawMsg);
+
+    let friendlyError = 'تعذر التحقق من تسجيل الدخول.';
+    if (rawMsg.includes('MONGODB_URI')) {
+      friendlyError = 'لم يتم ضبط متغير MONGODB_URI في إعدادات Vercel. يرجى إضافته في Environment Variables ثم إعادة النشر (Redeploy).';
+    } else if (rawMsg.includes('ServerSelection') || rawMsg.includes('ETIMEDOUT') || rawMsg.includes('ECONNREFUSED') || rawMsg.includes('querySrv')) {
+      friendlyError = 'قاعدة بيانات MongoDB Atlas حظرت الاتصال: يرجى الدخول إلى MongoDB Atlas > Network Access وإضافة 0.0.0.0/0 (السماح بالاتصال من أي مكان).';
+    } else if (rawMsg.includes('Authentication') || rawMsg.includes('bad auth')) {
+      friendlyError = 'اسم المستخدم أو كلمة المرور لقاعدة بيانات MongoDB غير صحيحة داخل الرابط.';
+    } else {
+      friendlyError = `خطأ في اتصال قاعدة البيانات: ${rawMsg}`;
+    }
+
     return NextResponse.json(
-      { error: 'تعذر التحقق من تسجيل الدخول. يرجى التأكد من اتصال قاعدة البيانات.' },
+      { error: friendlyError, detail: rawMsg },
       { status: 500 }
     );
   }
