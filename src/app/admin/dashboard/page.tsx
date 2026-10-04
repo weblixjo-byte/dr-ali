@@ -1089,15 +1089,37 @@ export default function AdminDashboardPage() {
                   </h4>
                   <dl className="space-y-1.5 text-[11px]">
                     <div className="flex justify-between">
+                      <dt className="text-gray-500">الثانوية العامة (التوجيهي):</dt>
+                      <dd className="font-bold text-slate-900 font-mono">
+                        {selectedApp.tawjihiGpa ? `${selectedApp.tawjihiGpa}% (${selectedApp.tawjihiBranch} - ${selectedApp.tawjihiYear})` : 'غير مسجل'}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-gray-500">الوضع الأكاديمي:</dt>
+                      <dd className="font-medium text-slate-800">
+                        {selectedApp.hasAttendedUniversity ? 'طالب جامعي' : 'خريج توجيهي (مقبل على الجامعة)'}
+                      </dd>
+                    </div>
+                    <div className="flex justify-between">
                       <dt className="text-gray-500">الحالة الدراسية:</dt>
-                      <dd className="font-medium text-slate-800">{selectedApp.enrollmentStatus}</dd>
+                      <dd className="font-medium text-slate-800">
+                        {selectedApp.enrollmentStatus === 'enrolled'
+                          ? 'منتظم في الدراسة'
+                          : selectedApp.enrollmentStatus === 'paused'
+                          ? 'معلق القيد بسبب الرسوم'
+                          : selectedApp.enrollmentStatus === 'accepted'
+                          ? 'مقبول حديثاً ومطالب بالسداد'
+                          : selectedApp.enrollmentStatus === 'prospective'
+                          ? 'مقبل على التسجيل الجامعي'
+                          : selectedApp.enrollmentStatus}
+                      </dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-500">رسوم الفترة الكاملة:</dt>
                       <dd className="font-mono text-slate-800">{selectedApp.periodTuitionFee} د.أ</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">المبلغ المدفوع:</dt>
+                      <dt className="text-gray-500">المبلغ المدفوع / المتوفر:</dt>
                       <dd className="font-mono text-slate-800">{selectedApp.amountAlreadyPaid} د.أ</dd>
                     </div>
                     <div className="flex justify-between">

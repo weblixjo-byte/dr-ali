@@ -15,7 +15,12 @@ export type HousingStatus = 'owned' | 'rented' | 'living_with_relatives' | 'othe
 
 export type PreferredContact = 'phone' | 'whatsapp' | 'email';
 
-export type EnrollmentStatus = 'enrolled' | 'accepted' | 'paused';
+export type EnrollmentStatus =
+  | 'enrolled'
+  | 'accepted'
+  | 'paused'
+  | 'prospective'
+  | 'not_enrolled';
 
 export type ScholarshipCoverage = 'none' | 'partial' | 'full';
 
@@ -119,6 +124,10 @@ export interface ApplicationDocument {
   preferredContactMethod: PreferredContact;
 
   // 2. Academic & Study
+  tawjihiGpa?: number;
+  tawjihiBranch?: string;
+  tawjihiYear?: string;
+  hasAttendedUniversity?: boolean;
   institutionName: string;
   studyLevel: string;
   major: string;
@@ -175,6 +184,7 @@ export interface ApplicationDocument {
   dataUseAcknowledged: boolean;
   willingToProvideDocsAcknowledged: boolean;
   noGuaranteeAcknowledged: boolean;
+  disqualificationAcknowledged?: boolean;
 
   // 8. Workflow & Audit
   status: ApplicationWorkflowStatus;

@@ -121,6 +121,10 @@ export async function POST(req: NextRequest) {
       preferredContactMethod: validData.preferredContactMethod,
 
       // 2. Study
+      tawjihiGpa: validData.tawjihiGpa,
+      tawjihiBranch: validData.tawjihiBranch,
+      tawjihiYear: validData.tawjihiYear,
+      hasAttendedUniversity: validData.hasAttendedUniversity,
       institutionName: validData.institutionName,
       studyLevel: validData.studyLevel,
       major: validData.major,
@@ -177,6 +181,7 @@ export async function POST(req: NextRequest) {
       dataUseAcknowledged: validData.dataUseAcknowledged,
       willingToProvideDocsAcknowledged: validData.willingToProvideDocsAcknowledged,
       noGuaranteeAcknowledged: validData.noGuaranteeAcknowledged,
+      disqualificationAcknowledged: validData.disqualificationAcknowledged,
 
       // 8. Workflow status
       status: score.calculatedValues.hasIncompleteDataWarning ? 'needs_completion' : 'new',

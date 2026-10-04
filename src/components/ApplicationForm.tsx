@@ -7,6 +7,9 @@ import {
   ChevronRight,
   Printer,
   AlertCircle,
+  ShieldAlert,
+  GraduationCap,
+  Building2,
   Clock,
   Send,
   Sparkles,
@@ -40,14 +43,22 @@ export default function ApplicationForm() {
     phoneCountryCode: '+962',
     phoneNumber: '',
     email: '',
-    governorateOrCity: '',
+    governorateOrCity: 'عمان',
     preferredContactMethod: 'phone' as 'phone' | 'whatsapp' | 'email',
+
+    // High School (Tawjihi)
+    tawjihiGpa: '' as unknown as number,
+    tawjihiBranch: 'علمي',
+    tawjihiYear: '2025',
+
+    // University Status
+    hasAttendedUniversity: false,
+    enrollmentStatus: 'prospective' as 'enrolled' | 'accepted' | 'paused' | 'prospective' | 'not_enrolled',
 
     institutionName: '',
     studyLevel: 'بكالوريوس',
     major: '',
-    academicYearOrSemester: 'السنة الأولى',
-    enrollmentStatus: 'enrolled' as 'enrolled' | 'accepted' | 'paused',
+    academicYearOrSemester: 'مقبل على السنة الأولى',
     periodTuitionFee: '' as unknown as number,
     amountAlreadyPaid: '' as unknown as number,
     confirmedExternalSupport: '' as unknown as number,
@@ -88,6 +99,7 @@ export default function ApplicationForm() {
     dataUseAcknowledged: false,
     willingToProvideDocsAcknowledged: false,
     noGuaranteeAcknowledged: false,
+    disqualificationAcknowledged: false,
   });
 
   const periodTuition = Number(formData.periodTuitionFee) || 0;
@@ -109,23 +121,40 @@ export default function ApplicationForm() {
         return false;
       }
       if (!formData.phoneNumber.trim() || !/^\d{7,15}$/.test(formData.phoneNumber.trim())) {
-        setErrorMessage('يرجى إدخال رقم هاتف صالح للتواصل.');
+        setErrorMessage('يرجى إدخال رقم هاتف صالح للتواصل مكون من أرقام فقط.');
         return false;
       }
       if (!formData.governorateOrCity.trim()) {
-        setErrorMessage('يرجى إدخال المدينة أو المحافظة.');
+        setErrorMessage('يرجى تحديد المحافظة.');
+        return false;
+      }
+      const gpa = Number(formData.tawjihiGpa);
+      if (formData.tawjihiGpa === ('' as unknown as number) || isNaN(gpa) || gpa < 50 || gpa > 100) {
+        setErrorMessage('يرجى إدخال معدل ثانوية عامة (توجيهي) صحيح بين 50 و 100.');
+        return false;
+      }
+      if (!formData.tawjihiBranch.trim()) {
+        setErrorMessage('يرجى تحديد فرع الثانوية العامة.');
         return false;
       }
       if (!formData.institutionName.trim()) {
-        setErrorMessage('يرجى تحديد المؤسسة التعليمية (الجامعة أو الكلية).');
+        setErrorMessage(
+          formData.hasAttendedUniversity
+            ? 'يرجى كتابة اسم الجامعة أو الكلية المقيد بها.'
+            : 'يرجى كتابة اسم الجامعة أو الكلية المرغوب الالتحاق بها.'
+        );
         return false;
       }
       if (!formData.major.trim()) {
-        setErrorMessage('يرجى إدخال التخصص الأكاديمي.');
+        setErrorMessage(
+          formData.hasAttendedUniversity
+            ? 'يرجى كتابة التخصص الأكاديمي الملتحق به.'
+            : 'يرجى كتابة التخصص الأكاديمي المطلوب دراسته.'
+        );
         return false;
       }
-      if (formData.periodTuitionFee === ('' as unknown as number) || periodTuition < 0) {
-        setErrorMessage('يرجى تحديد رسوم الفترة المستحقة.');
+      if (formData.periodTuitionFee === ('' as unknown as number) || periodTuition <= 0) {
+        setErrorMessage('يرجى تحديد الرسوم الدراسية للفصل (د.أ).');
         return false;
       }
       if (calculatedUncovered <= 0) {
@@ -152,7 +181,8 @@ export default function ApplicationForm() {
         !formData.infoAccuracyAcknowledged ||
         !formData.dataUseAcknowledged ||
         !formData.willingToProvideDocsAcknowledged ||
-        !formData.noGuaranteeAcknowledged
+        !formData.noGuaranteeAcknowledged ||
+        !formData.disqualificationAcknowledged
       ) {
         setErrorMessage('يجب الموافقة على جميع الإقرارات والتعهدات أدناه قبل إرسال الطلب.');
         return false;
@@ -197,6 +227,11 @@ export default function ApplicationForm() {
       email: formData.email.trim() || undefined,
       governorateOrCity: formData.governorateOrCity.trim(),
       preferredContactMethod: formData.preferredContactMethod,
+
+      tawjihiGpa: Number(formData.tawjihiGpa) || 0,
+      tawjihiBranch: formData.tawjihiBranch.trim(),
+      tawjihiYear: formData.tawjihiYear.trim(),
+      hasAttendedUniversity: formData.hasAttendedUniversity,
 
       institutionName: formData.institutionName.trim(),
       studyLevel: formData.studyLevel.trim(),
@@ -277,6 +312,7 @@ export default function ApplicationForm() {
       dataUseAcknowledged: true,
       willingToProvideDocsAcknowledged: true,
       noGuaranteeAcknowledged: true,
+      disqualificationAcknowledged: true,
     };
 
     try {
@@ -422,6 +458,17 @@ export default function ApplicationForm() {
           </div>
         )}
 
+        {/* Strict Disqualification Warning Banner */}
+        <div className="mb-6 p-4 rounded-xl border border-rose-200 bg-rose-50/70 text-rose-950 text-xs flex items-start gap-3 shadow-2xs">
+          <ShieldAlert className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <div className="font-bold text-rose-900 text-xs sm:text-sm">تنبيه صارم بشأن صحة البيانات:</div>
+            <p className="leading-relaxed text-rose-800 text-[11px] sm:text-xs font-medium">
+              تخضع جميع البيانات للمطابقة الرسمية والتدقيق المكتبي والميداني مع الكشوفات المعتمدة. يُعد إدخال أي معلومات غير صحيحة أو مضللة سبباً موجباً للاستبعاد الفوري والنهائي للطلب دون أي استثناء.
+            </p>
+          </div>
+        </div>
+
         {/* Form Container */}
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
           {/* Honeypot */}
@@ -436,9 +483,10 @@ export default function ApplicationForm() {
             />
           </div>
 
-          {/* STEP 1: Personal & Academic Study */}
+          {/* STEP 1: Personal, High School & Academic Study */}
           {step === 1 && (
-            <div className="space-y-5">
+            <div className="space-y-6">
+              {/* Personal Details */}
               <div className="space-y-4">
                 <div>
                   <label htmlFor="fullName" className="block text-xs font-semibold text-slate-800 mb-1.5">
@@ -479,80 +527,256 @@ export default function ApplicationForm() {
 
                   <div>
                     <label htmlFor="governorateOrCity" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      المدينة أو المحافظة <span className="text-rose-500">*</span>
+                      المحافظة في المملكة الأردنية الهاشمية <span className="text-rose-500">*</span>
                     </label>
-                    <input
+                    <select
                       id="governorateOrCity"
-                      type="text"
-                      required
                       value={formData.governorateOrCity}
                       onChange={(e) => updateField('governorateOrCity', e.target.value)}
                       className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="institutionName" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      المؤسسة التعليمية (الجامعة / الكلية) <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="institutionName"
-                      type="text"
-                      required
-                      value={formData.institutionName}
-                      onChange={(e) => updateField('institutionName', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="major" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      التخصص الأكاديمي <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="major"
-                      type="text"
-                      required
-                      value={formData.major}
-                      onChange={(e) => updateField('major', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="academicYearOrSemester" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      السنة أو الفصل الدراسي <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="academicYearOrSemester"
-                      type="text"
-                      required
-                      value={formData.academicYearOrSemester}
-                      onChange={(e) => updateField('academicYearOrSemester', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="enrollmentStatus" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      الحالة الأكاديمية الراهنة <span className="text-rose-500">*</span>
-                    </label>
-                    <select
-                      id="enrollmentStatus"
-                      value={formData.enrollmentStatus}
-                      onChange={(e) => updateField('enrollmentStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                     >
-                      <option value="enrolled">منتظم في الدراسة حالياً</option>
-                      <option value="accepted">مقبول حديثاً ومطالب بالسداد</option>
-                      <option value="paused">متوقف أو معلق بسبب الرسوم</option>
+                      <option value="عمان">عمان</option>
+                      <option value="إربد">إربد</option>
+                      <option value="الزرقاء">الزرقاء</option>
+                      <option value="البلقاء">البلقاء (السلط)</option>
+                      <option value="الكرك">الكرك</option>
+                      <option value="معان">معان</option>
+                      <option value="العقبة">العقبة</option>
+                      <option value="المفرق">المفرق</option>
+                      <option value="مادبا">مادبا</option>
+                      <option value="جرش">جرش</option>
+                      <option value="عجلون">عجلون</option>
+                      <option value="الطفيلة">الطفيلة</option>
                     </select>
                   </div>
                 </div>
+              </div>
+
+              {/* High School (Tawjihi) Details - Mandatory for everyone */}
+              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3">
+                <div>
+                  <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <GraduationCap className="w-4 h-4 text-slate-700" />
+                    <span>بيانات شهادة الثانوية العامة (التوجيهي)</span>
+                    <span className="text-rose-500">*</span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 mt-0.5">
+                    مطلوبة لجميع المتقدمين لغايات التدقيق والمفاضلة الأكاديمية الرسمية
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  <div>
+                    <label htmlFor="tawjihiGpa" className="block text-xs font-semibold text-slate-800 mb-1">
+                      معدل التوجيهي (%) <span className="text-rose-500">*</span>
+                    </label>
+                    <input
+                      id="tawjihiGpa"
+                      type="number"
+                      step="0.01"
+                      min="50"
+                      max="100"
+                      required
+                      value={formData.tawjihiGpa}
+                      onChange={(e) => updateField('tawjihiGpa', e.target.value === '' ? '' : Number(e.target.value))}
+                      className="w-full h-10 px-3 text-sm rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="tawjihiBranch" className="block text-xs font-semibold text-slate-800 mb-1">
+                      فرع الثانوية العامة <span className="text-rose-500">*</span>
+                    </label>
+                    <select
+                      id="tawjihiBranch"
+                      value={formData.tawjihiBranch}
+                      onChange={(e) => updateField('tawjihiBranch', e.target.value)}
+                      className="w-full h-10 px-3 text-xs rounded-lg border border-slate-200 bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                    >
+                      <option value="علمي">علمي</option>
+                      <option value="أدبي">أدبي</option>
+                      <option value="صناعي">صناعي</option>
+                      <option value="تكنولوجيا معلومات">تكنولوجيا معلومات / حاسوبي</option>
+                      <option value="صحي">صحي / تمريضي</option>
+                      <option value="شرعي">شرعي</option>
+                      <option value="فندقي وزراعي">فندقي / زراعي</option>
+                      <option value="أخرى">أخرى</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="tawjihiYear" className="block text-xs font-semibold text-slate-800 mb-1">
+                      سنة الحصول على الشهادة <span className="text-rose-500">*</span>
+                    </label>
+                    <select
+                      id="tawjihiYear"
+                      value={formData.tawjihiYear}
+                      onChange={(e) => updateField('tawjihiYear', e.target.value)}
+                      className="w-full h-10 px-3 text-xs rounded-lg border border-slate-200 bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
+                    >
+                      <option value="2025">2025</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2020 وما قبل">2020 وما قبل</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Academic & University Profile */}
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    الوضع الجامعي الراهن للمتقدم <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateField('hasAttendedUniversity', true);
+                        if (formData.enrollmentStatus === 'prospective' || formData.enrollmentStatus === 'not_enrolled') {
+                          updateField('enrollmentStatus', 'enrolled');
+                          updateField('academicYearOrSemester', 'السنة الأولى');
+                        }
+                      }}
+                      className={`p-3.5 rounded-xl border text-right transition-all cursor-pointer ${
+                        formData.hasAttendedUniversity
+                          ? 'border-slate-900 bg-slate-900 text-white shadow-xs'
+                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                      }`}
+                    >
+                      <div className="font-bold text-xs">طالب جامعي حالياً</div>
+                      <div className={`text-[11px] mt-0.5 ${formData.hasAttendedUniversity ? 'text-slate-300' : 'text-slate-500'}`}>
+                        ملتحق بجامعة / كلية أو معلق قيده بسبب الرسوم
+                      </div>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateField('hasAttendedUniversity', false);
+                        updateField('enrollmentStatus', 'prospective');
+                        updateField('academicYearOrSemester', 'مقبل على السنة الأولى');
+                      }}
+                      className={`p-3.5 rounded-xl border text-right transition-all cursor-pointer ${
+                        !formData.hasAttendedUniversity
+                          ? 'border-slate-900 bg-slate-900 text-white shadow-xs'
+                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                      }`}
+                    >
+                      <div className="font-bold text-xs">خريج ثانوية عامة (توجيهي)</div>
+                      <div className={`text-[11px] mt-0.5 ${!formData.hasAttendedUniversity ? 'text-slate-300' : 'text-slate-500'}`}>
+                        مقبل على التسجيل الجامعي ولم يلتحق بالجامعة بعد
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                {formData.hasAttendedUniversity ? (
+                  /* Enrolled / Previous University student fields */
+                  <div className="space-y-4 pt-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="enrollmentStatus" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                          الحالة الأكاديمية الراهنة <span className="text-rose-500">*</span>
+                        </label>
+                        <select
+                          id="enrollmentStatus"
+                          value={formData.enrollmentStatus}
+                          onChange={(e) => updateField('enrollmentStatus', e.target.value)}
+                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        >
+                          <option value="enrolled">منتظم في الدراسة حالياً ومطالب بالرسوم</option>
+                          <option value="paused">متوقف أو معلق القيد بسبب تراكم الرسوم</option>
+                          <option value="accepted">مقبول حديثاً ومطالب بالسداد للبدء</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label htmlFor="academicYearOrSemester" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                          السنة أو المستوى الدراسي الحالي <span className="text-rose-500">*</span>
+                        </label>
+                        <select
+                          id="academicYearOrSemester"
+                          value={formData.academicYearOrSemester}
+                          onChange={(e) => updateField('academicYearOrSemester', e.target.value)}
+                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        >
+                          <option value="السنة الأولى">السنة الأولى</option>
+                          <option value="السنة الثانية">السنة الثانية</option>
+                          <option value="السنة الثالثة">السنة الثالثة</option>
+                          <option value="السنة الرابعة">السنة الرابعة</option>
+                          <option value="السنة الخامسة فأعلى">السنة الخامسة فأعلى</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="institutionName" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                          اسم الجامعة أو الكلية المقيد بها <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          id="institutionName"
+                          type="text"
+                          required
+                          value={formData.institutionName}
+                          onChange={(e) => updateField('institutionName', e.target.value)}
+                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="major" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                          التخصص الأكاديمي الملتحق به <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          id="major"
+                          type="text"
+                          required
+                          value={formData.major}
+                          onChange={(e) => updateField('major', e.target.value)}
+                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Prospective High School Graduate fields */
+                  <div className="space-y-4 pt-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="institutionName" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                          الجامعة أو الكلية المرغوبة / المقبول بها مبدئياً <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          id="institutionName"
+                          type="text"
+                          required
+                          value={formData.institutionName}
+                          onChange={(e) => updateField('institutionName', e.target.value)}
+                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="major" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                          التخصص الأكاديمي المطلوب دراسته <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          id="major"
+                          type="text"
+                          required
+                          value={formData.major}
+                          onChange={(e) => updateField('major', e.target.value)}
+                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Tuition Details Box */}
                 <div className="pt-2">
@@ -560,7 +784,10 @@ export default function ApplicationForm() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <label htmlFor="periodTuitionFee" className="block text-xs font-semibold text-slate-800 mb-1">
-                          رسوم الفترة المطلوبة (د.أ) <span className="text-rose-500">*</span>
+                          {formData.hasAttendedUniversity
+                            ? 'الرسوم الجامعية المستحقة للفصل (د.أ)'
+                            : 'الرسوم التقديرية للفصل الدراسي الأول (د.أ)'}{' '}
+                          <span className="text-rose-500">*</span>
                         </label>
                         <input
                           id="periodTuitionFee"
@@ -575,7 +802,9 @@ export default function ApplicationForm() {
 
                       <div>
                         <label htmlFor="amountAlreadyPaid" className="block text-xs font-semibold text-slate-800 mb-1">
-                          المبلغ المدفوع إن وجد (د.أ)
+                          {formData.hasAttendedUniversity
+                            ? 'المبلغ المسدد من الرسوم إن وجد (د.أ)'
+                            : 'المبلغ المتوفر للمساهمة إن وجد (د.أ)'}
                         </label>
                         <input
                           id="amountAlreadyPaid"
@@ -857,6 +1086,19 @@ export default function ApplicationForm() {
                         className="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-0 shrink-0"
                       />
                       <span>أعلم أن تقديم الطلب لا يضمن القبول التلقائي ويخضع لقرار اللجنة.</span>
+                    </label>
+
+                    <label className="flex items-start gap-2.5 text-xs text-rose-900 bg-rose-50/60 p-2.5 rounded-lg border border-rose-200 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={formData.disqualificationAcknowledged}
+                        onChange={(e) => updateField('disqualificationAcknowledged', e.target.checked)}
+                        className="mt-0.5 rounded border-rose-300 text-rose-600 focus:ring-0 shrink-0"
+                      />
+                      <span className="font-semibold">
+                        أقر بأنني على علم تام بأن إدخال أي معلومات غير صحيحة أو مضللة سيؤدي للاستبعاد الفوري والنهائي للطلب في مرحلة التدقيق ومطابقة الوثائق الرسمية.
+                      </span>
                     </label>
                   </div>
                 </div>

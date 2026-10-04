@@ -39,11 +39,16 @@ export const publicApplicationSubmissionSchema = z.object({
   }),
 
   // 2. Academic & Study
+  tawjihiGpa: z.number().min(50, 'يرجى إدخال معدل ثانوية عامة صالح (50 فأعلى)').max(100, 'المعدل لا يتجاوز 100'),
+  tawjihiBranch: z.string().trim().min(2, 'يرجى تحديد فرع الثانوية العامة').max(80),
+  tawjihiYear: z.string().trim().min(4, 'يرجى تحديد سنة الثانوية العامة').max(20),
+  hasAttendedUniversity: z.boolean().default(true),
+
   institutionName: z.string().trim().min(2, 'يرجى تحديد المؤسسة التعليمية').max(150),
   studyLevel: z.string().trim().min(2, 'يرجى تحديد المرحلة الدراسية').max(100),
   major: z.string().trim().min(2, 'يرجى إدخال التخصص الدراسي').max(150),
   academicYearOrSemester: z.string().trim().min(2, 'يرجى تحديد السنة أو الفصل الدراسي').max(100),
-  enrollmentStatus: z.enum(['enrolled', 'accepted', 'paused'], {
+  enrollmentStatus: z.enum(['enrolled', 'accepted', 'paused', 'prospective', 'not_enrolled'], {
     error: 'يرجى تحديد الحالة الدراسية',
   }),
   periodTuitionFee: z.number().min(0, 'الرسوم يجب أن تكون صفراً أو أكثر').max(500000),
@@ -125,6 +130,9 @@ export const publicApplicationSubmissionSchema = z.object({
   }),
   noGuaranteeAcknowledged: z.literal(true, {
     error: 'يجب الإقرار بأن التقديم لا يضمن القبول التلقائي',
+  }),
+  disqualificationAcknowledged: z.literal(true, {
+    error: 'يجب الإقرار بأن إدخال أي معلومات غير صحيحة أو مضللة سيعرض الطلب للاستبعاد الفوري والنهائي',
   }),
 });
 
