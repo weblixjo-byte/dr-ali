@@ -9,6 +9,17 @@ import {
 } from '@/types';
 import { DEFAULT_CRITERIA } from './scoring';
 
+import dns from 'dns';
+
+// Fix for local development / Windows DNS resolvers that block SRV records
+if (process.env.NODE_ENV === 'development') {
+  try {
+    dns.setServers(['8.8.8.8', '1.1.1.1']);
+  } catch {
+    // Ignore
+  }
+}
+
 declare global {
   // eslint-disable-next-line no-var
   var _mongoClientPromise: Promise<MongoClient> | undefined;
