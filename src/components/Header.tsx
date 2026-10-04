@@ -6,41 +6,32 @@ import { GraduationCap } from 'lucide-react';
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 no-print">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-3 text-slate-900 group">
-          <div className="w-10 h-10 rounded border border-slate-300 bg-slate-50 flex items-center justify-center text-slate-800">
-            <GraduationCap className="w-6 h-6" />
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 no-print">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-xs">
+            <GraduationCap className="w-5 h-5" />
           </div>
           <div>
-            <div className="font-semibold text-base leading-tight">مبادرة المنح الدراسية</div>
-            <div className="text-xs text-gray-500 font-normal">دعم 6 طلاب من الأكثر حاجة اقتصادية</div>
+            <span className="font-semibold text-slate-900 text-sm tracking-tight block">
+              مبادرة المنح الدراسية
+            </span>
+            <span className="text-[11px] text-slate-500 font-normal">
+              كفالة الرسوم الأكاديمية الجامعية
+            </span>
           </div>
-        </Link>
+        </div>
 
-        {/* Navigation */}
-        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
-          <a href="#about" className="hover:text-slate-900 transition-colors">عن المبادرة</a>
-          <a href="#details" className="hover:text-slate-900 transition-colors">تفاصيل المنحة</a>
-          <a href="#criteria" className="hover:text-slate-900 transition-colors">المعايير والأولوية</a>
-          <a href="#process" className="hover:text-slate-900 transition-colors">آلية الاختيار</a>
-          <a href="#transparency" className="hover:text-slate-900 transition-colors">الشفافية</a>
-          <a href="#faq" className="hover:text-slate-900 transition-colors">الأسئلة الشائعة</a>
-        </nav>
-
-        {/* CTA & Admin Link */}
         <div className="flex items-center gap-3">
           <Link
             href="/admin"
-            className="text-xs text-gray-500 hover:text-slate-900 px-2 py-1.5 rounded transition-colors hidden sm:inline-block"
-            title="بوابة لجنة المراجعة"
+            className="text-xs text-slate-500 hover:text-slate-900 px-2.5 py-1.5 rounded-md hover:bg-slate-50 transition-colors"
           >
             بوابة الإدارة
           </Link>
           <a
             href="#apply"
-            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 rounded transition-colors"
+            className="text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 px-3.5 py-2 rounded-lg transition-colors shadow-xs"
           >
             تقديم طلب
           </a>

@@ -1,46 +1,34 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import ScholarshipDetails from '@/components/ScholarshipDetails';
-import CriteriaSection from '@/components/CriteriaSection';
-import SelectionTimeline from '@/components/SelectionTimeline';
-import TransparencySection from '@/components/TransparencySection';
-import FaqSection from '@/components/FaqSection';
+import Guidelines from '@/components/Guidelines';
 import ApplicationForm from '@/components/ApplicationForm';
+import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
 
 export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-slate-900 selection:text-white">
       {/* 1. Header */}
       <Header />
 
       <main className="flex-1">
-        {/* 2. Hero & Purpose (Target: 6, no promise of acceptance) */}
+        {/* 2. Hero */}
         <Hero />
 
-        {/* 3. Scholarship Details (Coverage, cap, institutions, schedule) */}
-        <ScholarshipDetails />
+        {/* 3. Guidelines (3 clean essentials without criteria leakage) */}
+        <Guidelines />
 
-        {/* 4. Eligibility & Priority Criteria (100 points, weights, tie-breaker) */}
-        <CriteriaSection />
-
-        {/* 5. Selection Mechanism (5-step process) */}
-        <SelectionTimeline />
-
-        {/* 6. Transparency Section (Live counts, privacy pledge) */}
-        <TransparencySection />
-
-        {/* 7. Frequently Asked Questions (FAQ) */}
-        <FaqSection />
-
-        {/* 8. Application Form (Multi-step, in-memory draft, conditional logic, printable receipt) */}
+        {/* 4. Streamlined Application Form */}
         <ApplicationForm />
+
+        {/* 5. Essential FAQ */}
+        <FaqSection />
       </main>
 
-      {/* 9. Privacy Policy & Contacts */}
+      {/* 6. Footer */}
       <Footer />
     </div>
   );
