@@ -30,7 +30,7 @@ export function formatReceiptData(app: {
     fullName: app.fullName,
     institutionName: app.institutionName,
     major: app.major,
-    submissionDate: new Date(app.createdAt).toLocaleDateString('ar-SA', {
+    submissionDate: new Date(app.createdAt).toLocaleDateString('ar-JO', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',

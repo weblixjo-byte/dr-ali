@@ -17,8 +17,8 @@ export const DEFAULT_CRITERIA: ScoringCriteria = {
     expenseBurden: 15,
     breadwinnerVulnerability: 10
   },
-  monthlyPerCapitaBenchmark: 1200, // مرجع دخل شهري للفرد قابل للضبط حسب العملة والبلد
-  currencyCode: 'ر.س',
+  monthlyPerCapitaBenchmark: 300, // مرجع دخل شهري للفرد قابل للضبط حسب العملة والبلد (د.أ للأردن)
+  currencyCode: 'د.أ',
   expenseBurdenCapRatio: 0.75
 };
 

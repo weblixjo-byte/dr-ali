@@ -37,7 +37,7 @@ export default function ApplicationForm() {
   const [formData, setFormData] = useState({
     // 1. Personal & Academic
     fullName: '',
-    phoneCountryCode: '+966',
+    phoneCountryCode: '+962',
     phoneNumber: '',
     email: '',
     governorateOrCity: '',
@@ -346,7 +346,7 @@ export default function ApplicationForm() {
                 <div className="flex justify-between">
                   <dt className="text-slate-500">تاريخ الإرسال:</dt>
                   <dd className="font-medium text-slate-800">
-                    {new Date(successData.createdAt).toLocaleDateString('ar-SA', {
+                    {new Date(successData.createdAt).toLocaleDateString('ar-JO', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
@@ -450,7 +450,6 @@ export default function ApplicationForm() {
                     required
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
-                    placeholder="مطابقاً للوثائق الرسمية"
                     className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                   />
                 </div>
@@ -473,7 +472,6 @@ export default function ApplicationForm() {
                         required
                         value={formData.phoneNumber}
                         onChange={(e) => updateField('phoneNumber', e.target.value)}
-                        placeholder="50XXXXXXX"
                         className="flex-1 h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono transition-all"
                       />
                     </div>
@@ -489,7 +487,6 @@ export default function ApplicationForm() {
                       required
                       value={formData.governorateOrCity}
                       onChange={(e) => updateField('governorateOrCity', e.target.value)}
-                      placeholder="مثال: الرياض، الدمام..."
                       className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                     />
                   </div>
@@ -506,7 +503,6 @@ export default function ApplicationForm() {
                       required
                       value={formData.institutionName}
                       onChange={(e) => updateField('institutionName', e.target.value)}
-                      placeholder="اسم الجامعة أو الكلية"
                       className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                     />
                   </div>
@@ -521,7 +517,6 @@ export default function ApplicationForm() {
                       required
                       value={formData.major}
                       onChange={(e) => updateField('major', e.target.value)}
-                      placeholder="مثال: هندسة، تمريض، إدارة..."
                       className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                     />
                   </div>
@@ -538,7 +533,6 @@ export default function ApplicationForm() {
                       required
                       value={formData.academicYearOrSemester}
                       onChange={(e) => updateField('academicYearOrSemester', e.target.value)}
-                      placeholder="مثال: السنة الثانية - الفصل الأول"
                       className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
                     />
                   </div>
@@ -566,7 +560,7 @@ export default function ApplicationForm() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <label htmlFor="periodTuitionFee" className="block text-xs font-semibold text-slate-800 mb-1">
-                          رسوم الفترة المطلوبة (ر.س) <span className="text-rose-500">*</span>
+                          رسوم الفترة المطلوبة (د.أ) <span className="text-rose-500">*</span>
                         </label>
                         <input
                           id="periodTuitionFee"
@@ -575,14 +569,13 @@ export default function ApplicationForm() {
                           required
                           value={formData.periodTuitionFee}
                           onChange={(e) => updateField('periodTuitionFee', e.target.value === '' ? '' : Number(e.target.value))}
-                          placeholder="مثال: 10000"
                           className="w-full h-10 px-3 text-sm rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
                         />
                       </div>
 
                       <div>
                         <label htmlFor="amountAlreadyPaid" className="block text-xs font-semibold text-slate-800 mb-1">
-                          المبلغ المدفوع إن وجد (ر.س)
+                          المبلغ المدفوع إن وجد (د.أ)
                         </label>
                         <input
                           id="amountAlreadyPaid"
@@ -590,7 +583,6 @@ export default function ApplicationForm() {
                           min="0"
                           value={formData.amountAlreadyPaid}
                           onChange={(e) => updateField('amountAlreadyPaid', e.target.value === '' ? '' : Number(e.target.value))}
-                          placeholder="0 إن لم يدفع شيء"
                           className="w-full h-10 px-3 text-sm rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
                         />
                       </div>
@@ -599,7 +591,7 @@ export default function ApplicationForm() {
                     <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
                       <span className="text-slate-600 font-medium">المبلغ المتبقي المطلوب كفالته:</span>
                       <span className="font-mono font-bold text-slate-900 text-sm">
-                        {calculatedUncovered.toLocaleString('ar-SA')} ر.س
+                        {calculatedUncovered.toLocaleString('ar-JO')} د.أ
                       </span>
                     </div>
                   </div>
@@ -692,7 +684,7 @@ export default function ApplicationForm() {
                   {!['deceased', 'unavailable'].includes(formData.fatherStatus) && (
                     <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
                       <div>
-                        <div className="text-xs font-semibold text-slate-900">دخل الأب الشهري (ر.س)</div>
+                        <div className="text-xs font-semibold text-slate-900">دخل الأب الشهري (د.أ)</div>
                         <div className="text-[11px] text-slate-500">الراتب أو العائد الصافي</div>
                       </div>
                       <input
@@ -700,7 +692,6 @@ export default function ApplicationForm() {
                         min="0"
                         value={formData.fatherIncomeAmount}
                         onChange={(e) => updateField('fatherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                        placeholder="0 إن لم يوجد"
                         className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
                       />
                     </div>
@@ -709,7 +700,7 @@ export default function ApplicationForm() {
                   {!['deceased', 'unavailable'].includes(formData.motherStatus) && (
                     <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
                       <div>
-                        <div className="text-xs font-semibold text-slate-900">دخل الأم الشهري (ر.س)</div>
+                        <div className="text-xs font-semibold text-slate-900">دخل الأم الشهري (د.أ)</div>
                         <div className="text-[11px] text-slate-500">الراتب أو العائد الصافي</div>
                       </div>
                       <input
@@ -717,7 +708,6 @@ export default function ApplicationForm() {
                         min="0"
                         value={formData.motherIncomeAmount}
                         onChange={(e) => updateField('motherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                        placeholder="0 إن لم يوجد"
                         className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
                       />
                     </div>
@@ -726,7 +716,7 @@ export default function ApplicationForm() {
                   {/* Pensions or aid */}
                   <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
                     <div>
-                      <div className="text-xs font-semibold text-slate-900">معاشات تقاعدية / تأمينات (ر.س)</div>
+                      <div className="text-xs font-semibold text-slate-900">معاشات تقاعدية / تأمينات (د.أ)</div>
                       <div className="text-[11px] text-slate-500">معاش التقاعد أو الدعم البديل إن وجد</div>
                     </div>
                     <input
@@ -734,22 +724,20 @@ export default function ApplicationForm() {
                       min="0"
                       value={formData.pensionsAmount}
                       onChange={(e) => updateField('pensionsAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                      placeholder="0 إن لم يوجد"
                       className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
                     />
                   </div>
 
                   <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
                     <div>
-                      <div className="text-xs font-semibold text-slate-900">مساعدات نقدية منتظمة (ر.س)</div>
-                      <div className="text-[11px] text-slate-500">الضمان الاجتماعي أو دعم الجمعيات المستمر</div>
+                      <div className="text-xs font-semibold text-slate-900">مساعدات نقدية منتظمة (د.أ)</div>
+                      <div className="text-[11px] text-slate-500">المعونة الوطنية أو دعم الجمعيات المستمر</div>
                     </div>
                     <input
                       type="number"
                       min="0"
                       value={formData.regularAidAmount}
                       onChange={(e) => updateField('regularAidAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                      placeholder="0 إن لم يوجد"
                       className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
                     />
                   </div>
@@ -783,7 +771,7 @@ export default function ApplicationForm() {
                   {formData.housingStatus === 'rented' && (
                     <div>
                       <label htmlFor="monthlyRent" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                        الإيجار الشهري التقريبي (ر.س) <span className="text-rose-500">*</span>
+                        الإيجار الشهري التقريبي (د.أ) <span className="text-rose-500">*</span>
                       </label>
                       <input
                         id="monthlyRent"
@@ -791,7 +779,6 @@ export default function ApplicationForm() {
                         min="0"
                         value={formData.monthlyRent}
                         onChange={(e) => updateField('monthlyRent', e.target.value === '' ? '' : Number(e.target.value))}
-                        placeholder="قيمة الإيجار"
                         className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
                       />
                     </div>
@@ -800,7 +787,7 @@ export default function ApplicationForm() {
 
                 <div>
                   <label htmlFor="recurringNecessaryMedicalExpenses" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                    مصاريف علاجية شهرية متكررة لأمراض مزمنة غير مغطاة (إن وجدت)
+                    مصاريف علاجية شهرية متكررة لأمراض مزمنة غير مغطاة (د.أ) إن وجدت
                   </label>
                   <input
                     id="recurringNecessaryMedicalExpenses"
@@ -808,7 +795,6 @@ export default function ApplicationForm() {
                     min="0"
                     value={formData.recurringNecessaryMedicalExpenses}
                     onChange={(e) => updateField('recurringNecessaryMedicalExpenses', e.target.value === '' ? '' : Number(e.target.value))}
-                    placeholder="0 إن لم يوجد"
                     className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
                   />
                 </div>
@@ -821,7 +807,6 @@ export default function ApplicationForm() {
                     id="additionalContext"
                     value={formData.additionalContext}
                     onChange={(e) => updateField('additionalContext', e.target.value)}
-                    placeholder="أي ملاحظات موجزة..."
                     rows={2}
                     className="w-full p-3 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 resize-none"
                   />

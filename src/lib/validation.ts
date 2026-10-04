@@ -27,7 +27,7 @@ export const publicApplicationSubmissionSchema = z.object({
     .trim()
     .min(5, 'يجب إدخال الاسم الرباعي كاملاً (5 أحرف على الأقل)')
     .max(120, 'الاسم طويل جداً'),
-  phoneCountryCode: z.string().trim().regex(/^\+\d{1,4}$/, 'رمز الدولة غير صالح (مثال: +966)'),
+  phoneCountryCode: z.string().trim().regex(/^\+\d{1,4}$/, 'رمز الدولة غير صالح'),
   phoneNumber: z
     .string()
     .trim()

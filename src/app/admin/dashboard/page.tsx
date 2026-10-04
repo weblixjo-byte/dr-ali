@@ -568,10 +568,10 @@ export default function AdminDashboardPage() {
                             <div>{app.institutionName}</div>
                             <div className="text-[11px] text-gray-500">{app.major}</div>
                           </td>
-                          <td className="py-2.5 px-3 font-mono text-slate-800">{pc} ر.س</td>
+                          <td className="py-2.5 px-3 font-mono text-slate-800">{pc} د.أ</td>
                           <td className="py-2.5 px-3 font-mono text-gray-700">{app.householdSize}</td>
                           <td className="py-2.5 px-3 font-mono text-slate-800">
-                            {app.uncoveredTuitionAmount.toLocaleString('ar-SA')} ر.س
+                            {app.uncoveredTuitionAmount.toLocaleString('ar-JO')} د.أ
                           </td>
                           <td className="py-2.5 px-3">
                             <span className="font-bold text-slate-900 font-mono bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
@@ -798,9 +798,9 @@ export default function AdminDashboardPage() {
                             <td className="py-3 px-3 text-gray-700">
                               {item.application.institutionName} - {item.application.major}
                             </td>
-                            <td className="py-3 px-3 font-mono text-slate-800">{pc} ر.س</td>
+                            <td className="py-3 px-3 font-mono text-slate-800">{pc} د.أ</td>
                             <td className="py-3 px-3 font-mono text-slate-800">
-                              {item.application.uncoveredTuitionAmount.toLocaleString('ar-SA')} ر.س
+                              {item.application.uncoveredTuitionAmount.toLocaleString('ar-JO')} د.أ
                             </td>
                             <td className="py-3 px-3 font-mono font-bold text-slate-900">
                               {scoreVal} / 100
@@ -1094,19 +1094,19 @@ export default function AdminDashboardPage() {
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-500">رسوم الفترة الكاملة:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.periodTuitionFee} ر.س</dd>
+                      <dd className="font-mono text-slate-800">{selectedApp.periodTuitionFee} د.أ</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-500">المبلغ المدفوع:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.amountAlreadyPaid} ر.س</dd>
+                      <dd className="font-mono text-slate-800">{selectedApp.amountAlreadyPaid} د.أ</dd>
                     </div>
                     <div className="flex justify-between">
                       <dt className="text-gray-500">دعم خارجي مؤكد:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.confirmedExternalSupport} ر.س</dd>
+                      <dd className="font-mono text-slate-800">{selectedApp.confirmedExternalSupport} د.أ</dd>
                     </div>
                     <div className="flex justify-between pt-1 border-t border-gray-100 font-bold">
                       <dt className="text-slate-900">المبلغ المتبقي المطلوب:</dt>
-                      <dd className="font-mono text-slate-900">{selectedApp.uncoveredTuitionAmount} ر.س</dd>
+                      <dd className="font-mono text-slate-900">{selectedApp.uncoveredTuitionAmount} د.أ</dd>
                     </div>
                   </dl>
                 </div>
@@ -1134,13 +1134,13 @@ export default function AdminDashboardPage() {
                     <div className="flex justify-between">
                       <dt className="text-gray-500">إجمالي دخل الأسرة:</dt>
                       <dd className="font-mono text-slate-800">
-                        {selectedApp.score.calculatedValues.totalHouseholdIncome} ر.س
+                        {selectedApp.score.calculatedValues.totalHouseholdIncome} د.أ
                       </dd>
                     </div>
                     <div className="flex justify-between pt-1 border-t border-gray-100 font-bold">
                       <dt className="text-slate-900">دخل الفرد الشهري:</dt>
                       <dd className="font-mono text-slate-900">
-                        {selectedApp.score.calculatedValues.perCapitaIncome} ر.س
+                        {selectedApp.score.calculatedValues.perCapitaIncome} د.أ
                       </dd>
                     </div>
                   </dl>
@@ -1159,13 +1159,13 @@ export default function AdminDashboardPage() {
                     {selectedApp.housingStatus === 'rented' && (
                       <div className="flex justify-between">
                         <dt className="text-gray-500">الإيجار الشهري:</dt>
-                        <dd className="font-mono text-slate-800">{selectedApp.monthlyRent || 0} ر.س</dd>
+                        <dd className="font-mono text-slate-800">{selectedApp.monthlyRent || 0} د.أ</dd>
                       </div>
                     )}
                     <div className="flex justify-between">
                       <dt className="text-gray-500">مصاريف علاجية مزمنة:</dt>
                       <dd className="font-mono text-slate-800">
-                        {selectedApp.recurringNecessaryMedicalExpenses || 0} ر.س
+                        {selectedApp.recurringNecessaryMedicalExpenses || 0} د.أ
                       </dd>
                     </div>
                     <div className="flex justify-between">
@@ -1303,7 +1303,7 @@ export default function AdminDashboardPage() {
 
             {/* Modal Footer */}
             <div className="p-3 border-t border-gray-200 bg-gray-50 flex items-center justify-between text-xs text-gray-500">
-              <span>تاريخ الإنشاء: {new Date(selectedApp.createdAt).toLocaleString('ar-SA')}</span>
+              <span>تاريخ الإنشاء: {new Date(selectedApp.createdAt).toLocaleString('ar-JO')}</span>
               <button
                 onClick={() => setSelectedApp(null)}
                 className="py-1 px-3 rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100"

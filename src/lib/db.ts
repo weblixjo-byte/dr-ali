@@ -155,13 +155,13 @@ export async function ensureDatabaseIndexes(): Promise<void> {
         resultsAnnouncementDate: '2026-04-15',
         scholarshipCoverageDescription:
           'تغطية الرسوم الدراسية المتبقية غير المغطاة للفترة الأكاديمية الحالية حتى السقف المعتمد.',
-        valueOrCapDescription: 'تغطية تصل إلى 15,000 ر.س لكل طالب مستفيد كحد أقصى للرسوم المعتمدة.',
+        valueOrCapDescription: 'تغطية الرسوم الدراسية المعتمدة للفصل الدراسي لكل طالب مستحق وفق قرار اللجنة.',
         targetGroupDescription:
           'الطلاب والطالبات المنتظمون في الجامعات والكليات المعتمدة الذين يواجهون صعوبات مالية حقيقية تهدد استمرار دراستهم.',
         includedInstitutionsDescription:
-          'الجامعات الحكومية والأهلية والكليات التقنية المعتمدة داخل المملكة.',
+          'الجامعات الرسمية والخاصة وكليات المجتمع المعتمدة داخل المملكة الأردنية الهاشمية.',
         contactEmail: 'info@scholarship-initiative.org',
-        contactPhone: '+966110000000',
+        contactPhone: '+96265000000',
         privacyPolicySummary:
           'تُستخدم البيانات المدخلة حصرًا لأغراض التدقيق والمفاضلة الاقتصادية بواسطة لجنة المنح، ولا يتم مشاركتها أو نشرها للعامة.',
         updatedAt: new Date(),

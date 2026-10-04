@@ -29,7 +29,7 @@ runTest('1. انخفاض دخل الفرد يرفع أولوية الحاجة م
   const baseApp: ScorableApplicationInput = {
     householdSize: 5,
     income: {
-      fatherIncome: { amount: 3000, frequency: 'fixed', isNetAvailable: true },
+      fatherIncome: { amount: 600, frequency: 'fixed', isNetAvailable: true },
       motherIncome: null,
       studentIncome: null,
       otherFamilyContributions: null,
@@ -37,10 +37,10 @@ runTest('1. انخفاض دخل الفرد يرفع أولوية الحاجة م
       regularCashAid: null,
     },
     hasSeasonalIncome: false,
-    periodTuitionFee: 10000,
+    periodTuitionFee: 1000,
     amountAlreadyPaid: 0,
     confirmedExternalSupport: 0,
-    uncoveredTuitionAmount: 10000,
+    uncoveredTuitionAmount: 1000,
     housingStatus: 'owned',
     monthlyRent: null,
     recurringNecessaryMedicalExpenses: null,
@@ -54,15 +54,15 @@ runTest('1. انخفاض دخل الفرد يرفع أولوية الحاجة م
     recentBreadwinnerLoss: false,
   };
 
-  // App A: Higher Income (Per Capita: 3000 / 5 = 600)
+  // App A: Higher Income (Per Capita: 600 / 5 = 120)
   const scoreHigherIncome = calculateApplicationScore(baseApp, DEFAULT_CRITERIA);
 
-  // App B: Lower Income (Per Capita: 1000 / 5 = 200)
+  // App B: Lower Income (Per Capita: 250 / 5 = 50)
   const lowerIncomeApp: ScorableApplicationInput = {
     ...baseApp,
     income: {
       ...baseApp.income,
-      fatherIncome: { amount: 1000, frequency: 'fixed', isNetAvailable: true },
+      fatherIncome: { amount: 250, frequency: 'fixed', isNetAvailable: true },
     },
   };
   const scoreLowerIncome = calculateApplicationScore(lowerIncomeApp, DEFAULT_CRITERIA);
@@ -266,9 +266,9 @@ runTest('6. تقدم طلب جديد أعلى درجة في الترتيب تل�
     cycleId: '2026-FALL',
     idempotencyKey: `key-${id}`,
     fullName: `متقدم ${id}`,
-    phoneCountryCode: '+966',
-    phoneNumber: '500000000',
-    governorateOrCity: 'الرياض',
+    phoneCountryCode: '+962',
+    phoneNumber: '790000000',
+    governorateOrCity: 'عمان',
     preferredContactMethod: 'phone',
     institutionName: 'الجامعة',
     studyLevel: 'بكالوريوس',
@@ -372,9 +372,9 @@ runTest('7. وضوح التعادل عند المركز السادس واكتش�
     cycleId: '2026-FALL',
     idempotencyKey: `key-${id}`,
     fullName: `متقدم ${id}`,
-    phoneCountryCode: '+966',
-    phoneNumber: '500000000',
-    governorateOrCity: 'الرياض',
+    phoneCountryCode: '+962',
+    phoneNumber: '790000000',
+    governorateOrCity: 'عمان',
     preferredContactMethod: 'phone',
     institutionName: 'الجامعة',
     studyLevel: 'بكالوريوس',
@@ -486,11 +486,11 @@ runTest('8. Schema المدخلات العامة تحظر إرسال score أو 
   const maliciousPayload = {
     idempotencyKey: 'idemp-test-key-12345',
     fullName: 'طالب يحاول التلاعب بالبيانات',
-    phoneCountryCode: '+966',
-    phoneNumber: '501112233',
-    governorateOrCity: 'الرياض',
+    phoneCountryCode: '+962',
+    phoneNumber: '791112233',
+    governorateOrCity: 'عمان',
     preferredContactMethod: 'phone',
-    institutionName: 'جامعة الملك سعود',
+    institutionName: 'الجامعة الأردنية',
     studyLevel: 'بكالوريوس',
     major: 'إدارة أعمال',
     academicYearOrSemester: 'السنة الثانية',
