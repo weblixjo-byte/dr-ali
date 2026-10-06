@@ -41,10 +41,6 @@ export default function Guidelines() {
         
         {/* Section Header */}
         <div className="text-right max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100/90 border-2 border-black text-black text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span>
-            <span>الضوابط والإرشادات الرسمية</span>
-          </div>
           <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             شروط الاستحقاق وضوابط المفاضلة
           </h2>

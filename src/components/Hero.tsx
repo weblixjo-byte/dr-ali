@@ -19,13 +19,6 @@ export default function Hero() {
           {/* RIGHT COLUMN (RTL): Unified Headline, Description & CTAs */}
           {/* ======================================================== */}
           <div className="lg:col-span-6 text-right space-y-6">
-            
-            {/* Minimalist Official Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-black text-black bg-white border-2 border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-black"></span>
-              <span>المملكة الأردنية الهاشمية • الدورة الأكاديمية 2025/2026</span>
-            </div>
-
             {/* Main Balanced Headline with Stylized Yellow Highlighter */}
             <h1 className="text-3xl sm:text-5xl lg:text-[48px] xl:text-[52px] font-black text-black tracking-tight leading-[1.2]">
               كفالة التعليم{' '}

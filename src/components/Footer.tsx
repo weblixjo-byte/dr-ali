@@ -11,9 +11,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#16a34a] text-white border-t-4 border-black no-print relative overflow-hidden">
-      {/* Top Yellow Cartoon Accent Strip */}
-      <div className="h-2.5 bg-[#facc15] border-b-2 border-black"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b-2 border-black/20">
           
@@ -36,24 +33,12 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-white/95 leading-relaxed max-w-md font-semibold">
               مبادرة تعليمية أهلية مستقلة تهدف إلى كفالة رسوم الساعات الجامعية للطلبة المتعثرين والأكثر استحقاقاً في الجامعات والكليات الأردنية المعتمدة، وفق معايير المفاضلة الشفافة والتدقيق المكتبي الموثق.
             </p>
-
-            <div className="pt-2 flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white text-black text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <span>المملكة الأردنية الهاشمية</span>
-                <span>🇯🇴</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#facc15] text-black text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
-                <span>دورة 2025/2026</span>
-              </span>
-            </div>
           </div>
 
           {/* Column 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 text-right">
-            <h4 className="font-black text-base text-white mb-4 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#facc15] border border-black"></span>
-              <span>روابط سريعة</span>
+            <h4 className="font-black text-base text-white mb-4">
+              روابط سريعة
             </h4>
             <ul className="space-y-2.5 text-xs font-bold text-white/95">
               <li>
@@ -79,9 +64,8 @@ export default function Footer() {
 
           {/* Column 3: Trust Standards (2 cols) */}
           <div className="lg:col-span-2 text-right">
-            <h4 className="font-black text-base text-white mb-4 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#facc15] border border-black"></span>
-              <span>ضوابط الكفالة</span>
+            <h4 className="font-black text-base text-white mb-4">
+              ضوابط الكفالة
             </h4>
             <ul className="space-y-2.5 text-xs text-white/95 font-bold">
               <li className="flex items-center gap-2">
@@ -106,9 +90,8 @@ export default function Footer() {
           {/* Column 4: Contact & Back-to-Top (3 cols) */}
           <div className="lg:col-span-3 text-right flex flex-col justify-between">
             <div>
-              <h4 className="font-black text-base text-white mb-4 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#facc15] border border-black"></span>
-                <span>التواصل والاستفسارات</span>
+              <h4 className="font-black text-base text-white mb-4">
+                التواصل والاستفسارات
               </h4>
               <p className="text-xs text-white/95 leading-relaxed mb-3 font-semibold">
                 تستقبل أمانة سر المبادرة كافة الاستفسارات الرسمية عبر البريد الإلكتروني:
@@ -142,8 +125,7 @@ export default function Footer() {
           <div className="text-right">
             <span>© {new Date().getFullYear()} مبادرة د. علي التعليمية لكفالة التعليم الجامعي. كافة الحقوق محفوظة.</span>
           </div>
-          <div className="flex items-center gap-2 text-white">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#facc15] border border-black"></span>
+          <div className="text-white">
             <span>نحو مستقبل أكاديمي واعد لكل طالب وطالبة في الأردن</span>
           </div>
         </div>

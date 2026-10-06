@@ -9,9 +9,6 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black no-print transition-all">
-      {/* Top Colorful Accent Strip */}
-      <div className="h-1.5 bg-[#22c55e] border-b border-black"></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo & Title with Vibrant Emerald/Amber Badge */}
@@ -24,7 +21,6 @@ export default function Header() {
               <span className="font-black text-black text-base sm:text-lg tracking-tight block">
                 مبادرة د. علي التعليمية
               </span>
-              <span className="hidden sm:inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-black"></span>
             </div>
             <span className="text-xs text-zinc-500 font-medium flex items-center gap-1.5 mt-0.5">
               <span>صندوق كفالة الرسوم الأكاديمية</span>

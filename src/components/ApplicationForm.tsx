@@ -346,9 +346,6 @@ export default function ApplicationForm() {
       <section id="apply" className="py-20 bg-gradient-to-b from-white via-emerald-50/20 to-white border-b border-zinc-200">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <div className="bg-white p-8 sm:p-12 rounded-3xl border-2 border-zinc-200 shadow-xl text-center relative overflow-hidden">
-            {/* Top decorative accent */}
-            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#22c55e] via-[#facc15] to-[#22c55e]"></div>
-
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white flex items-center justify-center mx-auto mb-5 shadow-lg border-2 border-black/10">
               <Check className="w-8 h-8 stroke-[3]" />
             </div>
@@ -449,10 +446,6 @@ export default function ApplicationForm() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border-2 border-black text-black text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-black"></span>
-            <span>البوابة الإلكترونية الموحدة</span>
-          </div>
           <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             استمارة طلب كفالة الرسوم الأكاديمية
           </h2>
