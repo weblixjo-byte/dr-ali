@@ -31,56 +31,56 @@ export default function FaqSection() {
         
         {/* Header */}
         <div className="text-right max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs font-bold mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 border-2 border-black text-black text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-3">
             <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span>
             <span>دليل الاستفسارات الأكاديمية</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             الأسئلة الشائعة حول المبادرة
           </h2>
-          <p className="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed font-medium">
             إجابات واضحة ومباشرة حول إجراءات التقديم والتدقيق المكتبي وشروط استحقاق كفالة الرسوم الجامعية.
           </p>
         </div>
 
-        {/* Accordion Cards */}
+        {/* Accordion Cards in Cartoon Neo-Brutalist Style */}
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                className={`rounded-3xl border-2 border-black transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? 'border-[#22c55e] bg-emerald-50/20 shadow-sm border-r-4 border-r-[#22c55e]'
-                    : 'border-zinc-200 bg-white hover:border-zinc-300'
+                    ? 'bg-emerald-50/60 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)]'
+                    : 'bg-white shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full text-right p-5 sm:p-6 flex items-center justify-between gap-4 text-black font-bold text-sm sm:text-base hover:bg-zinc-50/60 transition-colors cursor-pointer"
+                  className="w-full text-right p-5 sm:p-6 flex items-center justify-between gap-4 text-black font-black text-sm sm:text-base hover:bg-zinc-50/40 transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-center gap-3">
-                    <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-black shrink-0 ${
+                  <div className="flex items-center gap-3.5">
+                    <span className={`w-8 h-8 rounded-xl border-2 border-black font-mono text-xs font-black flex items-center justify-center shrink-0 ${
                       isOpen
-                        ? 'bg-[#22c55e] text-white'
-                        : 'bg-zinc-100 text-zinc-500'
+                        ? 'bg-[#22c55e] text-white shadow-[1px_1.5px_0px_0px_rgba(0,0,0,1)]'
+                        : 'bg-zinc-100 text-black'
                     }`}>
                       {idx + 1}
                     </span>
                     <span>{faq.q}</span>
                   </div>
                   <ChevronDown
-                    className={`w-5 h-5 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#16a34a]' : 'text-zinc-400'
+                    className={`w-5 h-5 shrink-0 transition-transform duration-200 stroke-[2.5] ${
+                      isOpen ? 'rotate-180 text-black' : 'text-zinc-500'
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-6 pt-2 text-xs sm:text-sm text-zinc-700 leading-relaxed border-t border-emerald-100 bg-white/70">
-                    <p className="pr-10">{faq.a}</p>
+                  <div className="px-6 pb-6 pt-2 text-xs sm:text-sm text-zinc-800 leading-relaxed border-t-2 border-black/10 bg-white/70 font-medium">
+                    <p className="pr-11">{faq.a}</p>
                   </div>
                 )}
               </div>
@@ -89,16 +89,16 @@ export default function FaqSection() {
         </div>
 
         {/* Need Help Callout Banner */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-amber-50/40 to-emerald-50 border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-5 text-right">
+        <div className="mt-12 p-6 sm:p-7 rounded-3xl bg-amber-100 border-[2.5px] border-black shadow-[5px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col sm:flex-row items-center justify-between gap-5 text-right">
           <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#22c55e] text-white flex items-center justify-center shrink-0 shadow-xs">
-              <MessageCircleQuestion className="w-5 h-5 stroke-[2.2]" />
+            <div className="w-12 h-12 rounded-2xl bg-[#22c55e] text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0">
+              <MessageCircleQuestion className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div>
-              <h4 className="font-extrabold text-black text-sm sm:text-base">
+              <h4 className="font-black text-black text-sm sm:text-base">
                 هل لديك استفسار آخر لم تجده هنا؟
               </h4>
-              <p className="text-xs text-zinc-600 mt-0.5">
+              <p className="text-xs text-zinc-700 mt-0.5 font-semibold">
                 فريق أمانة سر المبادرة جاهز للرد على كافة أسئلتكم ومساعدتكم.
               </p>
             </div>
@@ -106,10 +106,10 @@ export default function FaqSection() {
 
           <a
             href="mailto:info@scholarship-initiative.org"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-zinc-50 text-emerald-950 font-bold text-xs border border-emerald-300 shadow-xs transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white hover:bg-zinc-50 text-black font-black text-xs sm:text-sm border-2 border-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 transition-all shrink-0"
             dir="ltr"
           >
-            <Mail className="w-3.5 h-3.5 text-[#16a34a]" />
+            <Mail className="w-4 h-4 text-[#16a34a] stroke-[2.5]" />
             <span className="font-mono">info@scholarship-initiative.org</span>
           </a>
         </div>

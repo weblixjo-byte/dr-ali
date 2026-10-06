@@ -21,8 +21,8 @@ export default function Hero() {
           <div className="lg:col-span-6 text-right space-y-6">
             
             {/* Minimalist Official Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 text-xs font-semibold text-zinc-900 bg-zinc-100 border border-zinc-200 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-black text-black bg-white border-2 border-black rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-black"></span>
               <span>المملكة الأردنية الهاشمية • الدورة الأكاديمية 2025/2026</span>
             </div>
 
@@ -50,7 +50,7 @@ export default function Hero() {
             </h1>
 
             {/* Clear, Professional Description */}
-            <p className="text-base sm:text-lg text-zinc-600 leading-relaxed font-normal max-w-xl">
+            <p className="text-base sm:text-lg text-zinc-700 leading-relaxed font-medium max-w-xl">
               مبادرة تعليمية مستقلة لكفالة الرسوم الأكاديمية للطلبة المقبلين على الدراسة الجامعية أو المنتظمين فيها من ذوي الحاجة الاقتصادية، وفق معايير موضوعية وتدقيق مكتبي معتمد لكافة الوثائق الثبوتية.
             </p>
 
@@ -66,27 +66,27 @@ export default function Hero() {
 
               <a
                 href="#guidelines"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-950 border-2 border-amber-300/80 text-sm font-bold shadow-xs transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#facc15] hover:bg-[#eab308] text-black border-2 border-black text-sm font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer"
               >
                 <span>الشروط ومعايير الأهلية</span>
               </a>
             </div>
 
             {/* Institutional Trust Bullets Strip */}
-            <div className="pt-6 border-t border-zinc-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold">
-              <div className="flex items-center gap-2.5 bg-emerald-50/70 border border-emerald-200/80 rounded-xl px-3.5 py-2 text-emerald-950">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <div className="pt-6 border-t-2 border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-black">
+              <div className="flex items-center gap-2.5 bg-emerald-100/90 border-2 border-black rounded-2xl px-4 py-2.5 text-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)]">
+                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 stroke-[3]" />
                 <span>تغطية مباشرة لرسوم الساعات المعتمدة</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-amber-50/70 border border-amber-200/80 rounded-xl px-3.5 py-2 text-amber-950">
-                <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
+              <div className="flex items-center gap-2.5 bg-amber-100/90 border-2 border-black rounded-2xl px-4 py-2.5 text-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)]">
+                <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0 stroke-[3]" />
                 <span>تدقيق رسمي ومحايد دون وساطة</span>
               </div>
             </div>
           </div>
 
           {/* ======================================================== */}
-          {/* LEFT COLUMN (RTL): Student Visual & Floating Glass Cards  */}
+          {/* LEFT COLUMN (RTL): Student Visual & Floating Cartoon Cards */}
           {/* ======================================================== */}
           <div className="lg:col-span-6 relative flex justify-center items-center">
             <div className="relative w-full max-w-[490px]">
@@ -101,31 +101,31 @@ export default function Hero() {
                 />
 
                 {/* Floating Card 1 (Top Left): Scholarship Badge */}
-                <div className="absolute top-[28%] -left-2 sm:-left-6 z-20 bg-white/95 backdrop-blur-sm border border-zinc-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xl max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1 duration-200">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <div className="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
-                      <GraduationCap className="w-4 h-4 text-emerald-700" />
+                <div className="absolute top-[28%] -left-2 sm:-left-6 z-20 bg-white border-2 border-black rounded-3xl p-4 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1.5 duration-200">
+                  <div className="flex items-center gap-2.5 mb-1.5">
+                    <div className="w-8 h-8 rounded-xl bg-[#22c55e] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0">
+                      <GraduationCap className="w-4 h-4 stroke-[2.5]" />
                     </div>
-                    <span className="text-xs sm:text-[13px] font-bold text-black">
+                    <span className="text-xs sm:text-[13px] font-black text-black">
                       كفالة الرسوم
                     </span>
                   </div>
-                  <p className="text-[11px] text-zinc-500 leading-normal">
+                  <p className="text-[11px] text-zinc-700 leading-normal font-semibold">
                     تغطية الساعات المعتمدة للطلبة المستحقين للدورة الحالية.
                   </p>
                 </div>
 
                 {/* Floating Card 2 (Bottom Right): Universities Badge */}
-                <div className="absolute bottom-6 -right-2 sm:-right-6 z-20 bg-white/95 backdrop-blur-sm border border-zinc-200/90 rounded-2xl p-3.5 sm:p-4 shadow-xl max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1 duration-200">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
-                      <School className="w-4 h-4 text-amber-700" />
+                <div className="absolute bottom-6 -right-2 sm:-right-6 z-20 bg-white border-2 border-black rounded-3xl p-4 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1.5 duration-200">
+                  <div className="flex items-center gap-2.5 mb-1.5">
+                    <div className="w-8 h-8 rounded-xl bg-[#facc15] text-black border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0">
+                      <School className="w-4 h-4 stroke-[2.5]" />
                     </div>
-                    <span className="text-xs sm:text-[13px] font-bold text-black">
+                    <span className="text-xs sm:text-[13px] font-black text-black">
                       الجامعات المشمولة
                     </span>
                   </div>
-                  <p className="text-[11px] text-zinc-500 leading-normal">
+                  <p className="text-[11px] text-zinc-700 leading-normal font-semibold">
                     كافة الجامعات والكليات الأردنية الرسمية والخاصة المعتمدة.
                   </p>
                 </div>

@@ -362,41 +362,41 @@ export default function ApplicationForm() {
             </p>
 
             {/* Official Receipt Card */}
-            <div className="receipt-card border-2 border-emerald-300 rounded-2xl p-6 sm:p-7 bg-emerald-50/20 mb-8 text-right text-xs shadow-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-emerald-200/80 mb-4 gap-2">
+            <div className="receipt-card border-[2.5px] border-black rounded-3xl p-6 sm:p-7 bg-emerald-50/50 mb-8 text-right text-xs shadow-[5px_6px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b-2 border-black/10 mb-4 gap-2">
                 <div>
-                  <div className="font-extrabold text-black text-sm sm:text-base">إشعار استلام طلب كفالة دراسية</div>
-                  <div className="text-[11px] text-zinc-500 font-medium">مبادرة د. علي للتعليم الجامعي • المملكة الأردنية الهاشمية</div>
+                  <div className="font-black text-black text-sm sm:text-base">إشعار استلام طلب كفالة دراسية</div>
+                  <div className="text-[11px] text-zinc-600 font-semibold">مبادرة د. علي للتعليم الجامعي • المملكة الأردنية الهاشمية</div>
                 </div>
-                <div className="font-mono font-black text-emerald-900 text-xs bg-emerald-100 px-3.5 py-1.5 rounded-xl border border-emerald-300 self-start sm:self-auto">
+                <div className="font-mono font-black text-black text-xs bg-[#facc15] px-3.5 py-1.5 rounded-xl border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] self-start sm:self-auto">
                   رقم الطلب: {successData.referenceNumber}
                 </div>
               </div>
 
               <dl className="space-y-3 text-xs">
-                <div className="flex justify-between py-1.5 border-b border-emerald-100/60">
-                  <dt className="text-zinc-500 font-medium">اسم المتقدم الرباعي:</dt>
-                  <dd className="font-extrabold text-black">{formData.fullName}</dd>
+                <div className="flex justify-between py-1.5 border-b border-black/5">
+                  <dt className="text-zinc-600 font-bold">اسم المتقدم الرباعي:</dt>
+                  <dd className="font-black text-black">{formData.fullName}</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-emerald-100/60">
-                  <dt className="text-zinc-500 font-medium">رقم الهاتف للتواصل:</dt>
-                  <dd className="font-mono font-bold text-black" dir="ltr">{formData.phoneCountryCode} {formData.phoneNumber}</dd>
+                <div className="flex justify-between py-1.5 border-b border-black/5">
+                  <dt className="text-zinc-600 font-bold">رقم الهاتف للتواصل:</dt>
+                  <dd className="font-mono font-black text-black" dir="ltr">{formData.phoneCountryCode} {formData.phoneNumber}</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-emerald-100/60">
-                  <dt className="text-zinc-500 font-medium">المؤسسة والتخصص:</dt>
-                  <dd className="font-bold text-black">{formData.institutionName} — {formData.major}</dd>
+                <div className="flex justify-between py-1.5 border-b border-black/5">
+                  <dt className="text-zinc-600 font-bold">المؤسسة والتخصص:</dt>
+                  <dd className="font-black text-black">{formData.institutionName} — {formData.major}</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-emerald-100/60">
-                  <dt className="text-zinc-500 font-medium">معدل التوجيهي:</dt>
+                <div className="flex justify-between py-1.5 border-b border-black/5">
+                  <dt className="text-zinc-600 font-bold">معدل التوجيهي:</dt>
                   <dd className="font-mono font-black text-black">{formData.tawjihiGpa}% ({formData.tawjihiBranch})</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-emerald-100/60">
-                  <dt className="text-zinc-500 font-medium">المبلغ المطلوب كفالته:</dt>
-                  <dd className="font-mono font-black text-emerald-700 text-sm bg-emerald-100/80 px-2.5 py-0.5 rounded-lg border border-emerald-200">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
+                <div className="flex justify-between py-1.5 border-b border-black/5">
+                  <dt className="text-zinc-600 font-bold">المبلغ المطلوب كفالته:</dt>
+                  <dd className="font-mono font-black text-black text-sm bg-[#facc15] px-3 py-0.5 rounded-lg border border-black shadow-xs">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-emerald-100/60">
-                  <dt className="text-zinc-500 font-medium">تاريخ ووقت التقديم:</dt>
-                  <dd className="font-semibold text-zinc-800">
+                <div className="flex justify-between py-1.5 border-b border-black/5">
+                  <dt className="text-zinc-600 font-bold">تاريخ ووقت التقديم:</dt>
+                  <dd className="font-bold text-black">
                     {new Date(successData.createdAt).toLocaleDateString('ar-JO', {
                       year: 'numeric',
                       month: 'long',
@@ -407,9 +407,9 @@ export default function ApplicationForm() {
                   </dd>
                 </div>
                 <div className="flex justify-between pt-2">
-                  <dt className="text-zinc-500 font-medium">حالة الطلب الحالية:</dt>
-                  <dd className="font-bold text-emerald-800 flex items-center gap-1.5 bg-emerald-100/70 px-2.5 py-1 rounded-lg">
-                    <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                  <dt className="text-zinc-600 font-bold">حالة الطلب الحالية:</dt>
+                  <dd className="font-black text-black flex items-center gap-1.5 bg-emerald-100 px-3 py-1 rounded-xl border border-black">
+                    <Clock className="w-3.5 h-3.5 text-[#16a34a] stroke-[2.5]" />
                     <span>قيد التدقيق المكتبي والمطابقة الرسمية</span>
                   </dd>
                 </div>
@@ -420,9 +420,9 @@ export default function ApplicationForm() {
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="flex-1 py-3.5 px-5 rounded-2xl border-2 border-zinc-300 text-black bg-white hover:bg-zinc-50 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs"
+                className="flex-1 py-3.5 px-5 rounded-2xl border-2 border-black text-black bg-white hover:bg-zinc-50 text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
               >
-                <Printer className="w-4 h-4 text-zinc-700" />
+                <Printer className="w-4 h-4 text-black stroke-[2.5]" />
                 <span>طباعة أو حفظ الإشعار (PDF)</span>
               </button>
 
@@ -433,7 +433,7 @@ export default function ApplicationForm() {
                   setStep(1);
                   window.location.reload();
                 }}
-                className="py-3.5 px-8 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer"
+                className="py-3.5 px-8 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black shadow-[3px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer"
               >
                 العودة للصفحة الرئيسية
               </button>
@@ -449,89 +449,89 @@ export default function ApplicationForm() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs font-bold mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border-2 border-black text-black text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-black"></span>
             <span>البوابة الإلكترونية الموحدة</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             استمارة طلب كفالة الرسوم الأكاديمية
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-600 mt-2.5 leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-600 mt-2.5 leading-relaxed font-semibold">
             يرجى إدخال البيانات الأكاديمية والمالية بدقة كاملة. تُحفظ البيانات وتُرفع مباشرة للجنة التدقيق.
           </p>
         </div>
 
-        {/* Vibrant 3-Step Progress Header */}
+        {/* Vibrant Cartoon 3-Step Progress Header */}
         <div className="grid grid-cols-3 gap-2.5 sm:gap-4 mb-8">
           <div
-            className={`p-3.5 sm:p-4 rounded-2xl border transition-all text-right ${
+            className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 1
-                ? 'border-2 border-[#22c55e] bg-emerald-50/70 shadow-sm'
+                ? 'bg-emerald-100 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
                 : step > 1
-                ? 'border-2 border-emerald-300 bg-white'
-                : 'border border-zinc-200 bg-zinc-50/60'
+                ? 'bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                : 'bg-zinc-100 opacity-60'
             }`}
           >
-            <div className="flex items-center justify-between mb-1">
-              <span className={`font-mono text-[10px] font-black px-2 py-0.5 rounded-md ${
+            <div className="flex items-center justify-between mb-1.5">
+              <span className={`font-mono text-[10px] font-black px-2.5 py-0.5 rounded-lg border-2 border-black ${
                 step === 1
                   ? 'bg-[#22c55e] text-white'
                   : step > 1
-                  ? 'bg-emerald-100 text-emerald-800'
-                  : 'bg-zinc-200 text-zinc-500'
+                  ? 'bg-white text-black'
+                  : 'bg-zinc-200 text-zinc-600'
               }`}>
                 01
               </span>
-              {step > 1 && <Check className="w-4 h-4 text-emerald-600 stroke-[3]" />}
+              {step > 1 && <Check className="w-4 h-4 text-emerald-700 stroke-[3.5]" />}
             </div>
-            <div className={`text-xs font-bold leading-tight ${step >= 1 ? 'text-black' : 'text-zinc-500'}`}>
+            <div className={`text-xs font-black leading-tight ${step >= 1 ? 'text-black' : 'text-zinc-600'}`}>
               الدراسة والاتصال
             </div>
           </div>
 
           <div
-            className={`p-3.5 sm:p-4 rounded-2xl border transition-all text-right ${
+            className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 2
-                ? 'border-2 border-[#22c55e] bg-emerald-50/70 shadow-sm'
+                ? 'bg-emerald-100 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
                 : step > 2
-                ? 'border-2 border-emerald-300 bg-white'
-                : 'border border-zinc-200 bg-zinc-50/60'
+                ? 'bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                : 'bg-zinc-100 opacity-60'
             }`}
           >
-            <div className="flex items-center justify-between mb-1">
-              <span className={`font-mono text-[10px] font-black px-2 py-0.5 rounded-md ${
+            <div className="flex items-center justify-between mb-1.5">
+              <span className={`font-mono text-[10px] font-black px-2.5 py-0.5 rounded-lg border-2 border-black ${
                 step === 2
                   ? 'bg-[#22c55e] text-white'
                   : step > 2
-                  ? 'bg-emerald-100 text-emerald-800'
-                  : 'bg-zinc-200 text-zinc-500'
+                  ? 'bg-white text-black'
+                  : 'bg-zinc-200 text-zinc-600'
               }`}>
                 02
               </span>
-              {step > 2 && <Check className="w-4 h-4 text-emerald-600 stroke-[3]" />}
+              {step > 2 && <Check className="w-4 h-4 text-emerald-700 stroke-[3.5]" />}
             </div>
-            <div className={`text-xs font-bold leading-tight ${step >= 2 ? 'text-black' : 'text-zinc-500'}`}>
+            <div className={`text-xs font-black leading-tight ${step >= 2 ? 'text-black' : 'text-zinc-600'}`}>
               الأسرة والدخل
             </div>
           </div>
 
           <div
-            className={`p-3.5 sm:p-4 rounded-2xl border transition-all text-right ${
+            className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 3
-                ? 'border-2 border-[#22c55e] bg-emerald-50/70 shadow-sm'
-                : 'border border-zinc-200 bg-zinc-50/60'
+                ? 'bg-emerald-100 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
+                : 'bg-zinc-100 opacity-60'
             }`}
           >
-            <div className="flex items-center justify-between mb-1">
-              <span className={`font-mono text-[10px] font-black px-2 py-0.5 rounded-md ${
+            <div className="flex items-center justify-between mb-1.5">
+              <span className={`font-mono text-[10px] font-black px-2.5 py-0.5 rounded-lg border-2 border-black ${
                 step === 3
                   ? 'bg-[#22c55e] text-white'
-                  : 'bg-zinc-200 text-zinc-500'
+                  : 'bg-zinc-200 text-zinc-600'
               }`}>
                 03
               </span>
             </div>
-            <div className={`text-xs font-bold leading-tight ${step === 3 ? 'text-black' : 'text-zinc-500'}`}>
+            <div className={`text-xs font-black leading-tight ${step === 3 ? 'text-black' : 'text-zinc-600'}`}>
               المصاريف والإقرار
             </div>
           </div>
@@ -539,29 +539,29 @@ export default function ApplicationForm() {
 
         {/* Error Alert Box */}
         {errorMessage && (
-          <div className="mb-6 p-4 rounded-2xl border-2 border-rose-400 bg-rose-50 text-rose-950 text-xs flex items-start gap-3 shadow-sm">
-            <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
-            <div className="leading-relaxed font-bold">{errorMessage}</div>
+          <div className="mb-6 p-4 rounded-2xl border-2 border-black bg-rose-100 text-black text-xs flex items-start gap-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+            <AlertCircle className="w-5 h-5 text-rose-700 shrink-0 mt-0.5 stroke-[2.5]" />
+            <div className="leading-relaxed font-black">{errorMessage}</div>
           </div>
         )}
 
         {/* Legal Disqualification Warning Notice */}
-        <div className="mb-6 p-5 rounded-2xl border-2 border-amber-300 bg-amber-50/90 text-right flex items-start gap-3.5 shadow-xs">
-          <div className="w-8 h-8 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 text-amber-800 mt-0.5">
-            <ShieldAlert className="w-4 h-4 stroke-[2.5]" />
+        <div className="mb-6 p-5 rounded-3xl border-2 border-black bg-amber-50 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] text-right flex items-start gap-3.5">
+          <div className="w-9 h-9 rounded-xl bg-amber-300 border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0 text-black mt-0.5">
+            <ShieldAlert className="w-5 h-5 stroke-[2.5]" />
           </div>
           <div className="text-xs">
-            <strong className="font-extrabold text-amber-950 block mb-0.5 text-xs sm:text-sm">
+            <strong className="font-black text-black block mb-0.5 text-xs sm:text-sm">
               تنبيه تدقيق ومسؤولية قانونية:
             </strong>
-            <span className="text-amber-900/90 leading-relaxed text-[11px] sm:text-xs">
+            <span className="text-zinc-800 leading-relaxed text-[11px] sm:text-xs font-semibold">
               تخضع كافة البيانات للمطابقة الرسمية مع كشوفات الجامعات وسجلات الأحوال المدنية. أي تضليل أو عدم دقة في البيانات المُدخلة يستوجب الاستبعاد الفوري والنهائي للطلب دون استثناء.
             </span>
           </div>
         </div>
 
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-2 border-zinc-200/90 p-6 sm:p-10 shadow-lg text-black">
+        <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-[2.5px] border-black p-6 sm:p-10 shadow-[6px_7px_0px_0px_rgba(0,0,0,1)] text-black">
           {/* Honeypot for Anti-Bot */}
           <div style={{ display: 'none' }} aria-hidden="true">
             <input
@@ -878,10 +878,10 @@ export default function ApplicationForm() {
 
                 {/* Tuition Details Box */}
                 <div className="pt-2">
-                  <div className="p-5 rounded-2xl border-2 border-emerald-200/90 bg-emerald-50/40 space-y-3 shadow-xs">
+                  <div className="p-5 sm:p-6 rounded-3xl border-2 border-black bg-emerald-50/70 space-y-3 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
-                        <label htmlFor="periodTuitionFee" className="block text-xs font-bold text-emerald-950 mb-1">
+                        <label htmlFor="periodTuitionFee" className="block text-xs font-black text-black mb-1">
                           {formData.hasAttendedUniversity
                             ? 'الرسوم الجامعية المستحقة للفصل (د.أ)'
                             : 'الرسوم التقديرية للفصل الدراسي الأول (د.أ)'}{' '}
@@ -895,12 +895,12 @@ export default function ApplicationForm() {
                           value={formData.periodTuitionFee}
                           onChange={(e) => updateField('periodTuitionFee', e.target.value === '' ? '' : Number(e.target.value))}
                           placeholder="مثال: 850"
-                          className="w-full h-11 px-3.5 text-sm rounded-xl border border-emerald-300 bg-white text-black font-mono focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                          className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-mono focus:ring-2 focus:ring-[#22c55e]"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="amountAlreadyPaid" className="block text-xs font-bold text-emerald-950 mb-1">
+                        <label htmlFor="amountAlreadyPaid" className="block text-xs font-black text-black mb-1">
                           {formData.hasAttendedUniversity
                             ? 'المبلغ المسدد من الرسوم إن وجد (د.أ)'
                             : 'المبلغ المتوفر للمساهمة إن وجد (د.أ)'}
@@ -912,14 +912,14 @@ export default function ApplicationForm() {
                           value={formData.amountAlreadyPaid}
                           onChange={(e) => updateField('amountAlreadyPaid', e.target.value === '' ? '' : Number(e.target.value))}
                           placeholder="0"
-                          className="w-full h-11 px-3.5 text-sm rounded-xl border border-emerald-300 bg-white text-black font-mono focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                          className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-mono focus:ring-2 focus:ring-[#22c55e]"
                         />
                       </div>
                     </div>
 
-                    <div className="pt-3.5 border-t border-emerald-200 flex items-center justify-between text-xs sm:text-sm">
-                      <span className="text-emerald-950 font-bold">المبلغ المتبقي المطلوب كفالته:</span>
-                      <span className="font-mono font-black text-emerald-800 text-base bg-emerald-100/90 px-3.5 py-1 rounded-xl border border-emerald-300">
+                    <div className="pt-3.5 border-t-2 border-black/10 flex items-center justify-between text-xs sm:text-sm">
+                      <span className="text-black font-black">المبلغ المتبقي المطلوب كفالته:</span>
+                      <span className="font-mono font-black text-black text-base bg-[#facc15] px-4 py-1.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                         {calculatedUncovered.toLocaleString('ar-JO')} د.أ
                       </span>
                     </div>

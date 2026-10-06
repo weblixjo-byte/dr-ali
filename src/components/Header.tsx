@@ -8,23 +8,23 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 no-print transition-all">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black no-print transition-all">
       {/* Top Colorful Accent Strip */}
-      <div className="h-1 bg-gradient-to-r from-[#22c55e] via-[#facc15] to-[#22c55e]"></div>
+      <div className="h-1.5 bg-[#22c55e] border-b border-black"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo & Title with Vibrant Emerald/Amber Badge */}
         <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white flex items-center justify-center shadow-md border-2 border-black/10 group-hover:scale-105 transition-transform duration-200">
-            <GraduationCap className="w-6 h-6 stroke-[2.2]" />
+          <div className="w-11 h-11 rounded-2xl bg-[#22c55e] text-white flex items-center justify-center border-2 border-black shadow-[2.5px_2.5px_0px_0px_rgba(0,0,0,1)] group-hover:scale-105 transition-transform duration-200">
+            <GraduationCap className="w-6 h-6 stroke-[2.4]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-extrabold text-black text-base sm:text-lg tracking-tight block">
+              <span className="font-black text-black text-base sm:text-lg tracking-tight block">
                 مبادرة د. علي التعليمية
               </span>
-              <span className="hidden sm:inline-block w-2 h-2 rounded-full bg-[#22c55e]"></span>
+              <span className="hidden sm:inline-block w-2.5 h-2.5 rounded-full bg-[#22c55e] border border-black"></span>
             </div>
             <span className="text-xs text-zinc-500 font-medium flex items-center gap-1.5 mt-0.5">
               <span>صندوق كفالة الرسوم الأكاديمية</span>

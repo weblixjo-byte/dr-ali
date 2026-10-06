@@ -8,73 +8,78 @@ export default function Guidelines() {
       title: 'نطاق الشمول والأهلية الأكاديمية',
       desc: 'تشمل المبادرة الطلبة المقبلين على الالتحاق بالتعليم الجامعي (خريجي الثانوية العامة - التوجيهي) المقبولين رسمياً، بالإضافة إلى الطلبة المنتظمين حالياً في الجامعات والكليات الأردنية المعتمدة.',
       icon: GraduationCap,
-      color: 'emerald',
-      badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      borderAccent: 'border-t-4 border-t-[#22c55e]',
+      cardBg: 'bg-[#22c55e]',
+      badgeText: 'text-emerald-950',
+      iconColor: 'text-[#16a34a]',
+      shadowStyle: '',
     },
     {
       num: '02',
       title: 'التدقيق المكتبي والوثائق الرسمية',
       desc: 'تتولى اللجنة فحص ومطابقة كشوفات العلامات الرسمية، وإثباتات دخل الأسرة، وسجلات الأحوال المدنية، وكشوفات الرسوم الصادرة عن وحدة القبول والتسجيل لكل مرشح قبل اعتماد أي قرار.',
       icon: FileCheck2,
-      color: 'amber',
-      badgeBg: 'bg-amber-100 text-amber-800 border-amber-200',
-      borderAccent: 'border-t-4 border-t-[#facc15]',
+      cardBg: 'bg-[#eab308]',
+      badgeText: 'text-amber-950',
+      iconColor: 'text-amber-600',
+      shadowStyle: 'drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.5)]',
     },
     {
       num: '03',
       title: 'سياسة الاستبعاد الفوري للبيانات المضللة',
       desc: 'يتحمل المتقدم المسؤولية القانونية والأخلاقية الكاملة عن صحة البيانات؛ ويؤدي ثبوت أي تضليل أو إخفاء لمعلومات جوهرية تخص الدخل أو الرسوم إلى الاستبعاد الفوري والنهائي دون استثناء.',
       icon: AlertTriangle,
-      color: 'emerald',
-      badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
-      borderAccent: 'border-t-4 border-t-[#22c55e]',
+      cardBg: 'bg-[#22c55e]',
+      badgeText: 'text-emerald-950',
+      iconColor: 'text-[#16a34a]',
+      shadowStyle: '',
     },
   ];
 
   return (
-    <section id="guidelines" className="py-16 sm:py-24 bg-gradient-to-b from-white via-emerald-50/20 to-white border-b border-zinc-200">
+    <section id="guidelines" className="py-16 sm:py-24 bg-gradient-to-b from-white via-zinc-50 to-white border-b border-zinc-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-right max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs font-bold mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100/90 border-2 border-black text-black text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] mb-3">
             <span className="w-2 h-2 rounded-full bg-[#22c55e]"></span>
             <span>الضوابط والإرشادات الرسمية</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             شروط الاستحقاق وضوابط المفاضلة
           </h2>
-          <p className="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed font-medium">
             تخضع عملية المفاضلة لمنظومة معايير شفافة وموحدة تكفل توجيه الكفالة للطلبة الأكثر حاجة واستحقاقاً في كافة محافظات المملكة.
           </p>
         </div>
 
-        {/* 3 Interactive Cards */}
+        {/* 3 Full-Color Cartoon Cards (Green - Yellow - Green) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {items.map((item, idx) => {
             const IconComponent = item.icon;
             return (
               <div
                 key={idx}
-                className={`bg-white rounded-2xl p-6 sm:p-7 border border-zinc-200/90 shadow-sm hover:shadow-md transition-all duration-200 text-right flex flex-col justify-between ${item.borderAccent}`}
+                className={`${item.cardBg} rounded-3xl p-6 sm:p-7 border-[2.5px] border-black shadow-[5px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1.5 hover:shadow-[7px_9px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 text-right flex flex-col justify-between`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className={`font-mono text-xs font-black px-2.5 py-1 rounded-lg border ${item.badgeBg}`}>
+                  {/* Top Badge and Icon Strip */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-mono text-xs font-black px-3 py-1 rounded-xl bg-white text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                       معيار {item.num}
                     </span>
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-                      item.color === 'emerald' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'
-                    }`}>
-                      <IconComponent className="w-5 h-5 stroke-[2]" />
+                    <div className={`w-11 h-11 rounded-2xl bg-white ${item.iconColor} border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0`}>
+                      <IconComponent className="w-5 h-5 stroke-[2.4]" />
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-black mb-3 leading-snug">
+                  {/* Card Title (White Text) */}
+                  <h3 className={`text-lg sm:text-xl font-black text-white mb-3 leading-snug tracking-tight ${item.shadowStyle}`}>
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+
+                  {/* Card Description (White Text) */}
+                  <p className={`text-xs sm:text-sm text-white font-semibold leading-relaxed ${item.shadowStyle}`}>
                     {item.desc}
                   </p>
                 </div>
@@ -83,16 +88,16 @@ export default function Guidelines() {
           })}
         </div>
 
-        {/* Official Disqualification Callout */}
-        <div className="p-5 sm:p-6 rounded-2xl border-2 border-amber-300 bg-amber-50/80 text-right flex items-start gap-4 shadow-xs">
-          <div className="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 text-amber-800 mt-0.5">
-            <ShieldCheck className="w-5 h-5 stroke-[2.2]" />
+        {/* Cartoon Styled Legal Disqualification Callout */}
+        <div className="p-5 sm:p-6 rounded-3xl border-[2.5px] border-black bg-amber-50 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] text-right flex items-start gap-4">
+          <div className="w-11 h-11 rounded-2xl bg-amber-300 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0 text-black mt-0.5">
+            <ShieldCheck className="w-6 h-6 stroke-[2.3]" />
           </div>
           <div className="text-xs sm:text-sm">
-            <strong className="font-extrabold text-amber-950 block mb-1 text-sm sm:text-base">
+            <strong className="font-black text-black block mb-1 text-sm sm:text-base">
               تنبيه تدقيق قانوني ومسؤولية إفصاح رسمية:
             </strong>
-            <span className="text-amber-900/90 leading-relaxed block">
+            <span className="text-zinc-800 leading-relaxed block font-medium">
               تخضع كافة الطلبات للتحقق والمطابقة مع الوثائق الرسمية والمؤسسات التعليمية. أي معلومة غير دقيقة أو متناقضة يُكتشف وجودها خلال مرحلة التدقيق تستوجب استبعاد الطلب كلياً وبشكل نهائي لضمان العدالة وتكافؤ الفرص لكافة المتقدمين.
             </span>
           </div>
