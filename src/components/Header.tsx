@@ -8,52 +8,51 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black no-print transition-all">
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-zinc-200/80 no-print transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
-        {/* Brand Logo & Title with Vibrant Emerald/Amber Badge */}
+        {/* Brand Logo & Title */}
         <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="w-11 h-11 rounded-2xl bg-[#22c55e] text-white flex items-center justify-center border-2 border-black group-hover:scale-105 transition-transform duration-200">
-            <GraduationCap className="w-6 h-6 stroke-[2.4]" />
+          <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center group-hover:bg-emerald-700 transition-colors">
+            <GraduationCap className="w-5 h-5 stroke-[2.2]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-black text-black text-base sm:text-lg tracking-tight block">
+              <span className="font-bold text-zinc-900 text-base sm:text-lg tracking-tight block">
                 مبادرة د. علي التعليمية
               </span>
             </div>
-            <span className="text-xs text-zinc-500 font-medium flex items-center gap-1.5 mt-0.5">
+            <span className="text-xs text-zinc-500 font-normal flex items-center gap-1.5 mt-0.5">
               <span>صندوق كفالة الرسوم الأكاديمية</span>
-              <span className="text-[#facc15] font-black">•</span>
-              <span className="text-zinc-600 font-semibold">المملكة الأردنية الهاشمية</span>
+              <span className="text-emerald-500 font-bold">•</span>
+              <span className="text-zinc-600">المملكة الأردنية الهاشمية</span>
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-zinc-700">
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-600">
           <a
             href="#"
-            className="text-black hover:text-[#16a34a] transition-colors relative py-1"
+            className="text-emerald-600 font-semibold transition-colors relative py-1"
           >
             الرئيسية
-            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#22c55e] rounded-full"></span>
           </a>
           <a
             href="#guidelines"
-            className="hover:text-[#16a34a] transition-colors py-1"
+            className="hover:text-zinc-900 transition-colors py-1"
           >
             الشروط والأهلية
           </a>
           <a
             href="#faq"
-            className="hover:text-[#16a34a] transition-colors py-1"
+            className="hover:text-zinc-900 transition-colors py-1"
           >
             الأسئلة الشائعة
           </a>
           <Link
             href="/admin"
-            className="flex items-center gap-1.5 text-zinc-600 hover:text-black py-1 px-3 rounded-lg hover:bg-zinc-100 transition-colors"
+            className="flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 py-1 px-3 rounded-lg hover:bg-zinc-100/70 transition-colors text-xs sm:text-sm"
           >
             <Shield className="w-3.5 h-3.5 text-zinc-400" />
             <span>بوابة الإدارة</span>
@@ -64,10 +63,10 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href="#apply"
-            className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black active:translate-x-0.5 active:translate-y-0.5 transition-all"
+            className="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium transition-colors cursor-pointer"
           >
             <span>تقديم طلب الكفالة</span>
-            <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
+            <ArrowDown className="w-3.5 h-3.5 stroke-[2.2]" />
           </a>
 
           {/* Mobile Hamburger Toggle */}
@@ -88,28 +87,28 @@ export default function Header() {
           <a
             href="#"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-bold text-emerald-600"
+            className="block py-2 text-sm font-semibold text-emerald-600"
           >
             الرئيسية
           </a>
           <a
             href="#guidelines"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-semibold text-zinc-700 hover:text-black"
+            className="block py-2 text-sm font-medium text-zinc-700 hover:text-black"
           >
             الشروط والأهلية
           </a>
           <a
             href="#faq"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-semibold text-zinc-700 hover:text-black"
+            className="block py-2 text-sm font-medium text-zinc-700 hover:text-black"
           >
             الأسئلة الشائعة
           </a>
           <Link
             href="/admin"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 py-2 text-sm font-semibold text-zinc-600 hover:text-black"
+            className="flex items-center gap-2 py-2 text-sm font-medium text-zinc-600 hover:text-black"
           >
             <Shield className="w-4 h-4 text-zinc-400" />
             <span>بوابة الإدارة</span>
@@ -117,7 +116,7 @@ export default function Header() {
           <a
             href="#apply"
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#22c55e] text-white font-extrabold text-sm border-2 border-black"
+            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm transition-colors"
           >
             <span>تقديم طلب الكفالة</span>
             <ArrowDown className="w-4 h-4" />

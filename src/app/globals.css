@@ -17,21 +17,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Institutional Focus State with Emerald Theme */
+/* Minimal Institutional Focus State */
 input:focus, select:focus, textarea:focus {
-  outline: 2px solid #22c55e;
-  outline-offset: 1px;
-  border-color: #22c55e;
+  outline: none;
+  border-color: #059669;
 }
 
 button:focus-visible {
-  outline: 2px solid #22c55e;
-  outline-offset: 1px;
+  outline: 2px solid #059669;
+  outline-offset: 2px;
 }
 
 ::selection {
-  background-color: #facc15;
-  color: #000000;
+  background-color: #d1fae5;
+  color: #064e3b;
 }
 
 /* Print Specific Rules for Official Receipt */

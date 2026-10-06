@@ -31,52 +31,52 @@ export default function FaqSection() {
         
         {/* Header */}
         <div className="text-right max-w-2xl mb-12">
-          <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-bold text-zinc-900 tracking-tight leading-tight">
             الأسئلة الشائعة حول المبادرة
           </h2>
-          <p className="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed font-medium">
+          <p className="text-sm sm:text-base text-zinc-600 mt-3 leading-relaxed font-normal">
             إجابات واضحة ومباشرة حول إجراءات التقديم والتدقيق المكتبي وشروط استحقاق كفالة الرسوم الجامعية.
           </p>
         </div>
 
-        {/* Accordion Cards in Cartoon Neo-Brutalist Style */}
-        <div className="space-y-4">
+        {/* Accordion Cards in Minimal Style */}
+        <div className="space-y-3">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className={`rounded-3xl border-2 border-black transition-all duration-200 overflow-hidden ${
+                className={`rounded-xl border transition-colors duration-200 overflow-hidden ${
                   isOpen
-                    ? 'bg-emerald-50/60'
-                    : 'bg-white'
+                    ? 'bg-zinc-50/70 border-zinc-300'
+                    : 'bg-white border-zinc-200 hover:border-zinc-300'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full text-right p-5 sm:p-6 flex items-center justify-between gap-4 text-black font-black text-sm sm:text-base hover:bg-zinc-50/40 transition-colors cursor-pointer"
+                  className="w-full text-right p-5 sm:p-6 flex items-center justify-between gap-4 text-zinc-900 font-semibold text-sm sm:text-base transition-colors cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <div className="flex items-center gap-3.5">
-                    <span className={`w-8 h-8 rounded-xl border-2 border-black font-mono text-xs font-black flex items-center justify-center shrink-0 ${
+                    <span className={`w-7 h-7 rounded-lg font-mono text-xs font-semibold flex items-center justify-center shrink-0 transition-colors ${
                       isOpen
-                        ? 'bg-[#22c55e] text-white'
-                        : 'bg-zinc-100 text-black'
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-zinc-100 text-zinc-600'
                     }`}>
                       {idx + 1}
                     </span>
                     <span>{faq.q}</span>
                   </div>
                   <ChevronDown
-                    className={`w-5 h-5 shrink-0 transition-transform duration-200 stroke-[2.5] ${
-                      isOpen ? 'rotate-180 text-black' : 'text-zinc-500'
+                    className={`w-4 h-4 shrink-0 transition-transform duration-200 stroke-[2.2] ${
+                      isOpen ? 'rotate-180 text-zinc-900' : 'text-zinc-400'
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-2 text-xs sm:text-sm text-zinc-800 leading-relaxed border-t-2 border-black/10 bg-white/70 font-medium">
-                    <p className="pr-11">{faq.a}</p>
+                  <div className="px-6 pb-6 pt-1 text-xs sm:text-sm text-zinc-600 leading-relaxed border-t border-zinc-100 bg-white/50 font-normal">
+                    <p className="pr-10">{faq.a}</p>
                   </div>
                 )}
               </div>
@@ -85,16 +85,16 @@ export default function FaqSection() {
         </div>
 
         {/* Need Help Callout Banner */}
-        <div className="mt-12 p-6 sm:p-7 rounded-3xl bg-amber-100 border-[2.5px] border-black flex flex-col sm:flex-row items-center justify-between gap-5 text-right">
+        <div className="mt-12 p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-5 text-right">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-[#22c55e] text-white border-2 border-black flex items-center justify-center shrink-0">
-              <MessageCircleQuestion className="w-6 h-6 stroke-[2.5]" />
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center shrink-0">
+              <MessageCircleQuestion className="w-5 h-5 stroke-[2.2]" />
             </div>
             <div>
-              <h4 className="font-black text-black text-sm sm:text-base">
+              <h4 className="font-bold text-zinc-900 text-sm sm:text-base">
                 هل لديك استفسار آخر لم تجده هنا؟
               </h4>
-              <p className="text-xs text-zinc-700 mt-0.5 font-semibold">
+              <p className="text-xs text-zinc-500 mt-0.5 font-normal">
                 فريق أمانة سر المبادرة جاهز للرد على كافة أسئلتكم ومساعدتكم.
               </p>
             </div>
@@ -102,10 +102,10 @@ export default function FaqSection() {
 
           <a
             href="mailto:info@scholarship-initiative.org"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white hover:bg-zinc-50 text-black font-black text-xs sm:text-sm border-2 border-black active:translate-x-0.5 active:translate-y-0.5 transition-all shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-zinc-100 text-zinc-800 font-medium text-xs sm:text-sm border border-zinc-200 transition-colors shrink-0"
             dir="ltr"
           >
-            <Mail className="w-4 h-4 text-[#16a34a] stroke-[2.5]" />
+            <Mail className="w-4 h-4 text-emerald-600 stroke-[2]" />
             <span className="font-mono">info@scholarship-initiative.org</span>
           </a>
         </div>

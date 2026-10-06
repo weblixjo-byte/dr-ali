@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black selection:bg-[#facc15] selection:text-black">
+    <div className="min-h-screen flex flex-col bg-white text-zinc-900 selection:bg-emerald-100 selection:text-emerald-900">
       {/* 1. Header */}
       <Header />
 
