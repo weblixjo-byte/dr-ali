@@ -1,7 +1,7 @@
 'use client';
 
 import { gsap } from 'gsap';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface CrowdCanvasProps {
   src: string;
@@ -12,7 +12,7 @@ interface CrowdCanvasProps {
 /**
  * Authentic Animated Walking Crowd Simulation
  * Powered by HTML5 Canvas, GSAP walk-cycle timelines, and OpenPeeps character sprites.
- * Matches the exact "Canvas Crowd" mechanism from the reference video with mouse-driven camera parallax.
+ * Calibrated for a relaxed, natural walking pace and solid ground alignment with zero floating torsos.
  */
 function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,19 +47,21 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     // TWEEN FACTORIES
     const resetPeep = ({ stage, peep }: { stage: any; peep: any }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      // Slight vertical distribution so students look realistically layered
-      const offsetY = 70 - 200 * gsap.parseEase('power2.in')(Math.random());
+      
+      // Grounded alignment: Character base stays at or slightly below the bottom floor
+      // This completely eliminates any floating cut-off waists
+      const offsetY = randomRange(0, 20);
       const startY = stage.height - peep.height + offsetY;
       let startX: number;
       let endX: number;
 
       if (direction === 1) {
-        startX = -peep.width - 40;
-        endX = stage.width + 40;
+        startX = -peep.width - 50;
+        endX = stage.width + 50;
         peep.scaleX = 1;
       } else {
-        startX = stage.width + peep.width + 40;
-        endX = -40;
+        startX = stage.width + peep.width + 50;
+        endX = -peep.width - 50;
         peep.scaleX = -1;
       }
 
@@ -74,13 +76,16 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
       };
     };
 
+    // Relaxed, calm, dignified walking pace
     const normalWalk = ({ peep, props }: { peep: any; props: any }) => {
       const { startX, startY, endX } = props;
-      const xDuration = 11;
-      const yDuration = 0.24;
+      // Increased duration for relaxed, slow campus walking
+      const xDuration = 26;
+      const yDuration = 0.5;
 
       const tl = gsap.timeline();
-      tl.timeScale(randomRange(0.6, 1.4));
+      // Slow and peaceful speed multiplier (0.45 to 0.75)
+      tl.timeScale(randomRange(0.45, 0.75));
       tl.to(
         peep,
         {
@@ -96,7 +101,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
           duration: yDuration,
           repeat: Math.floor(xDuration / yDuration),
           yoyo: true,
-          y: startY - 10,
+          y: startY - 7,
+          ease: 'sine.inOut',
         },
         0,
       );
@@ -143,9 +149,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
         walk: null,
         setRect: (rect: number[]) => {
           peep.rect = rect;
-          // Scale characters slightly for sharp campus proportions
-          peep.width = rect[2] * 0.95;
-          peep.height = rect[3] * 0.95;
+          peep.width = rect[2];
+          peep.height = rect[3];
           peep.drawArgs = [peep.image, ...rect, 0, 0, peep.width, peep.height];
         },
         render: (ctx: CanvasRenderingContext2D) => {
@@ -233,8 +238,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     };
 
     const initCrowd = () => {
-      // Spawn dense crowd
-      const targetCount = Math.min(availablePeeps.length, 36);
+      // Balanced crowd count to ensure natural spacing and zero clutter
+      const targetCount = Math.min(availablePeeps.length, 28);
       for (let i = 0; i < targetCount; i++) {
         const peep = addPeepToCrowd();
         if (peep && peep.walk) {
@@ -248,7 +253,7 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
       const dpr = window.devicePixelRatio || 1;
 
       // Smooth camera interpolation for mouse parallax
-      cameraX.current += (targetCameraX.current - cameraX.current) * 0.08;
+      cameraX.current += (targetCameraX.current - cameraX.current) * 0.06;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.save();
@@ -296,8 +301,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      const relativeX = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
-      targetCameraX.current = -relativeX * 120; // 120px pan
+      const relativeX = (e.clientX - rect.left) / rect.width - 0.5;
+      targetCameraX.current = -relativeX * 100;
     };
 
     const handleMouseLeave = () => {
@@ -313,7 +318,7 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const delta = e.touches[0].clientX - touchStartX;
-        targetCameraX.current = Math.max(-100, Math.min(100, delta * 0.4));
+        targetCameraX.current = Math.max(-80, Math.min(80, delta * 0.35));
       }
     };
 
@@ -350,7 +355,10 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
   }, [src, rows, cols]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-full overflow-hidden select-none">
+    <div
+      ref={containerRef}
+      className="relative w-full h-full overflow-hidden select-none [mask-image:linear-gradient(to_right,transparent,black_48px,black_calc(100%-48px),transparent)]"
+    >
       <canvas ref={canvasRef} className="w-full h-full block" />
     </div>
   );
@@ -359,20 +367,12 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
 export default function StudentCrowd() {
   return (
     <div className="relative w-full bg-white text-black overflow-hidden select-none border-b border-zinc-200">
-      {/* Signature Pin in Center matching the Video reference */}
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center">
-        <span className="text-[11px] font-bold tracking-widest uppercase text-zinc-900 bg-white/90 px-3 py-1 rounded-full border border-zinc-200 shadow-xs">
-          مجتمع الطلبة الجامعيين • الدورة الحالية
-        </span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-zinc-400 to-transparent"></div>
-      </div>
-
-      {/* Live Walking Canvas Viewport */}
-      <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px]">
+      {/* Live Walking Canvas Viewport (Pill removed per request, height calibrated) */}
+      <div className="relative w-full h-[280px] sm:h-[320px] md:h-[350px]">
         <CrowdCanvas src="/all-peeps.png" rows={15} cols={7} />
       </div>
 
-      {/* Ambient subtle floor hairline */}
+      {/* Ambient floor baseline */}
       <div className="w-full h-[1px] bg-zinc-200"></div>
     </div>
   );
