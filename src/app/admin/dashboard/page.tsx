@@ -338,40 +338,40 @@ export default function AdminDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 pb-16">
+    <div className="min-h-screen bg-white text-zinc-950 pb-16">
       {/* Top Navbar */}
-      <header className="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30">
+      <header className="bg-white text-zinc-950 border-b border-zinc-200 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded bg-slate-800 text-slate-200 flex items-center justify-center border border-slate-700">
+            <div className="w-9 h-9 rounded bg-black text-white flex items-center justify-center">
               <GraduationCap className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-sm sm:text-base leading-tight block">لوحة إدارة المنح الدراسية</span>
-              <span className="text-[11px] text-slate-400">نظام التدقيق والمفاضلة لـ 6 مقاعد معتمدة</span>
+              <span className="font-bold text-sm sm:text-base text-black leading-tight block">لوحة إدارة المنح الدراسية</span>
+              <span className="text-[11px] text-zinc-500 font-normal">نظام التدقيق والمفاضلة لـ 6 مقاعد معتمدة</span>
             </div>
           </div>
 
           <div className="flex items-center gap-4">
             {adminUser && (
               <div className="text-right hidden sm:block">
-                <div className="text-xs font-semibold text-slate-200">{adminUser.displayName}</div>
-                <div className="text-[10px] text-slate-400 font-mono">@{adminUser.username}</div>
+                <div className="text-xs font-semibold text-zinc-900">{adminUser.displayName}</div>
+                <div className="text-[10px] text-zinc-500 font-mono">@{adminUser.username}</div>
               </div>
             )}
 
             <a
               href="/api/admin/export"
-              className="py-1.5 px-3 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium flex items-center gap-1.5 border border-slate-700 transition-colors"
+              className="py-1.5 px-3 rounded bg-white hover:bg-zinc-100 text-zinc-900 text-xs font-medium flex items-center gap-1.5 border border-zinc-300 transition-colors"
               title="تصدير ملف Excel نظيف ومحمي"
             >
-              <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
+              <FileSpreadsheet className="w-4 h-4 text-black" />
               <span className="hidden md:inline">تصدير CSV</span>
             </a>
 
             <button
               onClick={handleLogout}
-              className="py-1.5 px-3 rounded bg-rose-950/60 hover:bg-rose-900 text-rose-200 text-xs font-medium flex items-center gap-1.5 border border-rose-800 transition-colors cursor-pointer"
+              className="py-1.5 px-3 rounded bg-white hover:bg-zinc-100 text-zinc-900 text-xs font-medium flex items-center gap-1.5 border border-zinc-300 transition-colors cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>خروج</span>
@@ -380,13 +380,13 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Sub-nav Navigation Tabs */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex overflow-x-auto gap-2 border-t border-slate-800/80 text-xs font-medium text-slate-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex overflow-x-auto gap-2 border-t border-zinc-200 text-xs font-medium text-zinc-500">
           <button
             onClick={() => setActiveTab('applications')}
             className={`py-3 px-3.5 flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
               activeTab === 'applications'
-                ? 'border-white text-white font-semibold'
-                : 'border-transparent hover:text-white'
+                ? 'border-black text-black font-bold'
+                : 'border-transparent hover:text-black'
             }`}
           >
             <Users className="w-4 h-4" />
@@ -397,8 +397,8 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab('merit')}
             className={`py-3 px-3.5 flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
               activeTab === 'merit'
-                ? 'border-white text-white font-semibold'
-                : 'border-transparent hover:text-white'
+                ? 'border-black text-black font-bold'
+                : 'border-transparent hover:text-black'
             }`}
           >
             <ListOrdered className="w-4 h-4" />
@@ -409,8 +409,8 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab('settings')}
             className={`py-3 px-3.5 flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
               activeTab === 'settings'
-                ? 'border-white text-white font-semibold'
-                : 'border-transparent hover:text-white'
+                ? 'border-black text-black font-bold'
+                : 'border-transparent hover:text-black'
             }`}
           >
             <SettingsIcon className="w-4 h-4" />
@@ -421,8 +421,8 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab('audit')}
             className={`py-3 px-3.5 flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
               activeTab === 'audit'
-                ? 'border-white text-white font-semibold'
-                : 'border-transparent hover:text-white'
+                ? 'border-black text-black font-bold'
+                : 'border-transparent hover:text-black'
             }`}
           >
             <History className="w-4 h-4" />
@@ -435,59 +435,59 @@ export default function AdminDashboardPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">
         {/* KPI Counter Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2.5 mb-6 text-xs">
-          <div className="p-3 bg-white rounded border border-gray-200">
-            <span className="text-gray-500 block">إجمالي الطلبات</span>
-            <span className="text-xl font-bold text-slate-900 mt-0.5 block">{kpis.totalCount}</span>
+          <div className="p-3 bg-white rounded border border-zinc-200">
+            <span className="text-zinc-500 block">إجمالي الطلبات</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.totalCount}</span>
           </div>
-          <div className="p-3 bg-white rounded border border-gray-200">
-            <span className="text-gray-500 block">جديدة</span>
-            <span className="text-xl font-bold text-blue-800 mt-0.5 block">{kpis.newCount}</span>
+          <div className="p-3 bg-white rounded border border-zinc-200">
+            <span className="text-zinc-500 block">جديدة</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.newCount}</span>
           </div>
-          <div className="p-3 bg-white rounded border border-gray-200">
-            <span className="text-gray-500 block">تحت المراجعة</span>
-            <span className="text-xl font-bold text-amber-800 mt-0.5 block">{kpis.inReviewCount}</span>
+          <div className="p-3 bg-white rounded border border-zinc-200">
+            <span className="text-zinc-500 block">تحت المراجعة</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.inReviewCount}</span>
           </div>
-          <div className="p-3 bg-white rounded border border-gray-200">
-            <span className="text-gray-500 block">تحتاج استكمالاً</span>
-            <span className="text-xl font-bold text-rose-800 mt-0.5 block">{kpis.needsCompletionCount}</span>
+          <div className="p-3 bg-white rounded border border-zinc-200">
+            <span className="text-zinc-500 block">تحتاج استكمالاً</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.needsCompletionCount}</span>
           </div>
-          <div className="p-3 bg-white rounded border border-gray-200">
-            <span className="text-gray-500 block">مؤهلة ومتحقق منها</span>
-            <span className="text-xl font-bold text-indigo-800 mt-0.5 block">{kpis.verifiedEligibleCount}</span>
+          <div className="p-3 bg-white rounded border border-zinc-200">
+            <span className="text-zinc-500 block">مؤهلة ومتحقق منها</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.verifiedEligibleCount}</span>
           </div>
-          <div className="p-3 bg-white rounded border border-emerald-300 bg-emerald-50/50">
-            <span className="text-emerald-800 font-semibold block">المقبولون المعتمدون</span>
-            <span className="text-xl font-bold text-emerald-900 mt-0.5 block">{kpis.acceptedCount} / 6</span>
+          <div className="p-3 bg-zinc-50 rounded border-2 border-black">
+            <span className="text-black font-bold block">المقبولون المعتمدون</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.acceptedCount} / 6</span>
           </div>
-          <div className="p-3 bg-white rounded border border-gray-200">
-            <span className="text-gray-500 block">قائمة الانتظار</span>
-            <span className="text-xl font-bold text-gray-700 mt-0.5 block">{kpis.waitlistCount}</span>
+          <div className="p-3 bg-white rounded border border-zinc-200">
+            <span className="text-zinc-500 block">قائمة الانتظار</span>
+            <span className="text-xl font-bold text-black mt-0.5 block">{kpis.waitlistCount}</span>
           </div>
         </div>
 
         {/* TAB 1: APPLICATIONS TABLE */}
         {activeTab === 'applications' && (
-          <div className="bg-white rounded border border-gray-200 overflow-hidden shadow-xs">
+          <div className="bg-white rounded border border-zinc-200 overflow-hidden shadow-xs">
             {/* Search and Filters Bar */}
-            <div className="p-4 border-b border-gray-200 bg-gray-50/60 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between text-xs">
+            <div className="p-4 border-b border-zinc-200 bg-zinc-50/50 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between text-xs">
               <div className="relative flex-1">
-                <Search className="w-4 h-4 text-gray-400 absolute right-3 top-2.5" />
+                <Search className="w-4 h-4 text-zinc-400 absolute right-3 top-2.5" />
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="بحث برقم الطلب، اسم الطالب، المؤسسة، أو التخصص..."
-                  className="w-full pr-9 pl-3 py-2 border border-gray-300 rounded bg-white text-xs"
+                  className="w-full pr-9 pl-3 py-2 border border-zinc-300 rounded bg-white text-black placeholder:text-zinc-400 text-xs focus:border-black"
                 />
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
                 <div className="flex items-center gap-1.5">
-                  <Filter className="w-3.5 h-3.5 text-gray-500" />
+                  <Filter className="w-3.5 h-3.5 text-zinc-500" />
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="p-1.5 border border-gray-300 rounded bg-white text-xs"
+                    className="p-1.5 border border-zinc-300 rounded bg-white text-black text-xs"
                   >
                     <option value="">كافة حالات الطلب</option>
                     <option value="new">جديد</option>
@@ -504,7 +504,7 @@ export default function AdminDashboardPage() {
                 <select
                   value={verificationFilter}
                   onChange={(e) => setVerificationFilter(e.target.value)}
-                  className="p-1.5 border border-gray-300 rounded bg-white text-xs"
+                  className="p-1.5 border border-zinc-300 rounded bg-white text-black text-xs"
                 >
                   <option value="">كافة حالات التحقق</option>
                   <option value="unverified">غير متحقق</option>
@@ -514,7 +514,7 @@ export default function AdminDashboardPage() {
 
                 <button
                   onClick={() => fetchApplications(1)}
-                  className="py-1.5 px-3 rounded bg-slate-900 text-white font-medium hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="py-1.5 px-3 rounded bg-black text-white font-medium hover:bg-zinc-800 transition-colors cursor-pointer"
                 >
                   تطبيق الفلترة
                 </button>
@@ -524,7 +524,7 @@ export default function AdminDashboardPage() {
             {/* Applications Table */}
             <div className="overflow-x-auto">
               <table className="w-full text-right text-xs">
-                <thead className="bg-slate-100 text-slate-800 font-semibold border-b border-gray-200">
+                <thead className="bg-zinc-50 text-black font-semibold border-b border-zinc-200">
                   <tr>
                     <th className="py-3 px-3 w-12 text-center">#</th>
                     <th className="py-3 px-3">رقم الطلب</th>
@@ -540,16 +540,16 @@ export default function AdminDashboardPage() {
                     <th className="py-3 px-3 text-center">إجراء</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100">
+                <tbody className="divide-y divide-zinc-100">
                   {loading ? (
                     <tr>
-                      <td colSpan={12} className="py-8 text-center text-gray-500">
+                      <td colSpan={12} className="py-8 text-center text-zinc-500">
                         جارٍ تحميل بيانات الطلبات...
                       </td>
                     </tr>
                   ) : applications.length === 0 ? (
                     <tr>
-                      <td colSpan={12} className="py-8 text-center text-gray-500">
+                      <td colSpan={12} className="py-8 text-center text-zinc-500">
                         لا توجد طلبات تطابق معايير البحث والفلترة.
                       </td>
                     </tr>
@@ -560,21 +560,21 @@ export default function AdminDashboardPage() {
                       const rowNum = (pagination.page - 1) * pagination.limit + index + 1;
 
                       return (
-                        <tr key={app.referenceNumber} className="hover:bg-slate-50/80 transition-colors">
-                          <td className="py-2.5 px-3 text-center text-gray-500 font-mono">{rowNum}</td>
-                          <td className="py-2.5 px-3 font-mono font-bold text-slate-900">{app.referenceNumber}</td>
-                          <td className="py-2.5 px-3 font-semibold text-slate-900">{app.fullName}</td>
-                          <td className="py-2.5 px-3 text-gray-700">
+                        <tr key={app.referenceNumber} className="hover:bg-zinc-50 transition-colors">
+                          <td className="py-2.5 px-3 text-center text-zinc-400 font-mono">{rowNum}</td>
+                          <td className="py-2.5 px-3 font-mono font-bold text-black">{app.referenceNumber}</td>
+                          <td className="py-2.5 px-3 font-semibold text-black">{app.fullName}</td>
+                          <td className="py-2.5 px-3 text-zinc-800">
                             <div>{app.institutionName}</div>
-                            <div className="text-[11px] text-gray-500">{app.major}</div>
+                            <div className="text-[11px] text-zinc-500">{app.major}</div>
                           </td>
-                          <td className="py-2.5 px-3 font-mono text-slate-800">{pc} د.أ</td>
-                          <td className="py-2.5 px-3 font-mono text-gray-700">{app.householdSize}</td>
-                          <td className="py-2.5 px-3 font-mono text-slate-800">
+                          <td className="py-2.5 px-3 font-mono text-black">{pc} د.أ</td>
+                          <td className="py-2.5 px-3 font-mono text-zinc-700">{app.householdSize}</td>
+                          <td className="py-2.5 px-3 font-mono text-black">
                             {app.uncoveredTuitionAmount.toLocaleString('ar-JO')} د.أ
                           </td>
                           <td className="py-2.5 px-3">
-                            <span className="font-bold text-slate-900 font-mono bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                            <span className="font-bold text-black font-mono bg-zinc-100 px-2 py-0.5 rounded border border-zinc-300">
                               {displayScore} / 100
                             </span>
                           </td>
@@ -582,10 +582,10 @@ export default function AdminDashboardPage() {
                             <span
                               className={`px-2 py-0.5 rounded text-[11px] font-medium ${
                                 app.verificationStatus === 'fully_verified'
-                                  ? 'bg-emerald-100 text-emerald-800'
+                                  ? 'border border-black text-black font-semibold bg-white'
                                   : app.verificationStatus === 'partially_verified'
-                                  ? 'bg-amber-100 text-amber-800'
-                                  : 'bg-gray-100 text-gray-700'
+                                  ? 'border border-zinc-400 text-zinc-800 bg-zinc-100'
+                                  : 'border border-zinc-200 text-zinc-500 bg-zinc-50'
                               }`}
                             >
                               {app.verificationStatus === 'fully_verified'
@@ -599,16 +599,16 @@ export default function AdminDashboardPage() {
                             <span
                               className={`px-2 py-0.5 rounded text-[11px] font-medium ${
                                 app.status === 'accepted'
-                                  ? 'bg-emerald-600 text-white'
+                                  ? 'bg-black text-white font-medium'
                                   : app.status === 'verified_eligible'
-                                  ? 'bg-indigo-100 text-indigo-800'
+                                  ? 'border border-black text-black font-semibold bg-white'
                                   : app.status === 'in_review'
-                                  ? 'bg-amber-100 text-amber-800'
+                                  ? 'border border-zinc-400 text-zinc-800 bg-zinc-100'
                                   : app.status === 'needs_completion'
-                                  ? 'bg-rose-100 text-rose-800'
+                                  ? 'border border-dashed border-zinc-400 text-zinc-700 bg-zinc-50'
                                   : app.status === 'waitlist'
-                                  ? 'bg-gray-200 text-gray-800'
-                                  : 'bg-blue-100 text-blue-800'
+                                  ? 'text-zinc-600 bg-zinc-100'
+                                  : 'border border-zinc-300 text-zinc-700 bg-white'
                               }`}
                             >
                               {app.status === 'accepted'
@@ -624,13 +624,13 @@ export default function AdminDashboardPage() {
                                 : 'جديد'}
                             </span>
                           </td>
-                          <td className="py-2.5 px-3 text-gray-500">
+                          <td className="py-2.5 px-3 text-zinc-500 font-mono">
                             {new Date(app.createdAt).toISOString().slice(0, 10)}
                           </td>
                           <td className="py-2.5 px-3 text-center">
                             <button
                               onClick={() => openApplicationDetail(app.referenceNumber)}
-                              className="py-1 px-2.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium transition-colors cursor-pointer"
+                              className="py-1 px-2.5 rounded bg-zinc-100 hover:bg-zinc-200 text-black font-medium border border-zinc-300 transition-colors cursor-pointer"
                             >
                               مراجعة
                             </button>
@@ -644,7 +644,7 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Pagination Controls */}
-            <div className="p-3 border-t border-gray-200 bg-gray-50/50 flex items-center justify-between text-xs text-gray-600">
+            <div className="p-3 border-t border-zinc-200 bg-zinc-50/50 flex items-center justify-between text-xs text-zinc-600">
               <div>
                 إجمالي النتائج: {pagination.total} طلب | الصفحة {pagination.page} من {pagination.totalPages}
               </div>
@@ -652,14 +652,14 @@ export default function AdminDashboardPage() {
                 <button
                   disabled={pagination.page <= 1}
                   onClick={() => setPagination((prev) => ({ ...prev, page: prev.page - 1 }))}
-                  className="py-1 px-3 border border-gray-300 rounded bg-white disabled:opacity-50 hover:bg-gray-50 cursor-pointer"
+                  className="py-1 px-3 border border-zinc-300 rounded bg-white disabled:opacity-50 hover:bg-zinc-100 cursor-pointer text-black"
                 >
                   السابقة
                 </button>
                 <button
                   disabled={pagination.page >= pagination.totalPages}
                   onClick={() => setPagination((prev) => ({ ...prev, page: prev.page + 1 }))}
-                  className="py-1 px-3 border border-gray-300 rounded bg-white disabled:opacity-50 hover:bg-gray-50 cursor-pointer"
+                  className="py-1 px-3 border border-zinc-300 rounded bg-white disabled:opacity-50 hover:bg-zinc-100 cursor-pointer text-black"
                 >
                   التالية
                 </button>
@@ -672,14 +672,14 @@ export default function AdminDashboardPage() {
         {activeTab === 'merit' && (
           <div className="space-y-6">
             {/* Sub-tabs: Declared vs Verified */}
-            <div className="flex items-center justify-between border-b border-gray-200 pb-3">
+            <div className="flex items-center justify-between border-b border-zinc-200 pb-3">
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setMeritSubTab('verified')}
                   className={`py-2 px-4 rounded text-xs font-semibold transition-colors cursor-pointer ${
                     meritSubTab === 'verified'
-                      ? 'bg-slate-900 text-white'
-                      : 'bg-white border border-gray-300 text-slate-700 hover:bg-gray-50'
+                      ? 'bg-black text-white'
+                      : 'bg-white border border-zinc-300 text-zinc-700 hover:bg-zinc-50'
                   }`}
                 >
                   ترتيب الطلبات المؤهلة والمتحقق منها (قائمة الاعتماد)
@@ -688,23 +688,23 @@ export default function AdminDashboardPage() {
                   onClick={() => setMeritSubTab('declared')}
                   className={`py-2 px-4 rounded text-xs font-semibold transition-colors cursor-pointer ${
                     meritSubTab === 'declared'
-                      ? 'bg-slate-900 text-white'
-                      : 'bg-white border border-gray-300 text-slate-700 hover:bg-gray-50'
+                      ? 'bg-black text-white'
+                      : 'bg-white border border-zinc-300 text-zinc-700 hover:bg-zinc-50'
                   }`}
                 >
                   الترتيب المبدئي بحسب البيانات المصرح بها
                 </button>
               </div>
 
-              <div className="text-xs font-semibold text-slate-800 bg-white px-3 py-1.5 rounded border border-gray-200">
+              <div className="text-xs font-semibold text-black bg-white px-3 py-1.5 rounded border border-zinc-200">
                 المقاعد المعتمدة: {kpis.acceptedCount} من 6
               </div>
             </div>
 
             {/* Critical Cutoff Tie Alert Banner */}
             {rankingData?.criticalTieAtCutoff && (
-              <div className="p-4 rounded border border-rose-300 bg-rose-50 text-rose-950 text-xs sm:text-sm flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+              <div className="p-4 rounded border-2 border-black bg-zinc-50 text-black text-xs sm:text-sm flex items-start gap-3">
+                <AlertTriangle className="w-5 h-5 text-black shrink-0 mt-0.5" />
                 <div>
                   <strong className="block font-bold mb-1">
                     تنبيه تعادل حرج عند المركز السادس:
@@ -717,8 +717,8 @@ export default function AdminDashboardPage() {
 
             {/* Quota Under-enrollment Alert */}
             {meritSubTab === 'verified' && rankingData && rankingData.totalEligible < 6 && (
-              <div className="p-3.5 rounded border border-amber-300 bg-amber-50 text-amber-950 text-xs flex items-start gap-2.5">
-                <HelpCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded border border-zinc-400 bg-zinc-50 text-black text-xs flex items-start gap-2.5">
+                <HelpCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                 <div>
                   <strong>ملاحظة هامة للجنة:</strong> عدد الطلبات المؤهلة والمتحقق منها حالياً ({rankingData.totalEligible}) أقل من سقف الـ 6 منح.
                   يُحظر قبول طلبات غير مؤهلة أو غير مكتملة التحقق لمجرد إكمال العدد.
@@ -727,15 +727,15 @@ export default function AdminDashboardPage() {
             )}
 
             {/* Merit Ranking Table */}
-            <div className="bg-white rounded border border-gray-200 overflow-hidden shadow-xs">
-              <div className="p-4 bg-slate-50 border-b border-gray-200 flex items-center justify-between">
+            <div className="bg-white rounded border border-zinc-200 overflow-hidden shadow-xs">
+              <div className="p-4 bg-zinc-50 border-b border-zinc-200 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-sm text-slate-900">
+                  <h3 className="font-bold text-sm text-black">
                     {meritSubTab === 'verified'
                       ? 'قائمة المفاضلة للطلبات المؤهلة والمتحقق منها'
-                      : 'قائمة الترتيب المبدئي العام'}
+                      : 'قائمة التترتيب المبدئي العام'}
                   </h3>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-zinc-500">
                     أعلى 6 طلبات في هذه القائمة هم المرشحون المعتمدون لمقاعد المنحة الستة.
                   </p>
                 </div>
@@ -743,7 +743,7 @@ export default function AdminDashboardPage() {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-right text-xs">
-                  <thead className="bg-slate-100 text-slate-800 font-semibold border-b border-gray-200">
+                  <thead className="bg-zinc-50 text-black font-semibold border-b border-zinc-200">
                     <tr>
                       <th className="py-3 px-3 w-14 text-center">المرتبة</th>
                       <th className="py-3 px-3">رقم الطلب</th>
@@ -757,10 +757,10 @@ export default function AdminDashboardPage() {
                       <th className="py-3 px-3 text-center">إجراء الاعتماد</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-zinc-100">
                     {!rankingData || rankingData.rankedList.length === 0 ? (
                       <tr>
-                        <td colSpan={10} className="py-8 text-center text-gray-500">
+                        <td colSpan={10} className="py-8 text-center text-zinc-500">
                           لا توجد طلبات مؤهلة مدرجة في هذه القائمة بعد.
                         </td>
                       </tr>
@@ -775,55 +775,55 @@ export default function AdminDashboardPage() {
                           <tr
                             key={item.application.referenceNumber}
                             className={`transition-colors ${
-                              isTop6 ? 'bg-slate-50/70 font-medium' : 'hover:bg-gray-50'
+                              isTop6 ? 'bg-zinc-50 font-medium' : 'hover:bg-zinc-50'
                             }`}
                           >
                             <td className="py-3 px-3 text-center">
                               <span
                                 className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold ${
                                   isTop6
-                                    ? 'bg-slate-900 text-white'
-                                    : 'bg-gray-200 text-gray-700'
+                                    ? 'bg-black text-white'
+                                    : 'bg-zinc-200 text-zinc-800'
                                 }`}
                               >
                                 {item.rank}
                               </span>
                             </td>
-                            <td className="py-3 px-3 font-mono font-bold text-slate-900">
+                            <td className="py-3 px-3 font-mono font-bold text-black">
                               {item.application.referenceNumber}
                             </td>
-                            <td className="py-3 px-3 font-semibold text-slate-900">
+                            <td className="py-3 px-3 font-semibold text-black">
                               {item.application.fullName}
                             </td>
-                            <td className="py-3 px-3 text-gray-700">
+                            <td className="py-3 px-3 text-zinc-800">
                               {item.application.institutionName} - {item.application.major}
                             </td>
-                            <td className="py-3 px-3 font-mono text-slate-800">{pc} د.أ</td>
-                            <td className="py-3 px-3 font-mono text-slate-800">
+                            <td className="py-3 px-3 font-mono text-black">{pc} د.أ</td>
+                            <td className="py-3 px-3 font-mono text-black">
                               {item.application.uncoveredTuitionAmount.toLocaleString('ar-JO')} د.أ
                             </td>
-                            <td className="py-3 px-3 font-mono font-bold text-slate-900">
+                            <td className="py-3 px-3 font-mono font-bold text-black">
                               {scoreVal} / 100
                             </td>
                             <td className="py-3 px-3">
                               {item.isRank6TieCritical ? (
-                                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-300">
+                                <span className="px-2 py-0.5 rounded text-[10px] font-bold border border-black text-black bg-white">
                                   تعادل حرج عند المركز 6
                                 </span>
                               ) : item.isTied ? (
-                                <span className="px-2 py-0.5 rounded text-[10px] bg-amber-100 text-amber-800">
+                                <span className="px-2 py-0.5 rounded text-[10px] border border-zinc-400 text-zinc-800 bg-zinc-100">
                                   تعادل موضوعي
                                 </span>
                               ) : (
-                                <span className="text-gray-400">-</span>
+                                <span className="text-zinc-400">-</span>
                               )}
                             </td>
                             <td className="py-3 px-3">
                               <span
                                 className={`px-2 py-0.5 rounded text-[11px] font-semibold ${
                                   isAccepted
-                                    ? 'bg-emerald-600 text-white'
-                                    : 'bg-gray-100 text-gray-700'
+                                    ? 'bg-black text-white'
+                                    : 'border border-zinc-300 text-zinc-700 bg-white'
                                 }`}
                               >
                                 {isAccepted ? 'مقبول ومعتمد' : 'مرشح للمراجعة'}
@@ -832,7 +832,7 @@ export default function AdminDashboardPage() {
                             <td className="py-3 px-3 text-center">
                               <button
                                 onClick={() => openApplicationDetail(item.application.referenceNumber)}
-                                className="py-1 px-3 rounded bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs transition-colors cursor-pointer"
+                                className="py-1 px-3 rounded bg-black hover:bg-zinc-800 text-white font-medium text-xs transition-colors cursor-pointer"
                               >
                                 مراجعة واعتماد
                               </button>
@@ -852,17 +852,17 @@ export default function AdminDashboardPage() {
         {activeTab === 'settings' && settings && (
           <div className="space-y-6">
             {/* Submission Open/Close Toggle */}
-            <div className="p-5 bg-white rounded border border-gray-200">
+            <div className="p-5 bg-white rounded border border-zinc-200">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-bold text-sm text-slate-900 mb-1">حالة استقبال الطلبات</h3>
-                  <p className="text-xs text-gray-500">
+                  <h3 className="font-bold text-sm text-black mb-1">حالة استقبال الطلبات</h3>
+                  <p className="text-xs text-zinc-500">
                     عند إغلاق التقديم، يتوقف استقبال الطلبات الجديدة ويبدأ التدقيق وحصر القوائم النهائية.
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-semibold text-slate-800">
+                  <span className="text-xs font-semibold text-zinc-900">
                     {settings.isSubmissionOpen ? 'التقديم مفتوح حالياً' : 'التقديم مغلق للمراجعة'}
                   </span>
                   <button
@@ -870,8 +870,8 @@ export default function AdminDashboardPage() {
                     disabled={savingSettings}
                     className={`py-2 px-4 rounded text-xs font-bold transition-colors cursor-pointer ${
                       settings.isSubmissionOpen
-                        ? 'bg-rose-700 hover:bg-rose-800 text-white'
-                        : 'bg-emerald-700 hover:bg-emerald-800 text-white'
+                        ? 'bg-black hover:bg-zinc-800 text-white'
+                        : 'bg-white border border-black hover:bg-zinc-100 text-black'
                     }`}
                   >
                     {settings.isSubmissionOpen ? 'إغلاق التقديم الآن' : 'فتح التقديم الآن'}
@@ -885,17 +885,17 @@ export default function AdminDashboardPage() {
 
         {/* TAB 4: AUDIT LOGS */}
         {activeTab === 'audit' && (
-          <div className="bg-white rounded border border-gray-200 overflow-hidden shadow-xs">
-            <div className="p-4 bg-slate-50 border-b border-gray-200">
-              <h3 className="font-bold text-sm text-slate-900">سجل تدقيق العمليات والإجراءات</h3>
-              <p className="text-xs text-gray-500">
+          <div className="bg-white rounded border border-zinc-200 overflow-hidden shadow-xs">
+            <div className="p-4 bg-zinc-50 border-b border-zinc-200">
+              <h3 className="font-bold text-sm text-black">سجل تدقيق العمليات والإجراءات</h3>
+              <p className="text-xs text-zinc-500">
                 توثيق كامل للقرارات الإدارية، تحديثات الحالات، تسجيل الدخول، والتصحيحات.
               </p>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-right text-xs">
-                <thead className="bg-slate-100 text-slate-800 font-semibold border-b border-gray-200">
+                <thead className="bg-zinc-50 text-black font-semibold border-b border-zinc-200">
                   <tr>
                     <th className="py-2.5 px-3">الوقت والتاريخ</th>
                     <th className="py-2.5 px-3">المسؤول (Actor)</th>
@@ -904,27 +904,27 @@ export default function AdminDashboardPage() {
                     <th className="py-2.5 px-3">تفاصيل الإجراء</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100 font-mono">
+                <tbody className="divide-y divide-zinc-100 font-mono">
                   {systemAuditLogs.length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="py-6 text-center text-gray-500 font-sans">
+                      <td colSpan={5} className="py-6 text-center text-zinc-500 font-sans">
                         لا توجد سجلات تدقيق حتى الآن.
                       </td>
                     </tr>
                   ) : (
                     systemAuditLogs.map((log, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50">
-                        <td className="py-2 px-3 text-gray-500">
+                      <tr key={idx} className="hover:bg-zinc-50">
+                        <td className="py-2 px-3 text-zinc-500">
                           {new Date(log.createdAt).toISOString().replace('T', ' ').slice(0, 19)}
                         </td>
-                        <td className="py-2 px-3 font-semibold text-slate-900 font-sans">{log.actor}</td>
+                        <td className="py-2 px-3 font-semibold text-black font-sans">{log.actor}</td>
                         <td className="py-2 px-3">
-                          <span className="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded text-[10px]">
+                          <span className="bg-zinc-100 text-black px-1.5 py-0.5 rounded text-[10px] border border-zinc-200">
                             {log.action}
                           </span>
                         </td>
-                        <td className="py-2 px-3 text-slate-700">{log.targetId || '-'}</td>
-                        <td className="py-2 px-3 text-gray-600 font-sans text-[11px]">
+                        <td className="py-2 px-3 text-zinc-800">{log.targetId || '-'}</td>
+                        <td className="py-2 px-3 text-zinc-600 font-sans text-[11px]">
                           {JSON.stringify(log.details)}
                         </td>
                       </tr>
@@ -939,18 +939,18 @@ export default function AdminDashboardPage() {
 
       {/* DETAIL MODAL / DRAWER FOR SELECTED APPLICATION */}
       {selectedApp && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-          <div className="bg-white rounded-lg border border-gray-300 max-w-4xl w-full max-h-[92vh] flex flex-col shadow-xl">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded border border-zinc-300 max-w-4xl w-full max-h-[92vh] flex flex-col shadow-xl text-black">
             {/* Modal Header */}
-            <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-slate-50">
+            <div className="p-4 border-b border-zinc-200 flex items-center justify-between bg-zinc-50">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-base text-slate-900">{selectedApp.fullName}</h3>
-                  <span className="font-mono text-xs bg-white px-2 py-0.5 rounded border border-gray-200 text-slate-800">
+                  <h3 className="font-bold text-base text-black">{selectedApp.fullName}</h3>
+                  <span className="font-mono text-xs bg-white px-2 py-0.5 rounded border border-zinc-200 text-black">
                     {selectedApp.referenceNumber}
                   </span>
                 </div>
-                <div className="text-xs text-gray-500 mt-0.5">
+                <div className="text-xs text-zinc-500 mt-0.5">
                   {selectedApp.institutionName} - {selectedApp.major} ({selectedApp.studyLevel})
                 </div>
               </div>
@@ -958,15 +958,15 @@ export default function AdminDashboardPage() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowCorrectionModal(true)}
-                  className="py-1 px-2.5 rounded bg-white border border-gray-300 text-slate-800 text-xs font-medium hover:bg-gray-50 flex items-center gap-1 cursor-pointer"
+                  className="py-1 px-2.5 rounded bg-white border border-zinc-300 text-black text-xs font-medium hover:bg-zinc-100 flex items-center gap-1 cursor-pointer"
                   title="تسجيل تصحيح رسمي للبيانات"
                 >
-                  <Edit3 className="w-3.5 h-3.5 text-blue-600" />
+                  <Edit3 className="w-3.5 h-3.5 text-black" />
                   <span>تصحيح معلومة</span>
                 </button>
                 <button
                   onClick={() => setSelectedApp(null)}
-                  className="p-1.5 rounded text-gray-500 hover:text-slate-900 hover:bg-gray-200 cursor-pointer"
+                  className="p-1.5 rounded text-zinc-500 hover:text-black hover:bg-zinc-200 cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -976,57 +976,57 @@ export default function AdminDashboardPage() {
             {/* Modal Body */}
             <div className="p-5 overflow-y-auto space-y-6 text-xs flex-1">
               {actionError && (
-                <div className="p-3 rounded border border-rose-200 bg-rose-50 text-rose-900 text-xs flex items-start gap-2">
-                  <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
+                <div className="p-3 rounded border border-black bg-zinc-100 text-black text-xs flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 text-black shrink-0 mt-0.5" />
                   <span>{actionError}</span>
                 </div>
               )}
 
               {/* 1. Score Breakdown & Rationale */}
-              <div className="p-4 rounded border border-slate-200 bg-slate-50/70">
-                <div className="flex items-center justify-between pb-3 border-b border-gray-200 mb-3">
-                  <div className="font-bold text-sm text-slate-900">
+              <div className="p-4 rounded border border-zinc-200 bg-zinc-50">
+                <div className="flex items-center justify-between pb-3 border-b border-zinc-200 mb-3">
+                  <div className="font-bold text-sm text-black">
                     تفصيل درجة الحاجة الاقتصادية: {selectedApp.verifiedScore?.total ?? selectedApp.score.total} / 100
                   </div>
-                  <span className="text-[11px] text-gray-500 font-mono">
+                  <span className="text-[11px] text-zinc-500 font-mono">
                     النسخة {selectedApp.score.criteriaVersion} من المعايير
                   </span>
                 </div>
 
                 {/* 4 Score Badges */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-                  <div className="p-2 bg-white rounded border border-gray-200">
-                    <span className="text-gray-500 block text-[11px]">نقاط دخل الفرد (55)</span>
-                    <span className="font-bold text-slate-900 text-sm">
+                  <div className="p-2 bg-white rounded border border-zinc-200">
+                    <span className="text-zinc-500 block text-[11px]">نقاط دخل الفرد (55)</span>
+                    <span className="font-bold text-black text-sm">
                       {selectedApp.verifiedScore?.perCapitaScore ?? selectedApp.score.perCapitaScore}
                     </span>
                   </div>
-                  <div className="p-2 bg-white rounded border border-gray-200">
-                    <span className="text-gray-500 block text-[11px]">نقاط الرسوم (20)</span>
-                    <span className="font-bold text-slate-900 text-sm">
+                  <div className="p-2 bg-white rounded border border-zinc-200">
+                    <span className="text-zinc-500 block text-[11px]">نقاط الرسوم (20)</span>
+                    <span className="font-bold text-black text-sm">
                       {selectedApp.verifiedScore?.uncoveredTuitionScore ?? selectedApp.score.uncoveredTuitionScore}
                     </span>
                   </div>
-                  <div className="p-2 bg-white rounded border border-gray-200">
-                    <span className="text-gray-500 block text-[11px]">نقاط المصاريف (15)</span>
-                    <span className="font-bold text-slate-900 text-sm">
+                  <div className="p-2 bg-white rounded border border-zinc-200">
+                    <span className="text-zinc-500 block text-[11px]">نقاط المصاريف (15)</span>
+                    <span className="font-bold text-black text-sm">
                       {selectedApp.verifiedScore?.expenseBurdenScore ?? selectedApp.score.expenseBurdenScore}
                     </span>
                   </div>
-                  <div className="p-2 bg-white rounded border border-gray-200">
-                    <span className="text-gray-500 block text-[11px]">نقاط الإعالة (10)</span>
-                    <span className="font-bold text-slate-900 text-sm">
+                  <div className="p-2 bg-white rounded border border-zinc-200">
+                    <span className="text-zinc-500 block text-[11px]">نقاط الإعالة (10)</span>
+                    <span className="font-bold text-black text-sm">
                       {selectedApp.verifiedScore?.breadwinnerVulnerabilityScore ?? selectedApp.score.breadwinnerVulnerabilityScore}
                     </span>
                   </div>
                 </div>
 
                 {/* Arabic Explanations */}
-                <div className="space-y-1 bg-white p-3 rounded border border-gray-200 text-gray-700 leading-relaxed text-[11px]">
-                  <strong className="text-slate-900 block mb-1">أسباب احتساب الدرجة باللغة العربية:</strong>
+                <div className="space-y-1 bg-white p-3 rounded border border-zinc-200 text-zinc-800 leading-relaxed text-[11px]">
+                  <strong className="text-black block mb-1">أسباب احتساب الدرجة باللغة العربية:</strong>
                   {(selectedApp.verifiedScore?.explanationArabic ?? selectedApp.score.explanationArabic).map((exp, i) => (
                     <div key={i} className="flex items-start gap-1.5">
-                      <span className="text-slate-400">•</span>
+                      <span className="text-zinc-400">•</span>
                       <span>{exp}</span>
                     </div>
                   ))}
@@ -1036,26 +1036,26 @@ export default function AdminDashboardPage() {
               {/* 2. Applicant Full Information Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Academic & Financial */}
-                <div className="p-3.5 rounded border border-gray-200 bg-white">
-                  <h4 className="font-bold text-slate-900 text-xs mb-2 pb-1 border-b border-gray-100">
+                <div className="p-3.5 rounded border border-zinc-200 bg-white">
+                  <h4 className="font-bold text-black text-xs mb-2 pb-1 border-b border-zinc-100">
                     البيانات الأكاديمية والرسوم
                   </h4>
                   <dl className="space-y-1.5 text-[11px]">
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">الثانوية العامة (التوجيهي):</dt>
-                      <dd className="font-bold text-slate-900 font-mono">
+                      <dt className="text-zinc-500">الثانوية العامة (التوجيهي):</dt>
+                      <dd className="font-bold text-black font-mono">
                         {selectedApp.tawjihiGpa ? `${selectedApp.tawjihiGpa}% (${selectedApp.tawjihiBranch} - ${selectedApp.tawjihiYear})` : 'غير مسجل'}
                       </dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">الوضع الأكاديمي:</dt>
-                      <dd className="font-medium text-slate-800">
+                      <dt className="text-zinc-500">الوضع الأكاديمي:</dt>
+                      <dd className="font-medium text-zinc-800">
                         {selectedApp.hasAttendedUniversity ? 'طالب جامعي' : 'خريج توجيهي (مقبل على الجامعة)'}
                       </dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">الحالة الدراسية:</dt>
-                      <dd className="font-medium text-slate-800">
+                      <dt className="text-zinc-500">الحالة الدراسية:</dt>
+                      <dd className="font-medium text-zinc-800">
                         {selectedApp.enrollmentStatus === 'enrolled'
                           ? 'منتظم في الدراسة'
                           : selectedApp.enrollmentStatus === 'paused'
@@ -1068,53 +1068,53 @@ export default function AdminDashboardPage() {
                       </dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">رسوم الفترة الكاملة:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.periodTuitionFee} د.أ</dd>
+                      <dt className="text-zinc-500">رسوم الفترة الكاملة:</dt>
+                      <dd className="font-mono text-black">{selectedApp.periodTuitionFee} د.أ</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">المبلغ المدفوع / المتوفر:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.amountAlreadyPaid} د.أ</dd>
+                      <dt className="text-zinc-500">المبلغ المدفوع / المتوفر:</dt>
+                      <dd className="font-mono text-black">{selectedApp.amountAlreadyPaid} د.أ</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">دعم خارجي مؤكد:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.confirmedExternalSupport} د.أ</dd>
+                      <dt className="text-zinc-500">دعم خارجي مؤكد:</dt>
+                      <dd className="font-mono text-black">{selectedApp.confirmedExternalSupport} د.أ</dd>
                     </div>
-                    <div className="flex justify-between pt-1 border-t border-gray-100 font-bold">
-                      <dt className="text-slate-900">المبلغ المتبقي المطلوب:</dt>
-                      <dd className="font-mono text-slate-900">{selectedApp.uncoveredTuitionAmount} د.أ</dd>
+                    <div className="flex justify-between pt-1 border-t border-zinc-100 font-bold">
+                      <dt className="text-black">المبلغ المتبقي المطلوب:</dt>
+                      <dd className="font-mono text-black">{selectedApp.uncoveredTuitionAmount} د.أ</dd>
                     </div>
                   </dl>
                 </div>
 
                 {/* Family & Income */}
-                <div className="p-3.5 rounded border border-gray-200 bg-white">
-                  <h4 className="font-bold text-slate-900 text-xs mb-2 pb-1 border-b border-gray-100">
+                <div className="p-3.5 rounded border border-zinc-200 bg-white">
+                  <h4 className="font-bold text-black text-xs mb-2 pb-1 border-b border-zinc-100">
                     الأسرة ومصادر الدخل
                   </h4>
                   <dl className="space-y-1.5 text-[11px]">
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">أفراد الأسرة:</dt>
-                      <dd className="font-mono text-slate-800">{selectedApp.householdSize} أفراد</dd>
+                      <dt className="text-zinc-500">أفراد الأسرة:</dt>
+                      <dd className="font-mono text-black">{selectedApp.householdSize} أفراد</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">المعيل الفعلي:</dt>
-                      <dd className="font-medium text-slate-800">{selectedApp.actualBreadwinner}</dd>
+                      <dt className="text-zinc-500">المعيل الفعلي:</dt>
+                      <dd className="font-medium text-zinc-800">{selectedApp.actualBreadwinner}</dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">حالة الأب / الأم:</dt>
-                      <dd className="font-medium text-slate-800">
+                      <dt className="text-zinc-500">حالة الأب / الأم:</dt>
+                      <dd className="font-medium text-zinc-800">
                         {selectedApp.fatherStatus} / {selectedApp.motherStatus}
                       </dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">إجمالي دخل الأسرة:</dt>
-                      <dd className="font-mono text-slate-800">
+                      <dt className="text-zinc-500">إجمالي دخل الأسرة:</dt>
+                      <dd className="font-mono text-black">
                         {selectedApp.score.calculatedValues.totalHouseholdIncome} د.أ
                       </dd>
                     </div>
-                    <div className="flex justify-between pt-1 border-t border-gray-100 font-bold">
-                      <dt className="text-slate-900">دخل الفرد الشهري:</dt>
-                      <dd className="font-mono text-slate-900">
+                    <div className="flex justify-between pt-1 border-t border-zinc-100 font-bold">
+                      <dt className="text-black">دخل الفرد الشهري:</dt>
+                      <dd className="font-mono text-black">
                         {selectedApp.score.calculatedValues.perCapitaIncome} د.أ
                       </dd>
                     </div>
@@ -1122,30 +1122,30 @@ export default function AdminDashboardPage() {
                 </div>
 
                 {/* Expenses & Circumstances */}
-                <div className="p-3.5 rounded border border-gray-200 bg-white">
-                  <h4 className="font-bold text-slate-900 text-xs mb-2 pb-1 border-b border-gray-100">
+                <div className="p-3.5 rounded border border-zinc-200 bg-white">
+                  <h4 className="font-bold text-black text-xs mb-2 pb-1 border-b border-zinc-100">
                     السكن والمصاريف المؤهلة
                   </h4>
                   <dl className="space-y-1.5 text-[11px]">
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">حالة السكن:</dt>
-                      <dd className="font-medium text-slate-800">{selectedApp.housingStatus}</dd>
+                      <dt className="text-zinc-500">حالة السكن:</dt>
+                      <dd className="font-medium text-zinc-800">{selectedApp.housingStatus}</dd>
                     </div>
                     {selectedApp.housingStatus === 'rented' && (
                       <div className="flex justify-between">
-                        <dt className="text-gray-500">الإيجار الشهري:</dt>
-                        <dd className="font-mono text-slate-800">{selectedApp.monthlyRent || 0} د.أ</dd>
+                        <dt className="text-zinc-500">الإيجار الشهري:</dt>
+                        <dd className="font-mono text-black">{selectedApp.monthlyRent || 0} د.أ</dd>
                       </div>
                     )}
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">مصاريف علاجية مزمنة:</dt>
-                      <dd className="font-mono text-slate-800">
+                      <dt className="text-zinc-500">مصاريف علاجية مزمنة:</dt>
+                      <dd className="font-mono text-black">
                         {selectedApp.recurringNecessaryMedicalExpenses || 0} د.أ
                       </dd>
                     </div>
                     <div className="flex justify-between">
-                      <dt className="text-gray-500">الهاتف والمدينة:</dt>
-                      <dd className="font-mono text-slate-800">
+                      <dt className="text-zinc-500">الهاتف والمدينة:</dt>
+                      <dd className="font-mono text-black">
                         {selectedApp.phoneNumber} ({selectedApp.governorateOrCity})
                       </dd>
                     </div>
@@ -1154,12 +1154,12 @@ export default function AdminDashboardPage() {
               </div>
 
               {/* 3. Verification Checklist for Committee */}
-              <div className="p-4 rounded border border-gray-200 bg-slate-50">
-                <h4 className="font-bold text-slate-900 text-xs mb-2">
+              <div className="p-4 rounded border border-zinc-200 bg-zinc-50">
+                <h4 className="font-bold text-black text-xs mb-2">
                   قائمة تحقق وثائق الطالب (التدقيق المكتبي للجنة)
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <label className="flex items-center gap-2 p-2 bg-white rounded border border-gray-200 cursor-pointer">
+                  <label className="flex items-center gap-2 p-2 bg-white rounded border border-zinc-200 cursor-pointer text-black">
                     <input
                       type="checkbox"
                       checked={!!selectedApp.verificationChecklist?.tuitionFeeChecked?.verified}
@@ -1169,12 +1169,12 @@ export default function AdminDashboardPage() {
                           !!selectedApp.verificationChecklist?.tuitionFeeChecked?.verified
                         )
                       }
-                      className="rounded border-gray-300 text-slate-900"
+                      className="rounded border-zinc-300 accent-black text-black"
                     />
                     <span>مطابقة كشف الرسوم الجامعية</span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2 bg-white rounded border border-gray-200 cursor-pointer">
+                  <label className="flex items-center gap-2 p-2 bg-white rounded border border-zinc-200 cursor-pointer text-black">
                     <input
                       type="checkbox"
                       checked={!!selectedApp.verificationChecklist?.familyIncomeChecked?.verified}
@@ -1184,12 +1184,12 @@ export default function AdminDashboardPage() {
                           !!selectedApp.verificationChecklist?.familyIncomeChecked?.verified
                         )
                       }
-                      className="rounded border-gray-300 text-slate-900"
+                      className="rounded border-zinc-300 accent-black text-black"
                     />
                     <span>التحقق من إثباتات الدخل/المعاش</span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2 bg-white rounded border border-gray-200 cursor-pointer">
+                  <label className="flex items-center gap-2 p-2 bg-white rounded border border-zinc-200 cursor-pointer text-black">
                     <input
                       type="checkbox"
                       checked={!!selectedApp.verificationChecklist?.householdSizeChecked?.verified}
@@ -1199,7 +1199,7 @@ export default function AdminDashboardPage() {
                           !!selectedApp.verificationChecklist?.householdSizeChecked?.verified
                         )
                       }
-                      className="rounded border-gray-300 text-slate-900"
+                      className="rounded border-zinc-300 accent-black text-black"
                     />
                     <span>التحقق من سجل الأسرة</span>
                   </label>
@@ -1207,18 +1207,18 @@ export default function AdminDashboardPage() {
               </div>
 
               {/* 4. Action & Decision Update Section */}
-              <div className="p-4 rounded border border-slate-300 bg-white">
-                <h4 className="font-bold text-slate-900 text-xs mb-3">اتخاذ القرار وتحديث الحالة</h4>
+              <div className="p-4 rounded border border-zinc-300 bg-white">
+                <h4 className="font-bold text-black text-xs mb-3">اتخاذ القرار وتحديث الحالة</h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
                   <div>
-                    <label className="block text-[11px] font-semibold text-gray-700 mb-1">
+                    <label className="block text-[11px] font-semibold text-zinc-700 mb-1">
                       حالة العمل الحالية للطلب:
                     </label>
                     <select
                       value={statusToUpdate}
                       onChange={(e) => setStatusToUpdate(e.target.value)}
-                      className="w-full p-2 text-xs border border-gray-300 rounded bg-white font-medium"
+                      className="w-full p-2 text-xs border border-zinc-300 rounded bg-white text-black font-medium"
                     >
                       <option value="new">جديد</option>
                       <option value="in_review">تحت المراجعة</option>
@@ -1232,7 +1232,7 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-gray-700 mb-1">
+                    <label className="block text-[11px] font-semibold text-zinc-700 mb-1">
                       ملاحظات اللجنة والمراجع:
                     </label>
                     <input
@@ -1240,15 +1240,15 @@ export default function AdminDashboardPage() {
                       value={reviewerNotes}
                       onChange={(e) => setReviewerNotes(e.target.value)}
                       placeholder="تدوين ملاحظات داخلية للجنة..."
-                      className="w-full p-2 text-xs border border-gray-300 rounded"
+                      className="w-full p-2 text-xs border border-zinc-300 rounded bg-white text-black"
                     />
                   </div>
                 </div>
 
                 {/* Mandatory Skip Reason if Accepting out of sequence */}
                 {statusToUpdate === 'accepted' && (
-                  <div className="p-3 bg-amber-50 rounded border border-amber-200 mb-3 space-y-1.5">
-                    <label className="block font-semibold text-amber-950 text-[11px]">
+                  <div className="p-3 bg-zinc-50 rounded border border-zinc-400 mb-3 space-y-1.5">
+                    <label className="block font-semibold text-black text-[11px]">
                       سبب التجاوز والاعتماد (إلزامي إذا تم تجاوز مرشح أعلى درجة):
                     </label>
                     <input
@@ -1256,9 +1256,9 @@ export default function AdminDashboardPage() {
                       value={skippedReason}
                       onChange={(e) => setSkippedReason(e.target.value)}
                       placeholder="بيان مبررات قرار اللجنة المعتمد في محضر الاجتماع..."
-                      className="w-full p-2 text-xs border border-amber-300 rounded bg-white"
+                      className="w-full p-2 text-xs border border-zinc-400 rounded bg-white text-black"
                     />
-                    <span className="text-[10px] text-amber-800 block">
+                    <span className="text-[10px] text-zinc-600 block">
                       * وفق اللائحة، لا يتم تغيير الدرجة الأصلية سراً، بل يُسجل سبب تجاوز أي مرشح في محضر تدقيق رسمي.
                     </span>
                   </div>
@@ -1268,7 +1268,7 @@ export default function AdminDashboardPage() {
                   <button
                     onClick={handleUpdateStatus}
                     disabled={updatingStatus}
-                    className="py-2 px-5 rounded bg-slate-900 hover:bg-slate-800 disabled:bg-gray-400 text-white font-semibold text-xs transition-colors cursor-pointer"
+                    className="py-2 px-5 rounded bg-black hover:bg-zinc-800 disabled:bg-zinc-400 text-white font-semibold text-xs transition-colors cursor-pointer"
                   >
                     {updatingStatus ? 'جارٍ الحفظ...' : 'حفظ القرار وتحديث الحالة'}
                   </button>
@@ -1277,11 +1277,11 @@ export default function AdminDashboardPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-3 border-t border-gray-200 bg-gray-50 flex items-center justify-between text-xs text-gray-500">
+            <div className="p-3 border-t border-zinc-200 bg-zinc-50 flex items-center justify-between text-xs text-zinc-500">
               <span>تاريخ الإنشاء: {new Date(selectedApp.createdAt).toLocaleString('ar-JO')}</span>
               <button
                 onClick={() => setSelectedApp(null)}
-                className="py-1 px-3 rounded border border-gray-300 bg-white text-gray-700 hover:bg-gray-100"
+                className="py-1 px-3 rounded border border-zinc-300 bg-white text-zinc-800 hover:bg-zinc-100 cursor-pointer"
               >
                 إغلاق
               </button>
@@ -1292,21 +1292,21 @@ export default function AdminDashboardPage() {
 
       {/* CORRECTION RECORDING MODAL */}
       {showCorrectionModal && selectedApp && (
-        <div className="fixed inset-0 z-60 bg-slate-900/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded border border-gray-300 max-w-md w-full p-5 space-y-4 shadow-xl text-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-gray-100">
-              <h4 className="font-bold text-sm text-slate-900">تسجيل تصحيح بيانات الطلب</h4>
+        <div className="fixed inset-0 z-60 bg-black/60 flex items-center justify-center p-4">
+          <div className="bg-white rounded border border-zinc-300 max-w-md w-full p-5 space-y-4 shadow-xl text-xs text-black">
+            <div className="flex items-center justify-between pb-2 border-b border-zinc-100">
+              <h4 className="font-bold text-sm text-black">تسجيل تصحيح بيانات الطلب</h4>
               <button onClick={() => setShowCorrectionModal(false)}>
-                <X className="w-4 h-4 text-gray-500" />
+                <X className="w-4 h-4 text-zinc-500 hover:text-black cursor-pointer" />
               </button>
             </div>
 
             <div>
-              <label className="block font-semibold mb-1">الحقل المراد تصحيحه:</label>
+              <label className="block font-semibold mb-1 text-black">الحقل المراد تصحيحه:</label>
               <select
                 value={correctionField}
                 onChange={(e) => setCorrectionField(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded bg-white"
+                className="w-full p-2 border border-zinc-300 rounded bg-white text-black"
               >
                 <option value="householdSize">عدد أفراد الأسرة</option>
                 <option value="periodTuitionFee">رسوم الفترة الدراسية</option>
@@ -1318,38 +1318,39 @@ export default function AdminDashboardPage() {
             </div>
 
             <div>
-              <label className="block font-semibold mb-1">القيمة المصححة الجديدة:</label>
+              <label className="block font-semibold mb-1 text-black">القيمة المصححة الجديدة:</label>
               <input
                 type="text"
                 value={correctionNewValue}
                 onChange={(e) => setCorrectionNewValue(e.target.value)}
                 placeholder="أدخل القيمة الجديدة المدققة"
-                className="w-full p-2 border border-gray-300 rounded"
-              />
+                className="w-full p-2 border border-zinc-300 rounded bg-white text-black"
+              >
+              </input>
             </div>
 
             <div>
-              <label className="block font-semibold mb-1">سبب التصحيح والمستند الثبوتي (إلزامي):</label>
+              <label className="block font-semibold mb-1 text-black">سبب التصحيح والمستند الثبوتي (إلزامي):</label>
               <textarea
                 value={correctionReason}
                 onChange={(e) => setCorrectionReason(e.target.value)}
                 placeholder="توضيح سبب التعديل ورقم الوثيقة الثبوتية المقدمة..."
                 rows={3}
-                className="w-full p-2 border border-gray-300 rounded"
+                className="w-full p-2 border border-zinc-300 rounded bg-white text-black"
               />
             </div>
 
-            <div className="flex justify-end gap-2 pt-2 border-t border-gray-100">
+            <div className="flex justify-end gap-2 pt-2 border-t border-zinc-100">
               <button
                 onClick={() => setShowCorrectionModal(false)}
-                className="py-1.5 px-3 border border-gray-300 rounded bg-white text-gray-700"
+                className="py-1.5 px-3 border border-zinc-300 rounded bg-white text-zinc-700 hover:bg-zinc-100 cursor-pointer"
               >
                 إلغاء
               </button>
               <button
                 onClick={handleSaveCorrection}
                 disabled={submittingCorrection || !correctionReason.trim()}
-                className="py-1.5 px-4 bg-slate-900 hover:bg-slate-800 disabled:bg-gray-400 text-white rounded font-semibold"
+                className="py-1.5 px-4 bg-black hover:bg-zinc-800 disabled:bg-zinc-400 text-white rounded font-semibold cursor-pointer"
               >
                 {submittingCorrection ? 'جارٍ الحفظ...' : 'تسجيل وإعادة احتساب الدرجة'}
               </button>

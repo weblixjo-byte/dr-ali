@@ -340,48 +340,60 @@ export default function ApplicationForm() {
     }
   };
 
-  // SUCCESS CONFIRMATION VIEW
+  // SUCCESS CONFIRMATION VIEW (OFFICIAL CERTIFICATE RECEIPT)
   if (successData) {
     return (
-      <section id="apply" className="py-16 bg-slate-50/50">
-        <div className="max-w-xl mx-auto px-4 sm:px-6">
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
-            <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto mb-4 border border-emerald-100">
+      <section id="apply" className="py-20 bg-zinc-50 border-b border-zinc-200">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6">
+          <div className="bg-white p-8 sm:p-10 rounded-sm border border-zinc-300 shadow-sm text-center">
+            <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center mx-auto mb-4">
               <Check className="w-6 h-6 stroke-[2.5]" />
             </div>
 
-            <h2 className="text-xl font-bold text-slate-900 mb-2">
-              تم استلام وتأكيد طلبك بنجاح
+            <h2 className="text-2xl font-bold text-black tracking-tight mb-2">
+              تم استلام وتأكيد طلب الكفالة بنجاح
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-600 mb-6">
-              طلبك الآن مقيد رسمياً لدى لجنة المراجعة برقم مرجعي فريد لمتابعة التدقيق المكتبي.
+            <p className="text-xs sm:text-sm text-zinc-600 mb-8 max-w-lg mx-auto leading-relaxed">
+              تم تسجيل طلبكم رسمياً لدى أمانة سر المبادرة، وحفظ البيانات في قاعدة البيانات المعتمدة بانتظار إجراءات التدقيق المكتبي ومطابقة الوثائق الرسمية.
             </p>
 
             {/* Official Receipt Card */}
-            <div className="receipt-card border border-slate-200 rounded-xl p-5 bg-slate-50/50 mb-6 text-right text-xs">
-              <div className="flex items-center justify-between pb-3.5 border-b border-slate-200 mb-3.5">
+            <div className="receipt-card border border-zinc-400 rounded-sm p-6 bg-white mb-8 text-right text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-zinc-300 mb-4 gap-2">
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">إيصال استلام طلب كفالة دراسية</div>
-                  <div className="text-[11px] text-slate-500">مبادرة المنح الجامعية الرسمية</div>
+                  <div className="font-bold text-black text-sm">إشعار استلام طلب كفالة دراسية</div>
+                  <div className="text-[11px] text-zinc-500">مبادرة د. علي للتعليم الجامعي • المملكة الأردنية الهاشمية</div>
                 </div>
-                <div className="font-mono font-bold text-slate-900 text-xs bg-white px-2.5 py-1 rounded-md border border-slate-200">
-                  {successData.referenceNumber}
+                <div className="font-mono font-bold text-black text-xs bg-zinc-100 px-3 py-1.5 rounded-sm border border-zinc-300 self-start sm:self-auto">
+                  رقم الطلب: {successData.referenceNumber}
                 </div>
               </div>
 
-              <dl className="space-y-2 text-xs">
-                <div className="flex justify-between">
-                  <dt className="text-slate-500">اسم المتقدم:</dt>
-                  <dd className="font-semibold text-slate-900">{formData.fullName}</dd>
+              <dl className="space-y-2.5 text-xs">
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <dt className="text-zinc-500">اسم المتقدم الرباعي:</dt>
+                  <dd className="font-bold text-black">{formData.fullName}</dd>
                 </div>
-                <div className="flex justify-between">
-                  <dt className="text-slate-500">المؤسسة التعليمية والتخصص:</dt>
-                  <dd className="font-medium text-slate-900">{formData.institutionName} - {formData.major}</dd>
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <dt className="text-zinc-500">رقم الهاتف للتواصل:</dt>
+                  <dd className="font-mono font-semibold text-black" dir="ltr">{formData.phoneCountryCode} {formData.phoneNumber}</dd>
                 </div>
-                <div className="flex justify-between">
-                  <dt className="text-slate-500">تاريخ الإرسال:</dt>
-                  <dd className="font-medium text-slate-800">
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <dt className="text-zinc-500">المؤسسة والتخصص:</dt>
+                  <dd className="font-medium text-black">{formData.institutionName} — {formData.major}</dd>
+                </div>
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <dt className="text-zinc-500">معدل التوجيهي:</dt>
+                  <dd className="font-mono font-bold text-black">{formData.tawjihiGpa}% ({formData.tawjihiBranch})</dd>
+                </div>
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <dt className="text-zinc-500">المبلغ المطلوب كفالته:</dt>
+                  <dd className="font-mono font-bold text-black">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
+                </div>
+                <div className="flex justify-between py-1 border-b border-zinc-100">
+                  <dt className="text-zinc-500">تاريخ ووقت التقديم:</dt>
+                  <dd className="font-medium text-zinc-800">
                     {new Date(successData.createdAt).toLocaleDateString('ar-JO', {
                       year: 'numeric',
                       month: 'long',
@@ -391,24 +403,24 @@ export default function ApplicationForm() {
                     })}
                   </dd>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-slate-200">
-                  <dt className="text-slate-500">الحالة:</dt>
-                  <dd className="font-semibold text-slate-900 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-slate-500" />
-                    <span>قيد المراجعة والتدقيق المكتبي</span>
+                <div className="flex justify-between pt-2">
+                  <dt className="text-zinc-500">حالة الطلب الحالية:</dt>
+                  <dd className="font-bold text-black flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-zinc-600" />
+                    <span>قيد التدقيق المكتبي والمطابقة الرسمية</span>
                   </dd>
                 </div>
               </dl>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-2.5 no-print">
+            <div className="flex flex-col sm:flex-row gap-3 no-print">
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="flex-1 py-2.5 px-4 rounded-lg border border-slate-300 text-slate-800 bg-white hover:bg-slate-50 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="flex-1 py-3 px-4 rounded-sm border border-zinc-300 text-black bg-white hover:bg-zinc-100 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <Printer className="w-4 h-4" />
-                <span>طباعة أو حفظ الإيصال (PDF)</span>
+                <span>طباعة أو حفظ الإشعار (PDF)</span>
               </button>
 
               <button
@@ -418,7 +430,7 @@ export default function ApplicationForm() {
                   setStep(1);
                   window.location.reload();
                 }}
-                className="py-2.5 px-4 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors cursor-pointer"
+                className="py-3 px-6 rounded-sm bg-black hover:bg-zinc-800 text-white text-xs font-semibold transition-colors cursor-pointer"
               >
                 العودة للصفحة الرئيسية
               </button>
@@ -430,48 +442,91 @@ export default function ApplicationForm() {
   }
 
   return (
-    <section id="apply" className="py-14 sm:py-20 bg-slate-50/40">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 tracking-tight mb-2">
-            استمارة طلب المنحة
+    <section id="apply" className="py-20 sm:py-28 bg-zinc-50/60 border-b border-zinc-200">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        {/* Section Header */}
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <span className="text-[11px] font-mono font-medium text-zinc-500 uppercase tracking-wider block mb-1">
+            البوابة الإلكترونية الموحدة
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-black tracking-tight">
+            استمارة طلب كفالة الرسوم الأكاديمية
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 font-normal">
-            يرجى تعبئة كافة الحقول بدقة. تُحفظ البيانات أثناء الكتابة وتُرسل مباشرة إلى قاعدة البيانات.
+          <p className="text-xs sm:text-sm text-zinc-600 mt-2 leading-relaxed">
+            يرجى إدخال البيانات الأكاديمية والمالية بدقة كاملة. تُحفظ البيانات وتُرفع مباشرة للجنة التدقيق.
           </p>
         </div>
 
-        {/* Minimalist 3-Step Indicator */}
-        <div className="mb-6 flex items-center justify-between text-xs font-semibold text-slate-500 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
-          <span className={step >= 1 ? 'text-slate-900' : ''}>1. الدراسة والتواصل</span>
-          <span className="text-slate-300">•</span>
-          <span className={step >= 2 ? 'text-slate-900' : ''}>2. الأسرة والدخل</span>
-          <span className="text-slate-300">•</span>
-          <span className={step >= 3 ? 'text-slate-900' : ''}>3. المصاريف والمصادقة</span>
+        {/* Architectural 3-Step Progress Header */}
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-8">
+          <div
+            className={`p-3.5 sm:p-4 rounded-sm border transition-all text-right ${
+              step === 1
+                ? 'border-black bg-white shadow-xs'
+                : step > 1
+                ? 'border-zinc-300 bg-white'
+                : 'border-zinc-200 bg-zinc-100/50'
+            }`}
+          >
+            <div className="font-mono text-[10px] text-zinc-400 mb-0.5">خطوة 01</div>
+            <div className={`text-xs font-bold leading-tight ${step >= 1 ? 'text-black' : 'text-zinc-500'}`}>
+              الدراسة والاتصال
+            </div>
+          </div>
+
+          <div
+            className={`p-3.5 sm:p-4 rounded-sm border transition-all text-right ${
+              step === 2
+                ? 'border-black bg-white shadow-xs'
+                : step > 2
+                ? 'border-zinc-300 bg-white'
+                : 'border-zinc-200 bg-zinc-100/50'
+            }`}
+          >
+            <div className="font-mono text-[10px] text-zinc-400 mb-0.5">خطوة 02</div>
+            <div className={`text-xs font-bold leading-tight ${step >= 2 ? 'text-black' : 'text-zinc-500'}`}>
+              الأسرة والدخل
+            </div>
+          </div>
+
+          <div
+            className={`p-3.5 sm:p-4 rounded-sm border transition-all text-right ${
+              step === 3
+                ? 'border-black bg-white shadow-xs'
+                : 'border-zinc-200 bg-zinc-100/50'
+            }`}
+          >
+            <div className="font-mono text-[10px] text-zinc-400 mb-0.5">خطوة 03</div>
+            <div className={`text-xs font-bold leading-tight ${step === 3 ? 'text-black' : 'text-zinc-500'}`}>
+              المصاريف والإقرار
+            </div>
+          </div>
         </div>
 
-        {/* Error Alert */}
+        {/* Error Alert Box */}
         {errorMessage && (
-          <div className="mb-5 p-3.5 rounded-xl border border-rose-200 bg-rose-50 text-rose-950 text-xs flex items-start gap-2.5">
-            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-            <div className="leading-relaxed font-medium">{errorMessage}</div>
+          <div className="mb-6 p-4 rounded-sm border-2 border-black bg-white text-black text-xs flex items-start gap-3 shadow-xs">
+            <AlertCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
+            <div className="leading-relaxed font-semibold">{errorMessage}</div>
           </div>
         )}
 
-        {/* Strict Disqualification Warning Banner */}
-        <div className="mb-6 p-4 rounded-xl border border-rose-200 bg-rose-50/70 text-rose-950 text-xs flex items-start gap-3 shadow-2xs">
-          <ShieldAlert className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <div className="font-bold text-rose-900 text-xs sm:text-sm">تنبيه صارم بشأن صحة البيانات:</div>
-            <p className="leading-relaxed text-rose-800 text-[11px] sm:text-xs font-medium">
-              تخضع جميع البيانات للمطابقة الرسمية والتدقيق المكتبي والميداني مع الكشوفات المعتمدة. يُعد إدخال أي معلومات غير صحيحة أو مضللة سبباً موجباً للاستبعاد الفوري والنهائي للطلب دون أي استثناء.
-            </p>
+        {/* Legal Disqualification Warning Notice */}
+        <div className="mb-6 p-4 rounded-sm border border-zinc-300 bg-white text-right flex items-start gap-3 shadow-2xs">
+          <ShieldAlert className="w-4 h-4 text-black shrink-0 mt-0.5" />
+          <div className="text-xs">
+            <strong className="font-bold text-black block mb-0.5">
+              تنبيه تدقيق ومسؤولية قانونية:
+            </strong>
+            <span className="text-zinc-600 leading-relaxed text-[11px] sm:text-xs">
+              تخضع كافة البيانات للمطابقة الرسمية مع كشوفات الجامعات وسجلات الأحوال المدنية. أي تضليل أو عدم دقة في البيانات المُدخلة يستوجب الاستبعاد الفوري والنهائي للطلب دون استثناء.
+            </span>
           </div>
         </div>
 
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
-          {/* Honeypot */}
+        <form onSubmit={handleSubmit} className="bg-white rounded-sm border border-zinc-300 p-6 sm:p-10 shadow-xs text-black">
+          {/* Honeypot for Anti-Bot */}
           <div style={{ display: 'none' }} aria-hidden="true">
             <input
               type="text"
@@ -489,8 +544,8 @@ export default function ApplicationForm() {
               {/* Personal Details */}
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="fullName" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                    الاسم الرباعي كاملاً <span className="text-rose-500">*</span>
+                  <label htmlFor="fullName" className="block text-xs font-bold text-black mb-1.5">
+                    الاسم الرباعي كاملاً <span className="text-zinc-500">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -498,21 +553,22 @@ export default function ApplicationForm() {
                     required
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
-                    className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                    placeholder="أدخل اسمك الرباعي كما هو مدون في الهوية الشخصية"
+                    className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="phoneNumber" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      رقم الهاتف للتواصل <span className="text-rose-500">*</span>
+                    <label htmlFor="phoneNumber" className="block text-xs font-bold text-black mb-1.5">
+                      رقم الهاتف للتواصل <span className="text-zinc-500">*</span>
                     </label>
                     <div className="flex gap-2" dir="ltr">
                       <input
                         type="text"
                         readOnly
                         value={formData.phoneCountryCode}
-                        className="w-16 h-11 px-2 text-sm rounded-lg border border-slate-200 bg-slate-100 text-center font-mono text-slate-700"
+                        className="w-16 h-11 px-2 text-sm rounded-sm border border-zinc-300 bg-zinc-100 text-center font-mono text-black font-semibold"
                       />
                       <input
                         id="phoneNumber"
@@ -520,20 +576,21 @@ export default function ApplicationForm() {
                         required
                         value={formData.phoneNumber}
                         onChange={(e) => updateField('phoneNumber', e.target.value)}
-                        className="flex-1 h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono transition-all"
+                        placeholder="7XXXXXXXX"
+                        className="flex-1 h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="governorateOrCity" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      المحافظة في المملكة الأردنية الهاشمية <span className="text-rose-500">*</span>
+                    <label htmlFor="governorateOrCity" className="block text-xs font-bold text-black mb-1.5">
+                      المحافظة في المملكة الأردنية الهاشمية <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="governorateOrCity"
                       value={formData.governorateOrCity}
                       onChange={(e) => updateField('governorateOrCity', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black transition-colors"
                     >
                       <option value="عمان">عمان</option>
                       <option value="إربد">إربد</option>
@@ -552,23 +609,23 @@ export default function ApplicationForm() {
                 </div>
               </div>
 
-              {/* High School (Tawjihi) Details - Mandatory for everyone */}
-              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3">
+              {/* High School (Tawjihi) Details */}
+              <div className="p-4 sm:p-5 rounded-sm border border-zinc-300 bg-zinc-50 space-y-3">
                 <div>
-                  <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                    <GraduationCap className="w-4 h-4 text-slate-700" />
+                  <div className="text-xs font-bold text-black flex items-center gap-1.5">
+                    <GraduationCap className="w-4 h-4 text-black" />
                     <span>بيانات شهادة الثانوية العامة (التوجيهي)</span>
-                    <span className="text-rose-500">*</span>
+                    <span className="text-zinc-500">*</span>
                   </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">
-                    مطلوبة لجميع المتقدمين لغايات التدقيق والمفاضلة الأكاديمية الرسمية
+                  <div className="text-[11px] text-zinc-500 mt-0.5">
+                    مطلوبة لجميع المتقدمين لغايات التحقق المكتبي والمفاضلة الأكاديمية الرسمية
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                   <div>
-                    <label htmlFor="tawjihiGpa" className="block text-xs font-semibold text-slate-800 mb-1">
-                      معدل التوجيهي (%) <span className="text-rose-500">*</span>
+                    <label htmlFor="tawjihiGpa" className="block text-xs font-semibold text-black mb-1">
+                      معدل التوجيهي (%) <span className="text-zinc-500">*</span>
                     </label>
                     <input
                       id="tawjihiGpa"
@@ -579,19 +636,20 @@ export default function ApplicationForm() {
                       required
                       value={formData.tawjihiGpa}
                       onChange={(e) => updateField('tawjihiGpa', e.target.value === '' ? '' : Number(e.target.value))}
-                      className="w-full h-10 px-3 text-sm rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      placeholder="85.5"
+                      className="w-full h-10 px-3 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="tawjihiBranch" className="block text-xs font-semibold text-slate-800 mb-1">
-                      فرع الثانوية العامة <span className="text-rose-500">*</span>
+                    <label htmlFor="tawjihiBranch" className="block text-xs font-semibold text-black mb-1">
+                      فرع الثانوية العامة <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="tawjihiBranch"
                       value={formData.tawjihiBranch}
                       onChange={(e) => updateField('tawjihiBranch', e.target.value)}
-                      className="w-full h-10 px-3 text-xs rounded-lg border border-slate-200 bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      className="w-full h-10 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
                     >
                       <option value="علمي">علمي</option>
                       <option value="أدبي">أدبي</option>
@@ -605,14 +663,14 @@ export default function ApplicationForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="tawjihiYear" className="block text-xs font-semibold text-slate-800 mb-1">
-                      سنة الحصول على الشهادة <span className="text-rose-500">*</span>
+                    <label htmlFor="tawjihiYear" className="block text-xs font-semibold text-black mb-1">
+                      سنة الحصول على الشهادة <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="tawjihiYear"
                       value={formData.tawjihiYear}
                       onChange={(e) => updateField('tawjihiYear', e.target.value)}
-                      className="w-full h-10 px-3 text-xs rounded-lg border border-slate-200 bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
+                      className="w-full h-10 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black font-mono"
                     >
                       <option value="2025">2025</option>
                       <option value="2024">2024</option>
@@ -628,10 +686,29 @@ export default function ApplicationForm() {
               {/* Academic & University Profile */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
-                    الوضع الجامعي الراهن للمتقدم <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold text-black mb-2">
+                    الوضع الجامعي الراهن للمتقدم <span className="text-zinc-500">*</span>
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateField('hasAttendedUniversity', false);
+                        updateField('enrollmentStatus', 'prospective');
+                        updateField('academicYearOrSemester', 'مقبل على السنة الأولى');
+                      }}
+                      className={`p-3.5 rounded-sm border text-right transition-all cursor-pointer ${
+                        !formData.hasAttendedUniversity
+                          ? 'border-black bg-black text-white shadow-xs'
+                          : 'border-zinc-300 bg-white text-zinc-700 hover:border-black'
+                      }`}
+                    >
+                      <div className="font-bold text-xs">خريج ثانوية عامة (توجيهي)</div>
+                      <div className={`text-[11px] mt-0.5 ${!formData.hasAttendedUniversity ? 'text-zinc-300' : 'text-zinc-500'}`}>
+                        مقبل على التسجيل الجامعي ولم يلتحق بالجامعة بعد
+                      </div>
+                    </button>
+
                     <button
                       type="button"
                       onClick={() => {
@@ -641,52 +718,33 @@ export default function ApplicationForm() {
                           updateField('academicYearOrSemester', 'السنة الأولى');
                         }
                       }}
-                      className={`p-3.5 rounded-xl border text-right transition-all cursor-pointer ${
+                      className={`p-3.5 rounded-sm border text-right transition-all cursor-pointer ${
                         formData.hasAttendedUniversity
-                          ? 'border-slate-900 bg-slate-900 text-white shadow-xs'
-                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+                          ? 'border-black bg-black text-white shadow-xs'
+                          : 'border-zinc-300 bg-white text-zinc-700 hover:border-black'
                       }`}
                     >
                       <div className="font-bold text-xs">طالب جامعي حالياً</div>
-                      <div className={`text-[11px] mt-0.5 ${formData.hasAttendedUniversity ? 'text-slate-300' : 'text-slate-500'}`}>
+                      <div className={`text-[11px] mt-0.5 ${formData.hasAttendedUniversity ? 'text-zinc-300' : 'text-zinc-500'}`}>
                         ملتحق بجامعة / كلية أو معلق قيده بسبب الرسوم
-                      </div>
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        updateField('hasAttendedUniversity', false);
-                        updateField('enrollmentStatus', 'prospective');
-                        updateField('academicYearOrSemester', 'مقبل على السنة الأولى');
-                      }}
-                      className={`p-3.5 rounded-xl border text-right transition-all cursor-pointer ${
-                        !formData.hasAttendedUniversity
-                          ? 'border-slate-900 bg-slate-900 text-white shadow-xs'
-                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
-                      }`}
-                    >
-                      <div className="font-bold text-xs">خريج ثانوية عامة (توجيهي)</div>
-                      <div className={`text-[11px] mt-0.5 ${!formData.hasAttendedUniversity ? 'text-slate-300' : 'text-slate-500'}`}>
-                        مقبل على التسجيل الجامعي ولم يلتحق بالجامعة بعد
                       </div>
                     </button>
                   </div>
                 </div>
 
                 {formData.hasAttendedUniversity ? (
-                  /* Enrolled / Previous University student fields */
+                  /* Enrolled student fields */
                   <div className="space-y-4 pt-1">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="enrollmentStatus" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                          الحالة الأكاديمية الراهنة <span className="text-rose-500">*</span>
+                        <label htmlFor="enrollmentStatus" className="block text-xs font-bold text-black mb-1.5">
+                          الحالة الأكاديمية الراهنة <span className="text-zinc-500">*</span>
                         </label>
                         <select
                           id="enrollmentStatus"
                           value={formData.enrollmentStatus}
                           onChange={(e) => updateField('enrollmentStatus', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black transition-colors"
                         >
                           <option value="enrolled">منتظم في الدراسة حالياً ومطالب بالرسوم</option>
                           <option value="paused">متوقف أو معلق القيد بسبب تراكم الرسوم</option>
@@ -695,14 +753,14 @@ export default function ApplicationForm() {
                       </div>
 
                       <div>
-                        <label htmlFor="academicYearOrSemester" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                          السنة أو المستوى الدراسي الحالي <span className="text-rose-500">*</span>
+                        <label htmlFor="academicYearOrSemester" className="block text-xs font-bold text-black mb-1.5">
+                          السنة أو المستوى الدراسي الحالي <span className="text-zinc-500">*</span>
                         </label>
                         <select
                           id="academicYearOrSemester"
                           value={formData.academicYearOrSemester}
                           onChange={(e) => updateField('academicYearOrSemester', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black transition-colors"
                         >
                           <option value="السنة الأولى">السنة الأولى</option>
                           <option value="السنة الثانية">السنة الثانية</option>
@@ -715,8 +773,8 @@ export default function ApplicationForm() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="institutionName" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                          اسم الجامعة أو الكلية المقيد بها <span className="text-rose-500">*</span>
+                        <label htmlFor="institutionName" className="block text-xs font-bold text-black mb-1.5">
+                          اسم الجامعة أو الكلية المقيد بها <span className="text-zinc-500">*</span>
                         </label>
                         <input
                           id="institutionName"
@@ -724,13 +782,14 @@ export default function ApplicationForm() {
                           required
                           value={formData.institutionName}
                           onChange={(e) => updateField('institutionName', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                          placeholder="الجامعة الأردنية، اليرموك، العلوم والتكنولوجيا..."
+                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="major" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                          التخصص الأكاديمي الملتحق به <span className="text-rose-500">*</span>
+                        <label htmlFor="major" className="block text-xs font-bold text-black mb-1.5">
+                          التخصص الأكاديمي الملتحق به <span className="text-zinc-500">*</span>
                         </label>
                         <input
                           id="major"
@@ -738,7 +797,8 @@ export default function ApplicationForm() {
                           required
                           value={formData.major}
                           onChange={(e) => updateField('major', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                          placeholder="الهندسة المدنية، التمريض، المحاسبة..."
+                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
                         />
                       </div>
                     </div>
@@ -748,8 +808,8 @@ export default function ApplicationForm() {
                   <div className="space-y-4 pt-1">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="institutionName" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                          الجامعة أو الكلية المرغوبة / المقبول بها مبدئياً <span className="text-rose-500">*</span>
+                        <label htmlFor="institutionName" className="block text-xs font-bold text-black mb-1.5">
+                          الجامعة أو الكلية المرغوبة / المقبول بها مبدئياً <span className="text-zinc-500">*</span>
                         </label>
                         <input
                           id="institutionName"
@@ -757,13 +817,14 @@ export default function ApplicationForm() {
                           required
                           value={formData.institutionName}
                           onChange={(e) => updateField('institutionName', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                          placeholder="اسم الجامعة الأردنية المستهدفة"
+                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="major" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                          التخصص الأكاديمي المطلوب دراسته <span className="text-rose-500">*</span>
+                        <label htmlFor="major" className="block text-xs font-bold text-black mb-1.5">
+                          التخصص الأكاديمي المطلوب دراسته <span className="text-zinc-500">*</span>
                         </label>
                         <input
                           id="major"
@@ -771,7 +832,8 @@ export default function ApplicationForm() {
                           required
                           value={formData.major}
                           onChange={(e) => updateField('major', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                          placeholder="التخصص الأكاديمي المطلوب"
+                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
                         />
                       </div>
                     </div>
@@ -780,14 +842,14 @@ export default function ApplicationForm() {
 
                 {/* Tuition Details Box */}
                 <div className="pt-2">
-                  <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-3">
+                  <div className="p-4 sm:p-5 rounded-sm border border-zinc-300 bg-zinc-50 space-y-3">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label htmlFor="periodTuitionFee" className="block text-xs font-semibold text-slate-800 mb-1">
+                        <label htmlFor="periodTuitionFee" className="block text-xs font-semibold text-black mb-1">
                           {formData.hasAttendedUniversity
                             ? 'الرسوم الجامعية المستحقة للفصل (د.أ)'
                             : 'الرسوم التقديرية للفصل الدراسي الأول (د.أ)'}{' '}
-                          <span className="text-rose-500">*</span>
+                          <span className="text-zinc-500">*</span>
                         </label>
                         <input
                           id="periodTuitionFee"
@@ -796,12 +858,13 @@ export default function ApplicationForm() {
                           required
                           value={formData.periodTuitionFee}
                           onChange={(e) => updateField('periodTuitionFee', e.target.value === '' ? '' : Number(e.target.value))}
-                          className="w-full h-10 px-3 text-sm rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                          placeholder="مثال: 850"
+                          className="w-full h-10 px-3 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="amountAlreadyPaid" className="block text-xs font-semibold text-slate-800 mb-1">
+                        <label htmlFor="amountAlreadyPaid" className="block text-xs font-semibold text-black mb-1">
                           {formData.hasAttendedUniversity
                             ? 'المبلغ المسدد من الرسوم إن وجد (د.أ)'
                             : 'المبلغ المتوفر للمساهمة إن وجد (د.أ)'}
@@ -812,14 +875,15 @@ export default function ApplicationForm() {
                           min="0"
                           value={formData.amountAlreadyPaid}
                           onChange={(e) => updateField('amountAlreadyPaid', e.target.value === '' ? '' : Number(e.target.value))}
-                          className="w-full h-10 px-3 text-sm rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                          placeholder="0"
+                          className="w-full h-10 px-3 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                         />
                       </div>
                     </div>
 
-                    <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
-                      <span className="text-slate-600 font-medium">المبلغ المتبقي المطلوب كفالته:</span>
-                      <span className="font-mono font-bold text-slate-900 text-sm">
+                    <div className="pt-3 border-t border-zinc-200 flex items-center justify-between text-xs">
+                      <span className="text-zinc-700 font-semibold">المبلغ المتبقي المطلوب كفالته:</span>
+                      <span className="font-mono font-bold text-black text-sm bg-white px-3 py-1 rounded-sm border border-zinc-300">
                         {calculatedUncovered.toLocaleString('ar-JO')} د.أ
                       </span>
                     </div>
@@ -831,12 +895,12 @@ export default function ApplicationForm() {
 
           {/* STEP 2: Household & Income */}
           {step === 2 && (
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="householdSize" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      عدد أفراد الأسرة المقيمين معاً <span className="text-rose-500">*</span>
+                    <label htmlFor="householdSize" className="block text-xs font-bold text-black mb-1.5">
+                      عدد أفراد الأسرة المقيمين معاً <span className="text-zinc-500">*</span>
                     </label>
                     <input
                       id="householdSize"
@@ -845,19 +909,19 @@ export default function ApplicationForm() {
                       required
                       value={formData.householdSize}
                       onChange={(e) => updateField('householdSize', Number(e.target.value))}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
+                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="actualBreadwinner" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      من يعيل الأسرة فعلياً؟ <span className="text-rose-500">*</span>
+                    <label htmlFor="actualBreadwinner" className="block text-xs font-bold text-black mb-1.5">
+                      من يعيل الأسرة فعلياً؟ <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="actualBreadwinner"
                       value={formData.actualBreadwinner}
                       onChange={(e) => updateField('actualBreadwinner', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
                     >
                       <option value="father">الأب</option>
                       <option value="mother">الأم</option>
@@ -871,14 +935,14 @@ export default function ApplicationForm() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="fatherStatus" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      حالة الأب <span className="text-rose-500">*</span>
+                    <label htmlFor="fatherStatus" className="block text-xs font-bold text-black mb-1.5">
+                      حالة الأب <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="fatherStatus"
                       value={formData.fatherStatus}
                       onChange={(e) => updateField('fatherStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
                     >
                       <option value="working">يعمل</option>
                       <option value="unemployed">لا يعمل / متعطل</option>
@@ -890,14 +954,14 @@ export default function ApplicationForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="motherStatus" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      حالة الأم <span className="text-rose-500">*</span>
+                    <label htmlFor="motherStatus" className="block text-xs font-bold text-black mb-1.5">
+                      حالة الأم <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="motherStatus"
                       value={formData.motherStatus}
                       onChange={(e) => updateField('motherStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
                     >
                       <option value="unemployed">ربة منزل / لا تعمل</option>
                       <option value="working">تعمل</option>
@@ -911,63 +975,67 @@ export default function ApplicationForm() {
                 {/* Conditional Income Sources */}
                 <div className="pt-2 space-y-3">
                   {!['deceased', 'unavailable'].includes(formData.fatherStatus) && (
-                    <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
                       <div>
-                        <div className="text-xs font-semibold text-slate-900">دخل الأب الشهري (د.أ)</div>
-                        <div className="text-[11px] text-slate-500">الراتب أو العائد الصافي</div>
+                        <div className="text-xs font-bold text-black">دخل الأب الشهري (د.أ)</div>
+                        <div className="text-[11px] text-zinc-500">الراتب أو العائد الصافي الشهري</div>
                       </div>
                       <input
                         type="number"
                         min="0"
                         value={formData.fatherIncomeAmount}
                         onChange={(e) => updateField('fatherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                        className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                        placeholder="0"
+                        className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                       />
                     </div>
                   )}
 
                   {!['deceased', 'unavailable'].includes(formData.motherStatus) && (
-                    <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
+                    <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
                       <div>
-                        <div className="text-xs font-semibold text-slate-900">دخل الأم الشهري (د.أ)</div>
-                        <div className="text-[11px] text-slate-500">الراتب أو العائد الصافي</div>
+                        <div className="text-xs font-bold text-black">دخل الأم الشهري (د.أ)</div>
+                        <div className="text-[11px] text-zinc-500">الراتب أو العائد الصافي الشهري</div>
                       </div>
                       <input
                         type="number"
                         min="0"
                         value={formData.motherIncomeAmount}
                         onChange={(e) => updateField('motherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                        className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                        placeholder="0"
+                        className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                       />
                     </div>
                   )}
 
                   {/* Pensions or aid */}
-                  <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
+                  <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
                     <div>
-                      <div className="text-xs font-semibold text-slate-900">معاشات تقاعدية / تأمينات (د.أ)</div>
-                      <div className="text-[11px] text-slate-500">معاش التقاعد أو الدعم البديل إن وجد</div>
+                      <div className="text-xs font-bold text-black">معاشات تقاعدية / تأمينات (د.أ)</div>
+                      <div className="text-[11px] text-zinc-500">معاش التقاعد أو الدعم البديل إن وجد</div>
                     </div>
                     <input
                       type="number"
                       min="0"
                       value={formData.pensionsAmount}
                       onChange={(e) => updateField('pensionsAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                      className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      placeholder="0"
+                      className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                     />
                   </div>
 
-                  <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
+                  <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
                     <div>
-                      <div className="text-xs font-semibold text-slate-900">مساعدات نقدية منتظمة (د.أ)</div>
-                      <div className="text-[11px] text-slate-500">المعونة الوطنية أو دعم الجمعيات المستمر</div>
+                      <div className="text-xs font-bold text-black">مساعدات نقدية منتظمة (د.أ)</div>
+                      <div className="text-[11px] text-zinc-500">المعونة الوطنية أو دعم الجمعيات المستمر</div>
                     </div>
                     <input
                       type="number"
                       min="0"
                       value={formData.regularAidAmount}
                       onChange={(e) => updateField('regularAidAmount', e.target.value === '' ? '' : Number(e.target.value))}
-                      className="w-32 h-9 px-3 text-xs rounded-lg border border-slate-200 bg-white font-mono focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      placeholder="0"
+                      className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
                     />
                   </div>
                 </div>
@@ -981,14 +1049,14 @@ export default function ApplicationForm() {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="housingStatus" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                      حالة سكن الأسرة <span className="text-rose-500">*</span>
+                    <label htmlFor="housingStatus" className="block text-xs font-bold text-black mb-1.5">
+                      حالة سكن الأسرة <span className="text-zinc-500">*</span>
                     </label>
                     <select
                       id="housingStatus"
                       value={formData.housingStatus}
                       onChange={(e) => updateField('housingStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900"
+                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
                     >
                       <option value="rented">إيجار</option>
                       <option value="owned">ملك</option>
@@ -999,8 +1067,8 @@ export default function ApplicationForm() {
 
                   {formData.housingStatus === 'rented' && (
                     <div>
-                      <label htmlFor="monthlyRent" className="block text-xs font-semibold text-slate-800 mb-1.5">
-                        الإيجار الشهري التقريبي (د.أ) <span className="text-rose-500">*</span>
+                      <label htmlFor="monthlyRent" className="block text-xs font-bold text-black mb-1.5">
+                        الإيجار الشهري التقريبي (د.أ) <span className="text-zinc-500">*</span>
                       </label>
                       <input
                         id="monthlyRent"
@@ -1008,14 +1076,15 @@ export default function ApplicationForm() {
                         min="0"
                         value={formData.monthlyRent}
                         onChange={(e) => updateField('monthlyRent', e.target.value === '' ? '' : Number(e.target.value))}
-                        className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
+                        placeholder="مثال: 180"
+                        className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black font-mono"
                       />
                     </div>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="recurringNecessaryMedicalExpenses" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                  <label htmlFor="recurringNecessaryMedicalExpenses" className="block text-xs font-bold text-black mb-1.5">
                     مصاريف علاجية شهرية متكررة لأمراض مزمنة غير مغطاة (د.أ) إن وجدت
                   </label>
                   <input
@@ -1024,12 +1093,13 @@ export default function ApplicationForm() {
                     min="0"
                     value={formData.recurringNecessaryMedicalExpenses}
                     onChange={(e) => updateField('recurringNecessaryMedicalExpenses', e.target.value === '' ? '' : Number(e.target.value))}
-                    className="w-full h-11 px-3.5 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 font-mono"
+                    placeholder="0"
+                    className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black font-mono"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="additionalContext" className="block text-xs font-semibold text-slate-800 mb-1.5">
+                  <label htmlFor="additionalContext" className="block text-xs font-bold text-black mb-1.5">
                     ملاحظات أو ظروف خاصة تود إحاطة اللجنة بها (اختياري)
                   </label>
                   <textarea
@@ -1037,67 +1107,68 @@ export default function ApplicationForm() {
                     value={formData.additionalContext}
                     onChange={(e) => updateField('additionalContext', e.target.value)}
                     rows={2}
-                    className="w-full p-3 text-sm rounded-lg border border-slate-200 bg-slate-50/30 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 resize-none"
+                    placeholder="بيان أي ظروف استثنائية أو التزامات..."
+                    className="w-full p-3 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black resize-none"
                   />
                 </div>
 
                 {/* Declarations (Mandatory) */}
                 <div className="pt-2">
-                  <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2.5">
-                    <label className="flex items-start gap-2.5 text-xs text-slate-800 cursor-pointer">
+                  <div className="p-4 sm:p-5 rounded-sm border border-zinc-300 bg-zinc-50 space-y-3">
+                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         checked={formData.infoAccuracyAcknowledged}
                         onChange={(e) => updateField('infoAccuracyAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-0 shrink-0"
+                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
                       />
-                      <span>أقر بصحة ودقة كافة المعلومات المدخلة حسب علمي ومعرفتي.</span>
+                      <span>أقر بصحة ودقة كافة المعلومات والبيانات المدخلة في هذا الطلب حسب علمي ومسؤوليتي.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-slate-800 cursor-pointer">
+                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         checked={formData.dataUseAcknowledged}
                         onChange={(e) => updateField('dataUseAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-0 shrink-0"
+                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
                       />
-                      <span>أوافق على استخدام هذه البيانات من قبل لجنة المبادرة لدراسة الطلب بسرية تامة.</span>
+                      <span>أوافق على استخدام هذه البيانات من قبل لجنة المبادرة لغايات التدقيق والمفاضلة بسرية تامة.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-slate-800 cursor-pointer">
+                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         checked={formData.willingToProvideDocsAcknowledged}
                         onChange={(e) => updateField('willingToProvideDocsAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-0 shrink-0"
+                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
                       />
                       <span>أتعهد بتقديم كافة المستندات الثبوتية الرسمية عند طلب اللجنة للتحقق المكتبي.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-slate-800 cursor-pointer">
+                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         checked={formData.noGuaranteeAcknowledged}
                         onChange={(e) => updateField('noGuaranteeAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded border-slate-300 text-slate-900 focus:ring-0 shrink-0"
+                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
                       />
-                      <span>أعلم أن تقديم الطلب لا يضمن القبول التلقائي ويخضع لقرار اللجنة.</span>
+                      <span>أعلم أن تقديم الطلب خطوة للمفاضلة ولا يعني القبول التلقائي ويخضع لقرار اللجنة النهائي.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-rose-900 bg-rose-50/60 p-2.5 rounded-lg border border-rose-200 cursor-pointer">
+                    <label className="flex items-start gap-2.5 text-xs text-black bg-white p-3 rounded-sm border border-zinc-400 cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         checked={formData.disqualificationAcknowledged}
                         onChange={(e) => updateField('disqualificationAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded border-rose-300 text-rose-600 focus:ring-0 shrink-0"
+                        className="mt-0.5 rounded-sm border-black accent-black text-black shrink-0"
                       />
-                      <span className="font-semibold">
-                        أقر بأنني على علم تام بأن إدخال أي معلومات غير صحيحة أو مضللة سيؤدي للاستبعاد الفوري والنهائي للطلب في مرحلة التدقيق ومطابقة الوثائق الرسمية.
+                      <span className="font-bold leading-relaxed">
+                        أقر بأنني على علم تام ومطلق بأن إدخال أي معلومات غير صحيحة أو مضللة سيؤدي للاستبعاد الفوري والنهائي للطلب في مرحلة التدقيق ومطابقة الوثائق الرسمية دون أي استثناء.
                       </span>
                     </label>
                   </div>
@@ -1106,14 +1177,14 @@ export default function ApplicationForm() {
             </div>
           )}
 
-          {/* Stepper Buttons */}
-          <div className="mt-8 pt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+          {/* Stepper Navigation Buttons */}
+          <div className="mt-8 pt-6 border-t border-zinc-200 flex items-center justify-between gap-3">
             {step > 1 ? (
               <button
                 type="button"
                 onClick={handlePrev}
                 disabled={isSubmitting}
-                className="py-2.5 px-4 rounded-lg border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="py-2.5 px-5 rounded-sm border border-zinc-300 text-black bg-white hover:bg-zinc-100 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4" />
                 <span>الخطوة السابقة</span>
@@ -1126,7 +1197,7 @@ export default function ApplicationForm() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="py-2.5 px-5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                className="py-2.5 px-6 rounded-sm bg-black hover:bg-zinc-800 text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
               >
                 <span>متابعة</span>
                 <ChevronLeft className="w-4 h-4" />
@@ -1135,7 +1206,7 @@ export default function ApplicationForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="py-2.5 px-6 rounded-lg bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-xs cursor-pointer"
+                className="py-2.5 px-7 rounded-sm bg-black hover:bg-zinc-800 disabled:bg-zinc-400 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-xs cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
@@ -1145,7 +1216,7 @@ export default function ApplicationForm() {
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>إرسال الطلب نهائياً</span>
+                    <span>إرسال الطلب رسمياً</span>
                   </>
                 )}
               </button>

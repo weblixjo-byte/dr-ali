@@ -10,9 +10,9 @@ const notoArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  title: 'مبادرة المنح الدراسية للطلاب الأكثر حاجة | بوابة التقديم الرسمية',
+  title: 'مبادرة د. علي التعليمية | صندوق كفالة الرسوم الجامعية الأردنية',
   description:
-    'بوابة التقديم الرسمية والشفافة لمبادرة المنح الدراسية المخصصة للطلاب الأكثر حاجة اقتصادية، لاعتماد 6 منح دراسية وفق معايير موضوعية ومعلنة.',
+    'البوابة الرسمية لكفالة الرسوم الأكاديمية للطلبة المقبلين على التعليم الجامعي والمنتظمين فيه من ذوي الحاجة الاقتصادية في المملكة الأردنية الهاشمية.',
 };
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" className={`${notoArabic.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-slate-200 selection:text-slate-900">
+      <body className="min-h-screen bg-white text-black font-sans antialiased selection:bg-black selection:text-white">
         {children}
       </body>
     </html>
