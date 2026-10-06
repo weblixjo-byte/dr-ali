@@ -343,10 +343,10 @@ export default function ApplicationForm() {
   // SUCCESS CONFIRMATION VIEW (OFFICIAL CERTIFICATE RECEIPT)
   if (successData) {
     return (
-      <section id="apply" className="py-20 bg-gradient-to-b from-white via-emerald-50/20 to-white border-b border-zinc-200">
+      <section id="apply" className="py-20 bg-[#facc15] border-y-[3px] border-black">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
-          <div className="bg-white p-8 sm:p-12 rounded-3xl border-2 border-zinc-200 text-center relative overflow-hidden">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white flex items-center justify-center mx-auto mb-5 border-2 border-black/10">
+          <div className="bg-white p-8 sm:p-12 rounded-3xl border-[3px] border-black text-center relative overflow-hidden">
+            <div className="w-16 h-16 rounded-2xl bg-[#22c55e] text-white flex items-center justify-center mx-auto mb-5 border-2 border-black">
               <Check className="w-8 h-8 stroke-[3]" />
             </div>
 
@@ -442,14 +442,14 @@ export default function ApplicationForm() {
   }
 
   return (
-    <section id="apply" className="py-20 sm:py-28 bg-gradient-to-b from-white via-emerald-50/10 to-white border-b border-zinc-200">
+    <section id="apply" className="py-20 sm:py-28 bg-[#facc15] border-y-[3px] border-black">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-4xl font-black text-black tracking-tight leading-tight">
             استمارة طلب كفالة الرسوم الأكاديمية
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-600 mt-2.5 leading-relaxed font-semibold">
+          <p className="text-xs sm:text-sm text-black/85 mt-2.5 leading-relaxed font-bold">
             يرجى إدخال البيانات الأكاديمية والمالية بدقة كاملة. تُحفظ البيانات وتُرفع مباشرة للجنة التدقيق.
           </p>
         </div>
@@ -459,10 +459,10 @@ export default function ApplicationForm() {
           <div
             className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 1
-                ? 'bg-emerald-100'
+                ? 'bg-white border-[2.5px]'
                 : step > 1
-                ? 'bg-white'
-                : 'bg-zinc-100 opacity-60'
+                ? 'bg-emerald-100'
+                : 'bg-white/80 opacity-75'
             }`}
           >
             <div className="flex items-center justify-between mb-1.5">
@@ -485,10 +485,10 @@ export default function ApplicationForm() {
           <div
             className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 2
-                ? 'bg-emerald-100'
+                ? 'bg-white border-[2.5px]'
                 : step > 2
-                ? 'bg-white'
-                : 'bg-zinc-100 opacity-60'
+                ? 'bg-emerald-100'
+                : 'bg-white/80 opacity-75'
             }`}
           >
             <div className="flex items-center justify-between mb-1.5">
@@ -511,8 +511,8 @@ export default function ApplicationForm() {
           <div
             className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 3
-                ? 'bg-emerald-100'
-                : 'bg-zinc-100 opacity-60'
+                ? 'bg-white border-[2.5px]'
+                : 'bg-white/80 opacity-75'
             }`}
           >
             <div className="flex items-center justify-between mb-1.5">
@@ -532,29 +532,29 @@ export default function ApplicationForm() {
 
         {/* Error Alert Box */}
         {errorMessage && (
-          <div className="mb-6 p-4 rounded-2xl border-2 border-black bg-rose-100 text-black text-xs flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-rose-700 shrink-0 mt-0.5 stroke-[2.5]" />
+          <div className="mb-6 p-4 rounded-2xl border-2 border-black bg-rose-200 text-black text-xs flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-rose-800 shrink-0 mt-0.5 stroke-[2.5]" />
             <div className="leading-relaxed font-black">{errorMessage}</div>
           </div>
         )}
 
-        {/* Legal Disqualification Warning Notice */}
-        <div className="mb-6 p-5 rounded-3xl border-2 border-black bg-amber-50 text-right flex items-start gap-3.5">
-          <div className="w-9 h-9 rounded-xl bg-amber-300 border-2 border-black flex items-center justify-center shrink-0 text-black mt-0.5">
+        {/* Legal Disqualification Warning Notice (Matching Red Style) */}
+        <div className="mb-6 p-5 rounded-3xl border-[2.5px] border-black bg-[#fee2e2] text-right flex items-start gap-3.5">
+          <div className="w-9 h-9 rounded-xl bg-[#ef4444] border-2 border-black flex items-center justify-center shrink-0 text-white mt-0.5">
             <ShieldAlert className="w-5 h-5 stroke-[2.5]" />
           </div>
           <div className="text-xs">
-            <strong className="font-black text-black block mb-0.5 text-xs sm:text-sm">
+            <strong className="font-black text-red-950 block mb-0.5 text-xs sm:text-sm">
               تنبيه تدقيق ومسؤولية قانونية:
             </strong>
-            <span className="text-zinc-800 leading-relaxed text-[11px] sm:text-xs font-semibold">
+            <span className="text-zinc-900 leading-relaxed text-[11px] sm:text-xs font-semibold">
               تخضع كافة البيانات للمطابقة الرسمية مع كشوفات الجامعات وسجلات الأحوال المدنية. أي تضليل أو عدم دقة في البيانات المُدخلة يستوجب الاستبعاد الفوري والنهائي للطلب دون استثناء.
             </span>
           </div>
         </div>
 
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-[2.5px] border-black p-6 sm:p-10 text-black">
+        <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-[3px] border-black p-6 sm:p-10 text-black">
           {/* Honeypot for Anti-Bot */}
           <div style={{ display: 'none' }} aria-hidden="true">
             <input
@@ -573,8 +573,8 @@ export default function ApplicationForm() {
               {/* Personal Details */}
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="fullName" className="block text-xs font-bold text-black mb-1.5">
-                    الاسم الرباعي كاملاً <span className="text-zinc-500">*</span>
+                  <label htmlFor="fullName" className="block text-xs font-black text-black mb-1.5">
+                    الاسم الرباعي كاملاً <span className="text-[#16a34a] font-black">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -583,21 +583,21 @@ export default function ApplicationForm() {
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
                     placeholder="أدخل اسمك الرباعي كما هو مدون في الهوية الشخصية"
-                    className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                    className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black placeholder:text-zinc-400 focus:ring-2 focus:ring-[#22c55e] transition-all font-medium"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="phoneNumber" className="block text-xs font-bold text-black mb-1.5">
-                      رقم الهاتف للتواصل <span className="text-zinc-500">*</span>
+                    <label htmlFor="phoneNumber" className="block text-xs font-black text-black mb-1.5">
+                      رقم الهاتف للتواصل <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <div className="flex gap-2" dir="ltr">
                       <input
                         type="text"
                         readOnly
                         value={formData.phoneCountryCode}
-                        className="w-16 h-11 px-2 text-sm rounded-sm border border-zinc-300 bg-zinc-100 text-center font-mono text-black font-semibold"
+                        className="w-16 h-11 px-2 text-sm rounded-xl border-2 border-black bg-zinc-100 text-center font-mono text-black font-black"
                       />
                       <input
                         id="phoneNumber"
@@ -606,20 +606,20 @@ export default function ApplicationForm() {
                         value={formData.phoneNumber}
                         onChange={(e) => updateField('phoneNumber', e.target.value)}
                         placeholder="7XXXXXXXX"
-                        className="flex-1 h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                        className="flex-1 h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-mono focus:ring-2 focus:ring-[#22c55e] transition-all font-bold"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="governorateOrCity" className="block text-xs font-bold text-black mb-1.5">
-                      المحافظة في المملكة الأردنية الهاشمية <span className="text-zinc-500">*</span>
+                    <label htmlFor="governorateOrCity" className="block text-xs font-black text-black mb-1.5">
+                      المحافظة في المملكة الأردنية الهاشمية <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="governorateOrCity"
                       value={formData.governorateOrCity}
                       onChange={(e) => updateField('governorateOrCity', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                      className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black focus:ring-2 focus:ring-[#22c55e] transition-all font-bold cursor-pointer"
                     >
                       <option value="عمان">عمان</option>
                       <option value="إربد">إربد</option>
@@ -639,22 +639,26 @@ export default function ApplicationForm() {
               </div>
 
               {/* High School (Tawjihi) Details */}
-              <div className="p-4 sm:p-5 rounded-sm border border-zinc-300 bg-zinc-50 space-y-3">
-                <div>
-                  <div className="text-xs font-bold text-black flex items-center gap-1.5">
-                    <GraduationCap className="w-4 h-4 text-black" />
-                    <span>بيانات شهادة الثانوية العامة (التوجيهي)</span>
-                    <span className="text-zinc-500">*</span>
+              <div className="p-5 rounded-2xl border-2 border-black bg-emerald-50/60 space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-[#22c55e] text-white border-2 border-black flex items-center justify-center shrink-0">
+                    <GraduationCap className="w-4 h-4 stroke-[2.5]" />
                   </div>
-                  <div className="text-[11px] text-zinc-500 mt-0.5">
-                    مطلوبة لجميع المتقدمين لغايات التحقق المكتبي والمفاضلة الأكاديمية الرسمية
+                  <div>
+                    <div className="text-xs font-black text-black flex items-center gap-1">
+                      <span>بيانات شهادة الثانوية العامة (التوجيهي)</span>
+                      <span className="text-[#16a34a] font-black">*</span>
+                    </div>
+                    <div className="text-[11px] text-zinc-600 font-semibold mt-0.5">
+                      مطلوبة لجميع المتقدمين لغايات التحقق المكتبي والمفاضلة الأكاديمية الرسمية
+                    </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                   <div>
-                    <label htmlFor="tawjihiGpa" className="block text-xs font-semibold text-black mb-1">
-                      معدل التوجيهي (%) <span className="text-zinc-500">*</span>
+                    <label htmlFor="tawjihiGpa" className="block text-xs font-black text-black mb-1">
+                      معدل التوجيهي (%) <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <input
                       id="tawjihiGpa"
@@ -666,19 +670,19 @@ export default function ApplicationForm() {
                       value={formData.tawjihiGpa}
                       onChange={(e) => updateField('tawjihiGpa', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="85.5"
-                      className="w-full h-10 px-3 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3 text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="tawjihiBranch" className="block text-xs font-semibold text-black mb-1">
-                      فرع الثانوية العامة <span className="text-zinc-500">*</span>
+                    <label htmlFor="tawjihiBranch" className="block text-xs font-black text-black mb-1">
+                      فرع الثانوية العامة <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="tawjihiBranch"
                       value={formData.tawjihiBranch}
                       onChange={(e) => updateField('tawjihiBranch', e.target.value)}
-                      className="w-full h-10 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                     >
                       <option value="علمي">علمي</option>
                       <option value="أدبي">أدبي</option>
@@ -692,14 +696,14 @@ export default function ApplicationForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="tawjihiYear" className="block text-xs font-semibold text-black mb-1">
-                      سنة الحصول على الشهادة <span className="text-zinc-500">*</span>
+                    <label htmlFor="tawjihiYear" className="block text-xs font-black text-black mb-1">
+                      سنة الحصول على الشهادة <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="tawjihiYear"
                       value={formData.tawjihiYear}
                       onChange={(e) => updateField('tawjihiYear', e.target.value)}
-                      className="w-full h-10 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black font-mono"
+                      className="w-full h-11 px-3 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                     >
                       <option value="2025">2025</option>
                       <option value="2024">2024</option>
@@ -715,8 +719,8 @@ export default function ApplicationForm() {
               {/* Academic & University Profile */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-bold text-black mb-2">
-                    الوضع الجامعي الراهن للمتقدم <span className="text-zinc-500">*</span>
+                  <label className="block text-xs font-black text-black mb-2">
+                    الوضع الجامعي الراهن للمتقدم <span className="text-[#16a34a] font-black">*</span>
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button
@@ -726,14 +730,14 @@ export default function ApplicationForm() {
                         updateField('enrollmentStatus', 'prospective');
                         updateField('academicYearOrSemester', 'مقبل على السنة الأولى');
                       }}
-                      className={`p-3.5 rounded-sm border text-right transition-all cursor-pointer ${
+                      className={`p-4 rounded-2xl border-2 border-black text-right transition-all cursor-pointer ${
                         !formData.hasAttendedUniversity
-                          ? 'border-black bg-black text-white'
-                          : 'border-zinc-300 bg-white text-zinc-700 hover:border-black'
+                          ? 'bg-[#22c55e] text-white'
+                          : 'bg-white hover:bg-zinc-50 text-black'
                       }`}
                     >
-                      <div className="font-bold text-xs">خريج ثانوية عامة (توجيهي)</div>
-                      <div className={`text-[11px] mt-0.5 ${!formData.hasAttendedUniversity ? 'text-zinc-300' : 'text-zinc-500'}`}>
+                      <div className="font-black text-xs sm:text-sm">خريج ثانوية عامة (توجيهي)</div>
+                      <div className={`text-[11px] mt-0.5 ${!formData.hasAttendedUniversity ? 'text-emerald-100 font-semibold' : 'text-zinc-600 font-medium'}`}>
                         مقبل على التسجيل الجامعي ولم يلتحق بالجامعة بعد
                       </div>
                     </button>
@@ -747,14 +751,14 @@ export default function ApplicationForm() {
                           updateField('academicYearOrSemester', 'السنة الأولى');
                         }
                       }}
-                      className={`p-3.5 rounded-sm border text-right transition-all cursor-pointer ${
+                      className={`p-4 rounded-2xl border-2 border-black text-right transition-all cursor-pointer ${
                         formData.hasAttendedUniversity
-                          ? 'border-black bg-black text-white'
-                          : 'border-zinc-300 bg-white text-zinc-700 hover:border-black'
+                          ? 'bg-[#22c55e] text-white'
+                          : 'bg-white hover:bg-zinc-50 text-black'
                       }`}
                     >
-                      <div className="font-bold text-xs">طالب جامعي حالياً</div>
-                      <div className={`text-[11px] mt-0.5 ${formData.hasAttendedUniversity ? 'text-zinc-300' : 'text-zinc-500'}`}>
+                      <div className="font-black text-xs sm:text-sm">طالب جامعي حالياً</div>
+                      <div className={`text-[11px] mt-0.5 ${formData.hasAttendedUniversity ? 'text-emerald-100 font-semibold' : 'text-zinc-600 font-medium'}`}>
                         ملتحق بجامعة / كلية أو معلق قيده بسبب الرسوم
                       </div>
                     </button>
@@ -766,14 +770,14 @@ export default function ApplicationForm() {
                   <div className="space-y-4 pt-1">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="enrollmentStatus" className="block text-xs font-bold text-black mb-1.5">
-                          الحالة الأكاديمية الراهنة <span className="text-zinc-500">*</span>
+                        <label htmlFor="enrollmentStatus" className="block text-xs font-black text-black mb-1.5">
+                          الحالة الأكاديمية الراهنة <span className="text-[#16a34a] font-black">*</span>
                         </label>
                         <select
                           id="enrollmentStatus"
                           value={formData.enrollmentStatus}
                           onChange={(e) => updateField('enrollmentStatus', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                          className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                         >
                           <option value="enrolled">منتظم في الدراسة حالياً ومطالب بالرسوم</option>
                           <option value="paused">متوقف أو معلق القيد بسبب تراكم الرسوم</option>
@@ -782,14 +786,14 @@ export default function ApplicationForm() {
                       </div>
 
                       <div>
-                        <label htmlFor="academicYearOrSemester" className="block text-xs font-bold text-black mb-1.5">
-                          السنة أو المستوى الدراسي الحالي <span className="text-zinc-500">*</span>
+                        <label htmlFor="academicYearOrSemester" className="block text-xs font-black text-black mb-1.5">
+                          السنة أو المستوى الدراسي الحالي <span className="text-[#16a34a] font-black">*</span>
                         </label>
                         <select
                           id="academicYearOrSemester"
                           value={formData.academicYearOrSemester}
                           onChange={(e) => updateField('academicYearOrSemester', e.target.value)}
-                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                          className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                         >
                           <option value="السنة الأولى">السنة الأولى</option>
                           <option value="السنة الثانية">السنة الثانية</option>
@@ -802,8 +806,8 @@ export default function ApplicationForm() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="institutionName" className="block text-xs font-bold text-black mb-1.5">
-                          اسم الجامعة أو الكلية المقيد بها <span className="text-zinc-500">*</span>
+                        <label htmlFor="institutionName" className="block text-xs font-black text-black mb-1.5">
+                          اسم الجامعة أو الكلية المقيد بها <span className="text-[#16a34a] font-black">*</span>
                         </label>
                         <input
                           id="institutionName"
@@ -812,13 +816,13 @@ export default function ApplicationForm() {
                           value={formData.institutionName}
                           onChange={(e) => updateField('institutionName', e.target.value)}
                           placeholder="الجامعة الأردنية، اليرموك، العلوم والتكنولوجيا..."
-                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                          className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black placeholder:text-zinc-400 focus:ring-2 focus:ring-[#22c55e] font-medium"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="major" className="block text-xs font-bold text-black mb-1.5">
-                          التخصص الأكاديمي الملتحق به <span className="text-zinc-500">*</span>
+                        <label htmlFor="major" className="block text-xs font-black text-black mb-1.5">
+                          التخصص الأكاديمي الملتحق به <span className="text-[#16a34a] font-black">*</span>
                         </label>
                         <input
                           id="major"
@@ -827,7 +831,7 @@ export default function ApplicationForm() {
                           value={formData.major}
                           onChange={(e) => updateField('major', e.target.value)}
                           placeholder="الهندسة المدنية، التمريض، المحاسبة..."
-                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                          className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black placeholder:text-zinc-400 focus:ring-2 focus:ring-[#22c55e] font-medium"
                         />
                       </div>
                     </div>
@@ -837,8 +841,8 @@ export default function ApplicationForm() {
                   <div className="space-y-4 pt-1">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="institutionName" className="block text-xs font-bold text-black mb-1.5">
-                          الجامعة أو الكلية المرغوبة / المقبول بها مبدئياً <span className="text-zinc-500">*</span>
+                        <label htmlFor="institutionName" className="block text-xs font-black text-black mb-1.5">
+                          الجامعة أو الكلية المرغوبة / المقبول بها مبدئياً <span className="text-[#16a34a] font-black">*</span>
                         </label>
                         <input
                           id="institutionName"
@@ -847,13 +851,13 @@ export default function ApplicationForm() {
                           value={formData.institutionName}
                           onChange={(e) => updateField('institutionName', e.target.value)}
                           placeholder="اسم الجامعة الأردنية المستهدفة"
-                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                          className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black placeholder:text-zinc-400 focus:ring-2 focus:ring-[#22c55e] font-medium"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="major" className="block text-xs font-bold text-black mb-1.5">
-                          التخصص الأكاديمي المطلوب دراسته <span className="text-zinc-500">*</span>
+                        <label htmlFor="major" className="block text-xs font-black text-black mb-1.5">
+                          التخصص الأكاديمي المطلوب دراسته <span className="text-[#16a34a] font-black">*</span>
                         </label>
                         <input
                           id="major"
@@ -862,7 +866,7 @@ export default function ApplicationForm() {
                           value={formData.major}
                           onChange={(e) => updateField('major', e.target.value)}
                           placeholder="التخصص الأكاديمي المطلوب"
-                          className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black placeholder:text-zinc-400 focus:border-black focus:ring-1 focus:ring-black transition-colors"
+                          className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black placeholder:text-zinc-400 focus:ring-2 focus:ring-[#22c55e] font-medium"
                         />
                       </div>
                     </div>
@@ -928,8 +932,8 @@ export default function ApplicationForm() {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="householdSize" className="block text-xs font-bold text-black mb-1.5">
-                      عدد أفراد الأسرة المقيمين معاً <span className="text-zinc-500">*</span>
+                    <label htmlFor="householdSize" className="block text-xs font-black text-black mb-1.5">
+                      عدد أفراد الأسرة المقيمين معاً <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <input
                       id="householdSize"
@@ -938,19 +942,19 @@ export default function ApplicationForm() {
                       required
                       value={formData.householdSize}
                       onChange={(e) => updateField('householdSize', Number(e.target.value))}
-                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="actualBreadwinner" className="block text-xs font-bold text-black mb-1.5">
-                      من يعيل الأسرة فعلياً؟ <span className="text-zinc-500">*</span>
+                    <label htmlFor="actualBreadwinner" className="block text-xs font-black text-black mb-1.5">
+                      من يعيل الأسرة فعلياً؟ <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="actualBreadwinner"
                       value={formData.actualBreadwinner}
                       onChange={(e) => updateField('actualBreadwinner', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                     >
                       <option value="father">الأب</option>
                       <option value="mother">الأم</option>
@@ -964,14 +968,14 @@ export default function ApplicationForm() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="fatherStatus" className="block text-xs font-bold text-black mb-1.5">
-                      حالة الأب <span className="text-zinc-500">*</span>
+                    <label htmlFor="fatherStatus" className="block text-xs font-black text-black mb-1.5">
+                      حالة الأب <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="fatherStatus"
                       value={formData.fatherStatus}
                       onChange={(e) => updateField('fatherStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                     >
                       <option value="working">يعمل</option>
                       <option value="unemployed">لا يعمل / متعطل</option>
@@ -983,14 +987,14 @@ export default function ApplicationForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="motherStatus" className="block text-xs font-bold text-black mb-1.5">
-                      حالة الأم <span className="text-zinc-500">*</span>
+                    <label htmlFor="motherStatus" className="block text-xs font-black text-black mb-1.5">
+                      حالة الأم <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="motherStatus"
                       value={formData.motherStatus}
                       onChange={(e) => updateField('motherStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                     >
                       <option value="unemployed">ربة منزل / لا تعمل</option>
                       <option value="working">تعمل</option>
@@ -1004,10 +1008,10 @@ export default function ApplicationForm() {
                 {/* Conditional Income Sources */}
                 <div className="pt-2 space-y-3">
                   {!['deceased', 'unavailable'].includes(formData.fatherStatus) && (
-                    <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
+                    <div className="flex items-center justify-between p-4 rounded-2xl border-2 border-black bg-zinc-50">
                       <div>
-                        <div className="text-xs font-bold text-black">دخل الأب الشهري (د.أ)</div>
-                        <div className="text-[11px] text-zinc-500">الراتب أو العائد الصافي الشهري</div>
+                        <div className="text-xs font-black text-black">دخل الأب الشهري (د.أ)</div>
+                        <div className="text-[11px] text-zinc-600 font-semibold">الراتب أو العائد الصافي الشهري</div>
                       </div>
                       <input
                         type="number"
@@ -1015,16 +1019,16 @@ export default function ApplicationForm() {
                         value={formData.fatherIncomeAmount}
                         onChange={(e) => updateField('fatherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="0"
-                        className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
+                        className="w-32 h-10 px-3 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                       />
                     </div>
                   )}
 
                   {!['deceased', 'unavailable'].includes(formData.motherStatus) && (
-                    <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
+                    <div className="flex items-center justify-between p-4 rounded-2xl border-2 border-black bg-zinc-50">
                       <div>
-                        <div className="text-xs font-bold text-black">دخل الأم الشهري (د.أ)</div>
-                        <div className="text-[11px] text-zinc-500">الراتب أو العائد الصافي الشهري</div>
+                        <div className="text-xs font-black text-black">دخل الأم الشهري (د.أ)</div>
+                        <div className="text-[11px] text-zinc-600 font-semibold">الراتب أو العائد الصافي الشهري</div>
                       </div>
                       <input
                         type="number"
@@ -1032,16 +1036,16 @@ export default function ApplicationForm() {
                         value={formData.motherIncomeAmount}
                         onChange={(e) => updateField('motherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="0"
-                        className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
+                        className="w-32 h-10 px-3 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                       />
                     </div>
                   )}
 
                   {/* Pensions or aid */}
-                  <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
+                  <div className="flex items-center justify-between p-4 rounded-2xl border-2 border-black bg-zinc-50">
                     <div>
-                      <div className="text-xs font-bold text-black">معاشات تقاعدية / تأمينات (د.أ)</div>
-                      <div className="text-[11px] text-zinc-500">معاش التقاعد أو الدعم البديل إن وجد</div>
+                      <div className="text-xs font-black text-black">معاشات تقاعدية / تأمينات (د.أ)</div>
+                      <div className="text-[11px] text-zinc-600 font-semibold">معاش التقاعد أو الدعم البديل إن وجد</div>
                     </div>
                     <input
                       type="number"
@@ -1049,14 +1053,14 @@ export default function ApplicationForm() {
                       value={formData.pensionsAmount}
                       onChange={(e) => updateField('pensionsAmount', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="0"
-                      className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-32 h-10 px-3 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                     />
                   </div>
 
-                  <div className="flex items-center justify-between p-3.5 rounded-sm border border-zinc-300 bg-zinc-50">
+                  <div className="flex items-center justify-between p-4 rounded-2xl border-2 border-black bg-zinc-50">
                     <div>
-                      <div className="text-xs font-bold text-black">مساعدات نقدية منتظمة (د.أ)</div>
-                      <div className="text-[11px] text-zinc-500">المعونة الوطنية أو دعم الجمعيات المستمر</div>
+                      <div className="text-xs font-black text-black">مساعدات نقدية منتظمة (د.أ)</div>
+                      <div className="text-[11px] text-zinc-600 font-semibold">المعونة الوطنية أو دعم الجمعيات المستمر</div>
                     </div>
                     <input
                       type="number"
@@ -1064,7 +1068,7 @@ export default function ApplicationForm() {
                       value={formData.regularAidAmount}
                       onChange={(e) => updateField('regularAidAmount', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="0"
-                      className="w-32 h-9 px-3 text-xs rounded-sm border border-zinc-300 bg-white text-black font-mono focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-32 h-10 px-3 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                     />
                   </div>
                 </div>
@@ -1078,14 +1082,14 @@ export default function ApplicationForm() {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="housingStatus" className="block text-xs font-bold text-black mb-1.5">
-                      حالة سكن الأسرة <span className="text-zinc-500">*</span>
+                    <label htmlFor="housingStatus" className="block text-xs font-black text-black mb-1.5">
+                      حالة سكن الأسرة <span className="text-[#16a34a] font-black">*</span>
                     </label>
                     <select
                       id="housingStatus"
                       value={formData.housingStatus}
                       onChange={(e) => updateField('housingStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black"
+                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border-2 border-black bg-white text-black font-bold focus:ring-2 focus:ring-[#22c55e] cursor-pointer"
                     >
                       <option value="rented">إيجار</option>
                       <option value="owned">ملك</option>
@@ -1096,8 +1100,8 @@ export default function ApplicationForm() {
 
                   {formData.housingStatus === 'rented' && (
                     <div>
-                      <label htmlFor="monthlyRent" className="block text-xs font-bold text-black mb-1.5">
-                        الإيجار الشهري التقريبي (د.أ) <span className="text-zinc-500">*</span>
+                      <label htmlFor="monthlyRent" className="block text-xs font-black text-black mb-1.5">
+                        الإيجار الشهري التقريبي (د.أ) <span className="text-[#16a34a] font-black">*</span>
                       </label>
                       <input
                         id="monthlyRent"
@@ -1106,14 +1110,14 @@ export default function ApplicationForm() {
                         value={formData.monthlyRent}
                         onChange={(e) => updateField('monthlyRent', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="مثال: 180"
-                        className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black font-mono"
+                        className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                       />
                     </div>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="recurringNecessaryMedicalExpenses" className="block text-xs font-bold text-black mb-1.5">
+                  <label htmlFor="recurringNecessaryMedicalExpenses" className="block text-xs font-black text-black mb-1.5">
                     مصاريف علاجية شهرية متكررة لأمراض مزمنة غير مغطاة (د.أ) إن وجدت
                   </label>
                   <input
@@ -1123,12 +1127,12 @@ export default function ApplicationForm() {
                     value={formData.recurringNecessaryMedicalExpenses}
                     onChange={(e) => updateField('recurringNecessaryMedicalExpenses', e.target.value === '' ? '' : Number(e.target.value))}
                     placeholder="0"
-                    className="w-full h-11 px-3.5 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black font-mono"
+                    className="w-full h-11 px-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-mono font-bold focus:ring-2 focus:ring-[#22c55e]"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="additionalContext" className="block text-xs font-bold text-black mb-1.5">
+                  <label htmlFor="additionalContext" className="block text-xs font-black text-black mb-1.5">
                     ملاحظات أو ظروف خاصة تود إحاطة اللجنة بها (اختياري)
                   </label>
                   <textarea
@@ -1137,66 +1141,66 @@ export default function ApplicationForm() {
                     onChange={(e) => updateField('additionalContext', e.target.value)}
                     rows={2}
                     placeholder="بيان أي ظروف استثنائية أو التزامات..."
-                    className="w-full p-3 text-sm rounded-sm border border-zinc-300 bg-white text-black focus:border-black focus:ring-1 focus:ring-black resize-none"
+                    className="w-full p-3.5 text-sm rounded-xl border-2 border-black bg-white text-black font-medium focus:ring-2 focus:ring-[#22c55e] resize-none"
                   />
                 </div>
 
                 {/* Declarations (Mandatory) */}
                 <div className="pt-2">
-                  <div className="p-4 sm:p-5 rounded-sm border border-zinc-300 bg-zinc-50 space-y-3">
-                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
+                  <div className="p-5 sm:p-6 rounded-2xl border-2 border-black bg-emerald-50/50 space-y-3.5">
+                    <label className="flex items-start gap-3 text-xs text-black cursor-pointer font-bold leading-relaxed">
                       <input
                         type="checkbox"
                         required
                         checked={formData.infoAccuracyAcknowledged}
                         onChange={(e) => updateField('infoAccuracyAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded-md border-2 border-black accent-[#22c55e] text-black shrink-0 cursor-pointer"
                       />
                       <span>أقر بصحة ودقة كافة المعلومات والبيانات المدخلة في هذا الطلب حسب علمي ومسؤوليتي.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
+                    <label className="flex items-start gap-3 text-xs text-black cursor-pointer font-bold leading-relaxed">
                       <input
                         type="checkbox"
                         required
                         checked={formData.dataUseAcknowledged}
                         onChange={(e) => updateField('dataUseAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded-md border-2 border-black accent-[#22c55e] text-black shrink-0 cursor-pointer"
                       />
                       <span>أوافق على استخدام هذه البيانات من قبل لجنة المبادرة لغايات التدقيق والمفاضلة بسرية تامة.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
+                    <label className="flex items-start gap-3 text-xs text-black cursor-pointer font-bold leading-relaxed">
                       <input
                         type="checkbox"
                         required
                         checked={formData.willingToProvideDocsAcknowledged}
                         onChange={(e) => updateField('willingToProvideDocsAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded-md border-2 border-black accent-[#22c55e] text-black shrink-0 cursor-pointer"
                       />
                       <span>أتعهد بتقديم كافة المستندات الثبوتية الرسمية عند طلب اللجنة للتحقق المكتبي.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-black cursor-pointer">
+                    <label className="flex items-start gap-3 text-xs text-black cursor-pointer font-bold leading-relaxed">
                       <input
                         type="checkbox"
                         required
                         checked={formData.noGuaranteeAcknowledged}
                         onChange={(e) => updateField('noGuaranteeAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded-sm border-zinc-400 accent-black text-black shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded-md border-2 border-black accent-[#22c55e] text-black shrink-0 cursor-pointer"
                       />
                       <span>أعلم أن تقديم الطلب خطوة للمفاضلة ولا يعني القبول التلقائي ويخضع لقرار اللجنة النهائي.</span>
                     </label>
 
-                    <label className="flex items-start gap-2.5 text-xs text-black bg-white p-3 rounded-sm border border-zinc-400 cursor-pointer">
+                    <label className="flex items-start gap-3 text-xs text-black bg-[#fee2e2] p-4 rounded-2xl border-2 border-black cursor-pointer">
                       <input
                         type="checkbox"
                         required
                         checked={formData.disqualificationAcknowledged}
                         onChange={(e) => updateField('disqualificationAcknowledged', e.target.checked)}
-                        className="mt-0.5 rounded-sm border-black accent-black text-black shrink-0"
+                        className="mt-0.5 w-4 h-4 rounded-md border-2 border-black accent-rose-600 text-black shrink-0 cursor-pointer"
                       />
-                      <span className="font-bold leading-relaxed">
+                      <span className="font-black text-red-950 leading-relaxed text-xs sm:text-[13px]">
                         أقر بأنني على علم تام ومطلق بأن إدخال أي معلومات غير صحيحة أو مضللة سيؤدي للاستبعاد الفوري والنهائي للطلب في مرحلة التدقيق ومطابقة الوثائق الرسمية دون أي استثناء.
                       </span>
                     </label>
@@ -1207,13 +1211,13 @@ export default function ApplicationForm() {
           )}
 
           {/* Stepper Navigation Buttons */}
-          <div className="mt-8 pt-6 border-t border-zinc-200 flex items-center justify-between gap-3">
+          <div className="mt-8 pt-6 border-t-2 border-black/10 flex items-center justify-between gap-3">
             {step > 1 ? (
               <button
                 type="button"
                 onClick={handlePrev}
                 disabled={isSubmitting}
-                className="py-3 px-6 rounded-2xl border-2 border-zinc-300 hover:border-black text-black bg-white hover:bg-zinc-50 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all cursor-pointer"
+                className="py-3 px-6 rounded-2xl border-2 border-black text-black bg-white hover:bg-zinc-100 text-xs sm:text-sm font-black flex items-center gap-1.5 transition-all cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4 stroke-[2.5]" />
                 <span>الخطوة السابقة</span>
