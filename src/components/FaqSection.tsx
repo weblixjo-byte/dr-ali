@@ -48,8 +48,8 @@ export default function FaqSection() {
                 key={idx}
                 className={`rounded-3xl border-2 border-black transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? 'bg-emerald-50/60 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)]'
-                    : 'bg-white shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
+                    ? 'bg-emerald-50/60'
+                    : 'bg-white'
                 }`}
               >
                 <button
@@ -61,7 +61,7 @@ export default function FaqSection() {
                   <div className="flex items-center gap-3.5">
                     <span className={`w-8 h-8 rounded-xl border-2 border-black font-mono text-xs font-black flex items-center justify-center shrink-0 ${
                       isOpen
-                        ? 'bg-[#22c55e] text-white shadow-[1px_1.5px_0px_0px_rgba(0,0,0,1)]'
+                        ? 'bg-[#22c55e] text-white'
                         : 'bg-zinc-100 text-black'
                     }`}>
                       {idx + 1}
@@ -85,9 +85,9 @@ export default function FaqSection() {
         </div>
 
         {/* Need Help Callout Banner */}
-        <div className="mt-12 p-6 sm:p-7 rounded-3xl bg-amber-100 border-[2.5px] border-black shadow-[5px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col sm:flex-row items-center justify-between gap-5 text-right">
+        <div className="mt-12 p-6 sm:p-7 rounded-3xl bg-amber-100 border-[2.5px] border-black flex flex-col sm:flex-row items-center justify-between gap-5 text-right">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-[#22c55e] text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[#22c55e] text-white border-2 border-black flex items-center justify-center shrink-0">
               <MessageCircleQuestion className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div>
@@ -102,7 +102,7 @@ export default function FaqSection() {
 
           <a
             href="mailto:info@scholarship-initiative.org"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white hover:bg-zinc-50 text-black font-black text-xs sm:text-sm border-2 border-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 transition-all shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white hover:bg-zinc-50 text-black font-black text-xs sm:text-sm border-2 border-black active:translate-x-0.5 active:translate-y-0.5 transition-all shrink-0"
             dir="ltr"
           >
             <Mail className="w-4 h-4 text-[#16a34a] stroke-[2.5]" />

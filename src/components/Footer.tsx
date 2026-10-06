@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Column 1: Brand & Mission (5 cols) */}
           <div className="lg:col-span-5 text-right space-y-4">
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-white text-[#16a34a] flex items-center justify-center border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+              <div className="w-12 h-12 rounded-2xl bg-white text-[#16a34a] flex items-center justify-center border-2 border-black">
                 <GraduationCap className="w-7 h-7 stroke-[2.5]" />
               </div>
               <div>
@@ -98,7 +98,7 @@ export default function Footer() {
               </p>
               <a
                 href="mailto:info@scholarship-initiative.org"
-                className="inline-flex items-center gap-2 p-3 rounded-2xl bg-white text-black border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-transform text-xs font-bold w-full"
+                className="inline-flex items-center gap-2 p-3 rounded-2xl bg-white text-black border-2 border-black hover:-translate-y-0.5 transition-transform text-xs font-bold w-full"
                 dir="ltr"
               >
                 <Mail className="w-4 h-4 text-[#16a34a] shrink-0 stroke-[2.5]" />
@@ -110,7 +110,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#facc15] hover:bg-[#eab308] text-black text-xs font-black border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#facc15] hover:bg-[#eab308] text-black text-xs font-black border-2 border-black active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer"
               >
                 <ArrowUp className="w-4 h-4 stroke-[3]" />
                 <span>العودة لأعلى الصفحة</span>

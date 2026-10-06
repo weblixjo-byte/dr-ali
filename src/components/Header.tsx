@@ -13,7 +13,7 @@ export default function Header() {
         
         {/* Brand Logo & Title with Vibrant Emerald/Amber Badge */}
         <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="w-11 h-11 rounded-2xl bg-[#22c55e] text-white flex items-center justify-center border-2 border-black shadow-[2.5px_2.5px_0px_0px_rgba(0,0,0,1)] group-hover:scale-105 transition-transform duration-200">
+          <div className="w-11 h-11 rounded-2xl bg-[#22c55e] text-white flex items-center justify-center border-2 border-black group-hover:scale-105 transition-transform duration-200">
             <GraduationCap className="w-6 h-6 stroke-[2.4]" />
           </div>
           <div>
@@ -64,7 +64,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href="#apply"
-            className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            className="hidden sm:inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black active:translate-x-0.5 active:translate-y-0.5 transition-all"
           >
             <span>تقديم طلب الكفالة</span>
             <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -84,7 +84,7 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-zinc-200 bg-white px-4 pt-3 pb-5 space-y-3 shadow-lg">
+        <div className="md:hidden border-t border-zinc-200 bg-white px-4 pt-3 pb-5 space-y-3">
           <a
             href="#"
             onClick={() => setMobileMenuOpen(false)}
@@ -117,7 +117,7 @@ export default function Header() {
           <a
             href="#apply"
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#22c55e] text-white font-extrabold text-sm border-2 border-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)]"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#22c55e] text-white font-extrabold text-sm border-2 border-black"
           >
             <span>تقديم طلب الكفالة</span>
             <ArrowDown className="w-4 h-4" />

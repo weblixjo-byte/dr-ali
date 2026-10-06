@@ -51,7 +51,7 @@ export default function Hero() {
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <a
                 href="#apply"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm sm:text-base font-black border-2 border-black shadow-[3px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm sm:text-base font-black border-2 border-black transition-all active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
               >
                 <span>بدء تعبئة طلب الكفالة</span>
                 <ArrowDown className="w-4 h-4 stroke-[2.5]" />
@@ -59,7 +59,7 @@ export default function Hero() {
 
               <a
                 href="#guidelines"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#facc15] hover:bg-[#eab308] text-black border-2 border-black text-sm font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#facc15] hover:bg-[#eab308] text-black border-2 border-black text-sm font-black transition-all cursor-pointer"
               >
                 <span>الشروط ومعايير الأهلية</span>
               </a>
@@ -67,11 +67,11 @@ export default function Hero() {
 
             {/* Institutional Trust Bullets Strip */}
             <div className="pt-6 border-t-2 border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-black">
-              <div className="flex items-center gap-2.5 bg-emerald-100/90 border-2 border-black rounded-2xl px-4 py-2.5 text-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex items-center gap-2.5 bg-emerald-100/90 border-2 border-black rounded-2xl px-4 py-2.5 text-black">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 stroke-[3]" />
                 <span>تغطية مباشرة لرسوم الساعات المعتمدة</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-amber-100/90 border-2 border-black rounded-2xl px-4 py-2.5 text-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex items-center gap-2.5 bg-amber-100/90 border-2 border-black rounded-2xl px-4 py-2.5 text-black">
                 <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0 stroke-[3]" />
                 <span>تدقيق رسمي ومحايد دون وساطة</span>
               </div>
@@ -94,9 +94,9 @@ export default function Hero() {
                 />
 
                 {/* Floating Card 1 (Top Left): Scholarship Badge */}
-                <div className="absolute top-[28%] -left-2 sm:-left-6 z-20 bg-white border-2 border-black rounded-3xl p-4 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1.5 duration-200">
+                <div className="absolute top-[28%] -left-2 sm:-left-6 z-20 bg-white border-2 border-black rounded-3xl p-4 max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1.5 duration-200">
                   <div className="flex items-center gap-2.5 mb-1.5">
-                    <div className="w-8 h-8 rounded-xl bg-[#22c55e] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-[#22c55e] text-white border-2 border-black flex items-center justify-center shrink-0">
                       <GraduationCap className="w-4 h-4 stroke-[2.5]" />
                     </div>
                     <span className="text-xs sm:text-[13px] font-black text-black">
@@ -109,9 +109,9 @@ export default function Hero() {
                 </div>
 
                 {/* Floating Card 2 (Bottom Right): Universities Badge */}
-                <div className="absolute bottom-6 -right-2 sm:-right-6 z-20 bg-white border-2 border-black rounded-3xl p-4 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1.5 duration-200">
+                <div className="absolute bottom-6 -right-2 sm:-right-6 z-20 bg-white border-2 border-black rounded-3xl p-4 max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1.5 duration-200">
                   <div className="flex items-center gap-2.5 mb-1.5">
-                    <div className="w-8 h-8 rounded-xl bg-[#facc15] text-black border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-xl bg-[#facc15] text-black border-2 border-black flex items-center justify-center shrink-0">
                       <School className="w-4 h-4 stroke-[2.5]" />
                     </div>
                     <span className="text-xs sm:text-[13px] font-black text-black">

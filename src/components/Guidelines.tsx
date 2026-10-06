@@ -11,7 +11,6 @@ export default function Guidelines() {
       cardBg: 'bg-[#22c55e]',
       badgeText: 'text-emerald-950',
       iconColor: 'text-[#16a34a]',
-      shadowStyle: '',
     },
     {
       num: '02',
@@ -21,7 +20,6 @@ export default function Guidelines() {
       cardBg: 'bg-[#eab308]',
       badgeText: 'text-amber-950',
       iconColor: 'text-amber-600',
-      shadowStyle: 'drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.5)]',
     },
     {
       num: '03',
@@ -31,7 +29,6 @@ export default function Guidelines() {
       cardBg: 'bg-[#22c55e]',
       badgeText: 'text-emerald-950',
       iconColor: 'text-[#16a34a]',
-      shadowStyle: '',
     },
   ];
 
@@ -56,26 +53,26 @@ export default function Guidelines() {
             return (
               <div
                 key={idx}
-                className={`${item.cardBg} rounded-3xl p-6 sm:p-7 border-[2.5px] border-black shadow-[5px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1.5 hover:shadow-[7px_9px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 text-right flex flex-col justify-between`}
+                className={`${item.cardBg} rounded-3xl p-6 sm:p-7 border-[2.5px] border-black hover:-translate-y-1.5 transition-all duration-200 text-right flex flex-col justify-between`}
               >
                 <div>
                   {/* Top Badge and Icon Strip */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-xs font-black px-3 py-1 rounded-xl bg-white text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    <span className="font-mono text-xs font-black px-3 py-1 rounded-xl bg-white text-black border-2 border-black">
                       معيار {item.num}
                     </span>
-                    <div className={`w-11 h-11 rounded-2xl bg-white ${item.iconColor} border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0`}>
+                    <div className={`w-11 h-11 rounded-2xl bg-white ${item.iconColor} border-2 border-black flex items-center justify-center shrink-0`}>
                       <IconComponent className="w-5 h-5 stroke-[2.4]" />
                     </div>
                   </div>
 
                   {/* Card Title (White Text) */}
-                  <h3 className={`text-lg sm:text-xl font-black text-white mb-3 leading-snug tracking-tight ${item.shadowStyle}`}>
+                  <h3 className="text-lg sm:text-xl font-black text-white mb-3 leading-snug tracking-tight">
                     {item.title}
                   </h3>
 
                   {/* Card Description (White Text) */}
-                  <p className={`text-xs sm:text-sm text-white font-semibold leading-relaxed ${item.shadowStyle}`}>
+                  <p className="text-xs sm:text-sm text-white font-semibold leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -85,8 +82,8 @@ export default function Guidelines() {
         </div>
 
         {/* Cartoon Styled Legal Disqualification Callout */}
-        <div className="p-5 sm:p-6 rounded-3xl border-[2.5px] border-black bg-amber-50 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] text-right flex items-start gap-4">
-          <div className="w-11 h-11 rounded-2xl bg-amber-300 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0 text-black mt-0.5">
+        <div className="p-5 sm:p-6 rounded-3xl border-[2.5px] border-black bg-amber-50 text-right flex items-start gap-4">
+          <div className="w-11 h-11 rounded-2xl bg-amber-300 border-2 border-black flex items-center justify-center shrink-0 text-black mt-0.5">
             <ShieldCheck className="w-6 h-6 stroke-[2.3]" />
           </div>
           <div className="text-xs sm:text-sm">

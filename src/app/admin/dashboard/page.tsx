@@ -467,7 +467,7 @@ export default function AdminDashboardPage() {
 
         {/* TAB 1: APPLICATIONS TABLE */}
         {activeTab === 'applications' && (
-          <div className="bg-white rounded border border-zinc-200 overflow-hidden shadow-xs">
+          <div className="bg-white rounded border border-zinc-200 overflow-hidden">
             {/* Search and Filters Bar */}
             <div className="p-4 border-b border-zinc-200 bg-zinc-50/50 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between text-xs">
               <div className="relative flex-1">
@@ -727,7 +727,7 @@ export default function AdminDashboardPage() {
             )}
 
             {/* Merit Ranking Table */}
-            <div className="bg-white rounded border border-zinc-200 overflow-hidden shadow-xs">
+            <div className="bg-white rounded border border-zinc-200 overflow-hidden">
               <div className="p-4 bg-zinc-50 border-b border-zinc-200 flex items-center justify-between">
                 <div>
                   <h3 className="font-bold text-sm text-black">
@@ -885,7 +885,7 @@ export default function AdminDashboardPage() {
 
         {/* TAB 4: AUDIT LOGS */}
         {activeTab === 'audit' && (
-          <div className="bg-white rounded border border-zinc-200 overflow-hidden shadow-xs">
+          <div className="bg-white rounded border border-zinc-200 overflow-hidden">
             <div className="p-4 bg-zinc-50 border-b border-zinc-200">
               <h3 className="font-bold text-sm text-black">سجل تدقيق العمليات والإجراءات</h3>
               <p className="text-xs text-zinc-500">
@@ -940,7 +940,7 @@ export default function AdminDashboardPage() {
       {/* DETAIL MODAL / DRAWER FOR SELECTED APPLICATION */}
       {selectedApp && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-          <div className="bg-white rounded border border-zinc-300 max-w-4xl w-full max-h-[92vh] flex flex-col shadow-xl text-black">
+          <div className="bg-white rounded border border-zinc-300 max-w-4xl w-full max-h-[92vh] flex flex-col text-black">
             {/* Modal Header */}
             <div className="p-4 border-b border-zinc-200 flex items-center justify-between bg-zinc-50">
               <div>
@@ -1293,7 +1293,7 @@ export default function AdminDashboardPage() {
       {/* CORRECTION RECORDING MODAL */}
       {showCorrectionModal && selectedApp && (
         <div className="fixed inset-0 z-60 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-white rounded border border-zinc-300 max-w-md w-full p-5 space-y-4 shadow-xl text-xs text-black">
+          <div className="bg-white rounded border border-zinc-300 max-w-md w-full p-5 space-y-4 text-xs text-black">
             <div className="flex items-center justify-between pb-2 border-b border-zinc-100">
               <h4 className="font-bold text-sm text-black">تسجيل تصحيح بيانات الطلب</h4>
               <button onClick={() => setShowCorrectionModal(false)}>

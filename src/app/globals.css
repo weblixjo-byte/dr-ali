@@ -19,14 +19,14 @@ body {
 
 /* Institutional Focus State with Emerald Theme */
 input:focus, select:focus, textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.4);
+  outline: 2px solid #22c55e;
+  outline-offset: 1px;
   border-color: #22c55e;
 }
 
 button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px #22c55e;
+  outline: 2px solid #22c55e;
+  outline-offset: 1px;
 }
 
 ::selection {

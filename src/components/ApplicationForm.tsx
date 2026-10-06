@@ -345,8 +345,8 @@ export default function ApplicationForm() {
     return (
       <section id="apply" className="py-20 bg-gradient-to-b from-white via-emerald-50/20 to-white border-b border-zinc-200">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
-          <div className="bg-white p-8 sm:p-12 rounded-3xl border-2 border-zinc-200 shadow-xl text-center relative overflow-hidden">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white flex items-center justify-center mx-auto mb-5 shadow-lg border-2 border-black/10">
+          <div className="bg-white p-8 sm:p-12 rounded-3xl border-2 border-zinc-200 text-center relative overflow-hidden">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white flex items-center justify-center mx-auto mb-5 border-2 border-black/10">
               <Check className="w-8 h-8 stroke-[3]" />
             </div>
 
@@ -359,13 +359,13 @@ export default function ApplicationForm() {
             </p>
 
             {/* Official Receipt Card */}
-            <div className="receipt-card border-[2.5px] border-black rounded-3xl p-6 sm:p-7 bg-emerald-50/50 mb-8 text-right text-xs shadow-[5px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="receipt-card border-[2.5px] border-black rounded-3xl p-6 sm:p-7 bg-emerald-50/50 mb-8 text-right text-xs">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b-2 border-black/10 mb-4 gap-2">
                 <div>
                   <div className="font-black text-black text-sm sm:text-base">إشعار استلام طلب كفالة دراسية</div>
                   <div className="text-[11px] text-zinc-600 font-semibold">مبادرة د. علي للتعليم الجامعي • المملكة الأردنية الهاشمية</div>
                 </div>
-                <div className="font-mono font-black text-black text-xs bg-[#facc15] px-3.5 py-1.5 rounded-xl border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] self-start sm:self-auto">
+                <div className="font-mono font-black text-black text-xs bg-[#facc15] px-3.5 py-1.5 rounded-xl border-2 border-black self-start sm:self-auto">
                   رقم الطلب: {successData.referenceNumber}
                 </div>
               </div>
@@ -389,7 +389,7 @@ export default function ApplicationForm() {
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-black/5">
                   <dt className="text-zinc-600 font-bold">المبلغ المطلوب كفالته:</dt>
-                  <dd className="font-mono font-black text-black text-sm bg-[#facc15] px-3 py-0.5 rounded-lg border border-black shadow-xs">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
+                  <dd className="font-mono font-black text-black text-sm bg-[#facc15] px-3 py-0.5 rounded-lg border border-black">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
                 </div>
                 <div className="flex justify-between py-1.5 border-b border-black/5">
                   <dt className="text-zinc-600 font-bold">تاريخ ووقت التقديم:</dt>
@@ -417,7 +417,7 @@ export default function ApplicationForm() {
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="flex-1 py-3.5 px-5 rounded-2xl border-2 border-black text-black bg-white hover:bg-zinc-50 text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5"
+                className="flex-1 py-3.5 px-5 rounded-2xl border-2 border-black text-black bg-white hover:bg-zinc-50 text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
               >
                 <Printer className="w-4 h-4 text-black stroke-[2.5]" />
                 <span>طباعة أو حفظ الإشعار (PDF)</span>
@@ -430,7 +430,7 @@ export default function ApplicationForm() {
                   setStep(1);
                   window.location.reload();
                 }}
-                className="py-3.5 px-8 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black shadow-[3px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer"
+                className="py-3.5 px-8 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black border-2 border-black active:translate-x-0.5 active:translate-y-0.5 transition-all cursor-pointer"
               >
                 العودة للصفحة الرئيسية
               </button>
@@ -459,9 +459,9 @@ export default function ApplicationForm() {
           <div
             className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 1
-                ? 'bg-emerald-100 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-emerald-100'
                 : step > 1
-                ? 'bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-white'
                 : 'bg-zinc-100 opacity-60'
             }`}
           >
@@ -485,9 +485,9 @@ export default function ApplicationForm() {
           <div
             className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 2
-                ? 'bg-emerald-100 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-emerald-100'
                 : step > 2
-                ? 'bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-white'
                 : 'bg-zinc-100 opacity-60'
             }`}
           >
@@ -511,7 +511,7 @@ export default function ApplicationForm() {
           <div
             className={`p-3.5 sm:p-4 rounded-3xl border-2 border-black transition-all text-right ${
               step === 3
-                ? 'bg-emerald-100 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]'
+                ? 'bg-emerald-100'
                 : 'bg-zinc-100 opacity-60'
             }`}
           >
@@ -532,15 +532,15 @@ export default function ApplicationForm() {
 
         {/* Error Alert Box */}
         {errorMessage && (
-          <div className="mb-6 p-4 rounded-2xl border-2 border-black bg-rose-100 text-black text-xs flex items-start gap-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          <div className="mb-6 p-4 rounded-2xl border-2 border-black bg-rose-100 text-black text-xs flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-rose-700 shrink-0 mt-0.5 stroke-[2.5]" />
             <div className="leading-relaxed font-black">{errorMessage}</div>
           </div>
         )}
 
         {/* Legal Disqualification Warning Notice */}
-        <div className="mb-6 p-5 rounded-3xl border-2 border-black bg-amber-50 shadow-[4px_5px_0px_0px_rgba(0,0,0,1)] text-right flex items-start gap-3.5">
-          <div className="w-9 h-9 rounded-xl bg-amber-300 border-2 border-black shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center shrink-0 text-black mt-0.5">
+        <div className="mb-6 p-5 rounded-3xl border-2 border-black bg-amber-50 text-right flex items-start gap-3.5">
+          <div className="w-9 h-9 rounded-xl bg-amber-300 border-2 border-black flex items-center justify-center shrink-0 text-black mt-0.5">
             <ShieldAlert className="w-5 h-5 stroke-[2.5]" />
           </div>
           <div className="text-xs">
@@ -554,7 +554,7 @@ export default function ApplicationForm() {
         </div>
 
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-[2.5px] border-black p-6 sm:p-10 shadow-[6px_7px_0px_0px_rgba(0,0,0,1)] text-black">
+        <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-[2.5px] border-black p-6 sm:p-10 text-black">
           {/* Honeypot for Anti-Bot */}
           <div style={{ display: 'none' }} aria-hidden="true">
             <input
@@ -728,7 +728,7 @@ export default function ApplicationForm() {
                       }}
                       className={`p-3.5 rounded-sm border text-right transition-all cursor-pointer ${
                         !formData.hasAttendedUniversity
-                          ? 'border-black bg-black text-white shadow-xs'
+                          ? 'border-black bg-black text-white'
                           : 'border-zinc-300 bg-white text-zinc-700 hover:border-black'
                       }`}
                     >
@@ -749,7 +749,7 @@ export default function ApplicationForm() {
                       }}
                       className={`p-3.5 rounded-sm border text-right transition-all cursor-pointer ${
                         formData.hasAttendedUniversity
-                          ? 'border-black bg-black text-white shadow-xs'
+                          ? 'border-black bg-black text-white'
                           : 'border-zinc-300 bg-white text-zinc-700 hover:border-black'
                       }`}
                     >
@@ -871,7 +871,7 @@ export default function ApplicationForm() {
 
                 {/* Tuition Details Box */}
                 <div className="pt-2">
-                  <div className="p-5 sm:p-6 rounded-3xl border-2 border-black bg-emerald-50/70 space-y-3 shadow-[3px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <div className="p-5 sm:p-6 rounded-3xl border-2 border-black bg-emerald-50/70 space-y-3">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
                         <label htmlFor="periodTuitionFee" className="block text-xs font-black text-black mb-1">
@@ -912,7 +912,7 @@ export default function ApplicationForm() {
 
                     <div className="pt-3.5 border-t-2 border-black/10 flex items-center justify-between text-xs sm:text-sm">
                       <span className="text-black font-black">المبلغ المتبقي المطلوب كفالته:</span>
-                      <span className="font-mono font-black text-black text-base bg-[#facc15] px-4 py-1.5 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                      <span className="font-mono font-black text-black text-base bg-[#facc15] px-4 py-1.5 rounded-xl border-2 border-black">
                         {calculatedUncovered.toLocaleString('ar-JO')} د.أ
                       </span>
                     </div>
@@ -1226,7 +1226,7 @@ export default function ApplicationForm() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="py-3 px-8 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black flex items-center gap-2 transition-all border-2 border-black shadow-[2px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
+                className="py-3 px-8 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-xs sm:text-sm font-black flex items-center gap-2 transition-all border-2 border-black active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
               >
                 <span>متابعة</span>
                 <ChevronLeft className="w-4 h-4 stroke-[2.5]" />
@@ -1235,7 +1235,7 @@ export default function ApplicationForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="py-3 px-9 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] disabled:bg-zinc-300 text-white text-xs sm:text-sm font-black flex items-center gap-2.5 transition-all border-2 border-black shadow-[3px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
+                className="py-3 px-9 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] disabled:bg-zinc-300 text-white text-xs sm:text-sm font-black flex items-center gap-2.5 transition-all border-2 border-black active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

@@ -54,7 +54,7 @@ export default function AdminLoginPage() {
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <div className="bg-white py-8 px-6 shadow-xs border border-zinc-200 rounded sm:px-8">
+        <div className="bg-white py-8 px-6 border border-zinc-200 rounded sm:px-8">
           {error && (
             <div className="mb-5 p-3 rounded border border-black bg-zinc-100 text-black text-xs flex items-start gap-2">
               <AlertCircle className="w-4 h-4 text-black shrink-0 mt-0.5" />
