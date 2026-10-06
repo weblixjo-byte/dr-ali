@@ -880,53 +880,6 @@ export default function AdminDashboardPage() {
               </div>
             </div>
 
-            {/* Criteria & Weights Overview */}
-            {criteria && (
-              <div className="p-5 bg-white rounded border border-gray-200">
-                <div className="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
-                  <div>
-                    <h3 className="font-bold text-sm text-slate-900">منظومة معايير الأولوية الحالية</h3>
-                    <div className="text-xs text-gray-500">
-                      النسخة رقم: {criteria.version} | تاريخ الاعتماد: {criteria.approvedAt.slice(0, 10)}
-                    </div>
-                  </div>
-                  <div className="text-xs font-mono font-bold text-slate-900 bg-slate-100 px-2.5 py-1 rounded">
-                    المرجع الشهري لدخل الفرد: {criteria.monthlyPerCapitaBenchmark} {criteria.currencyCode}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-4">
-                  <div className="p-3 rounded border border-gray-200 bg-slate-50">
-                    <span className="text-gray-500 block">دخل الفرد (55%)</span>
-                    <span className="text-base font-bold text-slate-900 block mt-1">
-                      {criteria.weights.perCapitaIncome} نقطة
-                    </span>
-                  </div>
-                  <div className="p-3 rounded border border-gray-200 bg-slate-50">
-                    <span className="text-gray-500 block">الرسوم غير المغطاة (20%)</span>
-                    <span className="text-base font-bold text-slate-900 block mt-1">
-                      {criteria.weights.uncoveredTuition} نقطة
-                    </span>
-                  </div>
-                  <div className="p-3 rounded border border-gray-200 bg-slate-50">
-                    <span className="text-gray-500 block">عبء المصاريف (15%)</span>
-                    <span className="text-base font-bold text-slate-900 block mt-1">
-                      {criteria.weights.expenseBurden} نقطة
-                    </span>
-                  </div>
-                  <div className="p-3 rounded border border-gray-200 bg-slate-50">
-                    <span className="text-gray-500 block">هشاشة الإعالة (10%)</span>
-                    <span className="text-base font-bold text-slate-900 block mt-1">
-                      {criteria.weights.breadwinnerVulnerability} نقطة
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded bg-amber-50 border border-amber-200 text-amber-950 text-xs">
-                  <strong>قاعدة الاستقرار:</strong> تظل المعايير ثابتة طوال فترة التقديم. إذا تقرر تعديل المعايير بواسطة اللجنة، يتم تسجيل سبب التعديل وإصدار نسخة جديدة وإعادة تقييم كافة الطلبات النشطة تلقائياً.
-                </div>
-              </div>
-            )}
           </div>
         )}
 
