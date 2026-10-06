@@ -58,28 +58,28 @@ export default function Hero() {
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <a
                 href="#apply"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-zinc-900 hover:bg-black text-white text-sm sm:text-base font-bold shadow-md hover:shadow-lg transition-all active:scale-[0.99]"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#22c55e] hover:bg-[#16a34a] text-white text-sm sm:text-base font-black border-2 border-black shadow-[3px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-0.5 active:translate-y-0.5 cursor-pointer"
               >
                 <span>بدء تعبئة طلب الكفالة</span>
-                <ArrowDown className="w-4 h-4" />
+                <ArrowDown className="w-4 h-4 stroke-[2.5]" />
               </a>
 
               <a
                 href="#guidelines"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-zinc-50 text-zinc-800 border border-zinc-300 text-sm font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-950 border-2 border-amber-300/80 text-sm font-bold shadow-xs transition-colors cursor-pointer"
               >
                 <span>الشروط ومعايير الأهلية</span>
               </a>
             </div>
 
             {/* Institutional Trust Bullets Strip */}
-            <div className="pt-6 border-t border-zinc-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-600 font-medium">
-              <div className="flex items-center gap-2">
+            <div className="pt-6 border-t border-zinc-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold">
+              <div className="flex items-center gap-2.5 bg-emerald-50/70 border border-emerald-200/80 rounded-xl px-3.5 py-2 text-emerald-950">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>تغطية مباشرة لرسوم الساعات المعتمدة</span>
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <div className="flex items-center gap-2.5 bg-amber-50/70 border border-amber-200/80 rounded-xl px-3.5 py-2 text-amber-950">
+                <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
                 <span>تدقيق رسمي ومحايد دون وساطة</span>
               </div>
             </div>
