@@ -1,7 +1,7 @@
 'use client';
 
 import { gsap } from 'gsap';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface CrowdCanvasProps {
   src: string;
@@ -12,7 +12,7 @@ interface CrowdCanvasProps {
 /**
  * Authentic Animated Walking Crowd Simulation
  * Powered by HTML5 Canvas, GSAP walk-cycle timelines, and OpenPeeps character sprites.
- * Matches the exact "Canvas Crowd" mechanism from the reference video with mouse-driven camera parallax.
+ * Anchored to the baseline with 3-tier perspective depth so NO floating or cut-off bodies appear.
  */
 function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -45,42 +45,77 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     const getRandomFromArray = (array: any[]) => array[randomIndex(array) | 0];
 
     // TWEEN FACTORIES
+    // Grounding system: every character's bottom is anchored below stage.height
+    // so no cut-off torso/waist is ever exposed floating in mid-air.
     const resetPeep = ({ stage, peep }: { stage: any; peep: any }) => {
       const direction = Math.random() > 0.5 ? 1 : -1;
-      // Slight vertical distribution so students look realistically layered
-      const offsetY = 70 - 200 * gsap.parseEase('power2.in')(Math.random());
-      const startY = stage.height - peep.height + offsetY;
+
+      // 3 Perspective depth tiers:
+      // Tier 0 (Back): scale 0.82, walks slightly slower, bottom anchored 20px below canvas
+      // Tier 1 (Mid):  scale 0.94, walks normal, bottom anchored 35px below canvas
+      // Tier 2 (Front): scale 1.08, walks slightly faster, bottom anchored 50px below canvas
+      const tierRoll = Math.random();
+      const tier = tierRoll < 0.32 ? 0 : tierRoll < 0.68 ? 1 : 2;
+
+      let scale = 0.94;
+      let bottomSubmerge = 35;
+      let speedFactor = 1.0;
+
+      if (tier === 0) {
+        scale = 0.82;
+        bottomSubmerge = 22;
+        speedFactor = 0.88;
+      } else if (tier === 1) {
+        scale = 0.94;
+        bottomSubmerge = 35;
+        speedFactor = 1.0;
+      } else {
+        scale = 1.08;
+        bottomSubmerge = 52;
+        speedFactor = 1.15;
+      }
+
+      peep.scale = scale;
+      peep.tier = tier;
+
+      // Ensure startY anchors the sprite so its bottom is submerged below canvas bottom
+      const renderedHeight = peep.height * scale;
+      const startY = stage.height - renderedHeight + bottomSubmerge;
+
+      const renderedWidth = peep.width * scale;
       let startX: number;
       let endX: number;
 
       if (direction === 1) {
-        startX = -peep.width - 40;
-        endX = stage.width + 40;
+        startX = -renderedWidth - 60;
+        endX = stage.width + renderedWidth + 60;
         peep.scaleX = 1;
       } else {
-        startX = stage.width + peep.width + 40;
-        endX = -40;
+        startX = stage.width + renderedWidth + 60;
+        endX = -renderedWidth - 60;
         peep.scaleX = -1;
       }
 
       peep.x = startX;
       peep.y = startY;
-      peep.anchorY = startY;
+      peep.anchorY = tier; // Strictly Z-sort by depth tier
 
       return {
         startX,
         startY,
         endX,
+        speedFactor,
       };
     };
 
     const normalWalk = ({ peep, props }: { peep: any; props: any }) => {
-      const { startX, startY, endX } = props;
-      const xDuration = 11;
-      const yDuration = 0.24;
+      const { startX, startY, endX, speedFactor } = props;
+      const xDuration = 11 / speedFactor;
+      const yDuration = 0.22;
+      const bounceHeight = 5; // Gentle bounce that never exposes the submerged waist
 
       const tl = gsap.timeline();
-      tl.timeScale(randomRange(0.6, 1.4));
+      tl.timeScale(randomRange(0.7, 1.3));
       tl.to(
         peep,
         {
@@ -96,7 +131,7 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
           duration: yDuration,
           repeat: Math.floor(xDuration / yDuration),
           yoyo: true,
-          y: startY - 10,
+          y: startY - bounceHeight,
         },
         0,
       );
@@ -117,6 +152,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
       y: number;
       anchorY: number;
       scaleX: number;
+      scale: number;
+      tier: number;
       walk: any;
       setRect: (rect: number[]) => void;
       render: (ctx: CanvasRenderingContext2D) => void;
@@ -140,18 +177,19 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
         y: 0,
         anchorY: 0,
         scaleX: 1,
+        scale: 1,
+        tier: 1,
         walk: null,
         setRect: (rect: number[]) => {
           peep.rect = rect;
-          // Scale characters slightly for sharp campus proportions
-          peep.width = rect[2] * 0.95;
-          peep.height = rect[3] * 0.95;
+          peep.width = rect[2];
+          peep.height = rect[3];
           peep.drawArgs = [peep.image, ...rect, 0, 0, peep.width, peep.height];
         },
         render: (ctx: CanvasRenderingContext2D) => {
           ctx.save();
           ctx.translate(peep.x, peep.y);
-          ctx.scale(peep.scaleX, 1);
+          ctx.scale(peep.scaleX * peep.scale, peep.scale);
           ctx.drawImage(
             peep.image,
             peep.rect[0],
@@ -222,6 +260,7 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
 
       peep.walk = walk;
       crowd.push(peep);
+      // Sort strictly by depth tier so background is drawn first, foreground on top
       crowd.sort((a, b) => a.anchorY - b.anchorY);
 
       return peep;
@@ -233,8 +272,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     };
 
     const initCrowd = () => {
-      // Spawn dense crowd
-      const targetCount = Math.min(availablePeeps.length, 36);
+      // Dense crowd to ensure continuous natural overlap
+      const targetCount = Math.min(availablePeeps.length, 42);
       for (let i = 0; i < targetCount; i++) {
         const peep = addPeepToCrowd();
         if (peep && peep.walk) {
@@ -296,8 +335,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      const relativeX = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
-      targetCameraX.current = -relativeX * 120; // 120px pan
+      const relativeX = (e.clientX - rect.left) / rect.width - 0.5;
+      targetCameraX.current = -relativeX * 120;
     };
 
     const handleMouseLeave = () => {
@@ -359,16 +398,8 @@ function CrowdCanvas({ src, rows = 15, cols = 7 }: CrowdCanvasProps) {
 export default function StudentCrowd() {
   return (
     <div className="relative w-full bg-white text-black overflow-hidden select-none border-b border-zinc-200">
-      {/* Signature Pin in Center matching the Video reference */}
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center">
-        <span className="text-[11px] font-bold tracking-widest uppercase text-zinc-900 bg-white/90 px-3 py-1 rounded-full border border-zinc-200 shadow-xs">
-          مجتمع الطلبة الجامعيين • الدورة الحالية
-        </span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-zinc-400 to-transparent"></div>
-      </div>
-
-      {/* Live Walking Canvas Viewport */}
-      <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px]">
+      {/* Live Walking Canvas Viewport (Badges removed, Grounded baseline) */}
+      <div className="relative w-full h-[300px] sm:h-[360px] md:h-[400px]">
         <CrowdCanvas src="/all-peeps.png" rows={15} cols={7} />
       </div>
 

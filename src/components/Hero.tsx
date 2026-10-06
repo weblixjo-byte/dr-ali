@@ -6,11 +6,7 @@ export default function Hero() {
   return (
     <section className="pt-14 sm:pt-20 bg-white border-b border-zinc-200 overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        {/* Minimal Institutional Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 text-[11px] font-medium text-zinc-900 bg-zinc-100 border border-zinc-200 rounded-full mb-5">
-          <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
-          <span>المملكة الأردنية الهاشمية • الدورة الأكاديمية 2025/2026</span>
-        </div>
+
 
         {/* Clean Master Headline */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-black tracking-tight leading-[1.18] mb-4">
