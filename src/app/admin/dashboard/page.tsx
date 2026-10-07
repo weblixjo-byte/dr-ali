@@ -21,7 +21,6 @@ import {
   Edit3,
   HelpCircle,
   Shield,
-  History,
   Award,
   ChevronLeft,
   ChevronRight,
@@ -37,7 +36,7 @@ export default function AdminDashboardPage() {
   const router = useRouter();
 
   // Navigation & Tabs
-  const [activeTab, setActiveTab] = useState<'applications' | 'merit' | 'settings' | 'audit'>('applications');
+  const [activeTab, setActiveTab] = useState<'applications' | 'merit' | 'settings'>('applications');
   const [meritSubTab, setMeritSubTab] = useState<'declared' | 'verified'>('verified');
 
   // User State
@@ -95,8 +94,7 @@ export default function AdminDashboardPage() {
   const [criteria, setCriteria] = useState<ScoringCriteria | null>(null);
   const [savingSettings, setSavingSettings] = useState(false);
 
-  // Audit Logs State
-  const [systemAuditLogs, setSystemAuditLogs] = useState<AuditLog[]>([]);
+
 
   // 1. Check Auth & Load Current User
   useEffect(() => {
@@ -169,19 +167,6 @@ export default function AdminDashboardPage() {
     }
   }, []);
 
-  // 5. Fetch System Audit Logs
-  const fetchAuditLogs = useCallback(async () => {
-    try {
-      const res = await fetch('/api/admin/audit-logs');
-      if (res.ok) {
-        const data = await res.json();
-        setSystemAuditLogs(data.logs || []);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }, []);
-
   useEffect(() => {
     if (activeTab === 'applications') {
       fetchApplications(pagination.page);
@@ -189,10 +174,8 @@ export default function AdminDashboardPage() {
       fetchMeritRanking(meritSubTab);
     } else if (activeTab === 'settings') {
       fetchSettingsAndCriteria();
-    } else if (activeTab === 'audit') {
-      fetchAuditLogs();
     }
-  }, [activeTab, meritSubTab, pagination.page, fetchApplications, fetchMeritRanking, fetchSettingsAndCriteria, fetchAuditLogs]);
+  }, [activeTab, meritSubTab, pagination.page, fetchApplications, fetchMeritRanking, fetchSettingsAndCriteria]);
 
   // Open Application Detail Modal
   const openApplicationDetail = async (id: string) => {
@@ -510,18 +493,6 @@ export default function AdminDashboardPage() {
           >
             <SettingsIcon className="w-4 h-4 stroke-[2]" />
             <span>الإعدادات والتحكم</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('audit')}
-            className={`py-3 px-4 flex items-center gap-2 border-b-2 transition-all cursor-pointer shrink-0 ${
-              activeTab === 'audit'
-                ? 'border-emerald-600 text-emerald-700 font-bold bg-emerald-50/40'
-                : 'border-transparent text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50'
-            }`}
-          >
-            <History className="w-4 h-4 stroke-[2]" />
-            <span>سجل العمليات الإدارية</span>
           </button>
         </div>
       </header>
@@ -1006,60 +977,6 @@ export default function AdminDashboardPage() {
           </div>
         )}
 
-        {/* ============================================================== */}
-        {/* TAB 4: AUDIT LOGS                                              */}
-        {/* ============================================================== */}
-        {activeTab === 'audit' && (
-          <div className="bg-white rounded-2xl border border-zinc-200/90 shadow-xs overflow-hidden">
-            <div className="p-4 sm:p-5 bg-zinc-50/50 border-b border-zinc-200/80">
-              <h3 className="font-bold text-sm text-zinc-900">سجل تدقيق العمليات والإجراءات</h3>
-              <p className="text-xs text-zinc-500 mt-0.5">
-                توثيق كامل للقرارات الإدارية، تحديثات الحالات، تسجيل الدخول، والتصحيحات.
-              </p>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-right text-xs">
-                <thead className="bg-zinc-50/80 text-zinc-600 font-semibold border-b border-zinc-200">
-                  <tr>
-                    <th className="py-3 px-4">الوقت والتاريخ</th>
-                    <th className="py-3 px-4">المسؤول (Actor)</th>
-                    <th className="py-3 px-4">نوع الإجراء</th>
-                    <th className="py-3 px-4">الهدف المعني</th>
-                    <th className="py-3 px-4">تفاصيل الإجراء</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-zinc-100 font-mono text-[11px]">
-                  {systemAuditLogs.length === 0 ? (
-                    <tr>
-                      <td colSpan={5} className="py-12 text-center text-zinc-400 font-sans">
-                        لا توجد سجلات تدقيق مسجلة حتى الآن.
-                      </td>
-                    </tr>
-                  ) : (
-                    systemAuditLogs.map((log, idx) => (
-                      <tr key={idx} className="hover:bg-zinc-50/80">
-                        <td className="py-2.5 px-4 text-zinc-500">
-                          {new Date(log.createdAt).toISOString().replace('T', ' ').slice(0, 19)}
-                        </td>
-                        <td className="py-2.5 px-4 font-semibold text-zinc-900 font-sans">{log.actor}</td>
-                        <td className="py-2.5 px-4">
-                          <span className="bg-zinc-100 text-zinc-800 px-2 py-0.5 rounded-md text-[10px] border border-zinc-200">
-                            {log.action}
-                          </span>
-                        </td>
-                        <td className="py-2.5 px-4 text-zinc-700">{log.targetId || '-'}</td>
-                        <td className="py-2.5 px-4 text-zinc-600 font-sans text-[11px]">
-                          {JSON.stringify(log.details)}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
       </main>
 
       {/* ============================================================== */}
