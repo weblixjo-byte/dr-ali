@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { GraduationCap, Menu, X, ArrowDown, Shield } from 'lucide-react';
+import { GraduationCap, Menu, X, ArrowDown } from 'lucide-react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,13 +41,6 @@ export default function Header() {
           >
             الأسئلة الشائعة
           </a>
-          <Link
-            href="/admin"
-            className="flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 py-1 px-3 rounded-lg hover:bg-zinc-100/70 transition-colors text-xs sm:text-sm"
-          >
-            <Shield className="w-3.5 h-3.5 text-zinc-400" />
-            <span>بوابة الإدارة</span>
-          </Link>
         </nav>
 
         {/* CTA Button & Mobile Hamburger */}
@@ -96,14 +89,6 @@ export default function Header() {
           >
             الأسئلة الشائعة
           </a>
-          <Link
-            href="/admin"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm font-medium text-zinc-600 hover:bg-zinc-50 hover:text-black transition-colors"
-          >
-            <Shield className="w-4 h-4 text-zinc-400" />
-            <span>بوابة الإدارة</span>
-          </Link>
           <div className="pt-2">
             <a
               href="#apply"

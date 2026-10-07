@@ -16,7 +16,12 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 };
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'مبادرة د. علي الرحامنة التعليمية',
   description:
     'البوابة الرسمية لكفالة الرسوم الأكاديمية للطلبة المقبلين على التعليم الجامعي والمنتظمين فيه من ذوي الحاجة الاقتصادية في المملكة الأردنية الهاشمية.',

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { Mail, GraduationCap, ArrowUp, ShieldCheck, HeartHandshake, CheckCircle2, Award } from 'lucide-react';
 
 export default function Footer() {
@@ -47,12 +46,6 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#faq" className="hover:text-white transition-colors block py-0.5">الأسئلة الشائعة</a>
-              </li>
-              <li>
-                <Link href="/admin" className="hover:text-white transition-colors inline-flex items-center gap-1.5 py-0.5">
-                  <span>بوابة تدقيق الطلبات</span>
-                  <span className="text-[10px] bg-zinc-800 text-zinc-300 px-1.5 py-0.5 rounded font-mono">إدارة</span>
-                </Link>
               </li>
             </ul>
           </div>

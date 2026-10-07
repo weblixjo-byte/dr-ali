@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -7,6 +8,37 @@ import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'مبادرة د. علي الرحامنة التعليمية | كفالة الرسوم الجامعية',
+  description:
+    'البوابة الرسمية لكفالة الرسوم الأكاديمية للطلبة المقبلين على التعليم الجامعي والمنتظمين فيه من ذوي الحاجة الاقتصادية في المملكة الأردنية الهاشمية.',
+  openGraph: {
+    title: 'مبادرة د. علي الرحامنة التعليمية',
+    description:
+      'البوابة الرسمية لكفالة الرسوم الأكاديمية للطلبة المقبلين على التعليم الجامعي والمنتظمين فيه من ذوي الحاجة الاقتصادية في المملكة الأردنية الهاشمية.',
+    url: '/',
+    siteName: 'مبادرة د. علي الرحامنة التعليمية',
+    locale: 'ar_JO',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'مبادرة د. علي الرحامنة التعليمية لكفالة الرسوم الجامعية',
+        type: 'image/jpeg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'مبادرة د. علي الرحامنة التعليمية',
+    description:
+      'البوابة الرسمية لكفالة الرسوم الأكاديمية للطلبة المقبلين على التعليم الجامعي والمنتظمين فيه من ذوي الحاجة الاقتصادية في المملكة الأردنية الهاشمية.',
+    images: ['/og-image.jpg'],
+  },
+};
 
 export default function HomePage() {
   return (
