@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, Mail, MessageCircleQuestion } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const faqs = [
   {
@@ -10,15 +10,15 @@ const faqs = [
   },
   {
     q: 'ما هي الخطوات والإجراءات المتبعة بعد تقديم الطلب؟',
-    a: 'تتولى اللجنة التدقيق المكتبي ومطابقة الوثائق الرسمية، والتواصل المباشر مع المرشحين للتحقق من كشوفات الرسوم الجامعية وسجلات الدخل العائلي.',
+    a: 'تتولى اللجنة التدقيق المكتبي ومطابقة الوثائق الرسمية، والتحقق المباشر من كشوفات الرسوم الجامعية وسجلات الدخل العائلي.',
   },
   {
     q: 'هل تقديم الطلب يُعد ضماناً للحصول على الكفالة؟',
     a: 'لا، تقديم الطلب هو خطوة أولى للمفاضلة والتدقيق المكتبي، وتُعتمد القرارات النهائية رسمياً من قبل اللجنة بعد استكمال فحص ومطابقة الوثائق الثبوتية.',
   },
   {
-    q: 'كيف يمكنني تصحيح أي معلومة في حال وقوع خطأ أثناء الإدخال؟',
-    a: 'يمكن للمتقدم التواصل مع أمانة سر المبادرة عبر البريد الإلكتروني الرسمي المعتمد، مع إرفاق الرقم المرجعي للطلب والمستند الرسمي المؤيد للتصحيح المطلوب.',
+    q: 'كيف يتم التحقق من صحة البيانات ومطابقتها؟',
+    a: 'تخضع كافة الطلبات للتدقيق والمطابقة مع الوثائق الرسمية والمؤسسات التعليمية عند دراسة الطلبات، وتتم مراجعة أي مستندات بدقة قبل إصدار قرارات الكفالة النهائية.',
   },
 ];
 
@@ -83,33 +83,6 @@ export default function FaqSection() {
             );
           })}
         </div>
-
-        {/* Need Help Callout Banner */}
-        <div className="mt-8 sm:mt-12 p-5 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-5 text-right">
-          <div className="flex items-start sm:items-center gap-3 sm:gap-3.5">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-              <MessageCircleQuestion className="w-5 h-5 stroke-[2.2]" />
-            </div>
-            <div>
-              <h4 className="font-bold text-zinc-900 text-xs sm:text-base">
-                هل لديك استفسار آخر لم تجده هنا؟
-              </h4>
-              <p className="text-[11px] sm:text-xs text-zinc-500 mt-0.5 font-normal">
-                فريق أمانة سر المبادرة جاهز للرد على كافة أسئلتكم ومساعدتكم.
-              </p>
-            </div>
-          </div>
-
-          <a
-            href="mailto:info@scholarship-initiative.org"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-zinc-100 text-zinc-800 font-medium text-xs sm:text-sm border border-zinc-200 transition-colors shrink-0"
-            dir="ltr"
-          >
-            <Mail className="w-4 h-4 text-emerald-600 stroke-[2]" />
-            <span className="font-mono text-xs sm:text-sm">info@scholarship-initiative.org</span>
-          </a>
-        </div>
-
       </div>
     </section>
   );

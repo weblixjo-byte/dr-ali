@@ -46,8 +46,8 @@ async function main() {
         valueOrCapDescription: 'تغطية الرسوم الدراسية المعتمدة للفصل الدراسي لكل طالب مستحق وفق قرار اللجنة.',
         targetGroupDescription: 'الطلاب والطالبات المنتظمون في الجامعات والكليات المعتمدة داخل المملكة الأردنية الهاشمية أو المقبلون عليها الذين يواجهون صعوبات مالية.',
         includedInstitutionsDescription: 'الجامعات الرسمية والخاصة وكليات المجتمع المعتمدة داخل المملكة الأردنية الهاشمية.',
-        contactPhone: '+96265000000',
-        contactEmail: 'info@scholarship-initiative.org',
+        contactPhone: '',
+        contactEmail: '',
         updatedAt: new Date(),
       }
     }

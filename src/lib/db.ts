@@ -160,8 +160,8 @@ export async function ensureDatabaseIndexes(): Promise<void> {
           'الطلاب والطالبات المنتظمون في الجامعات والكليات المعتمدة الذين يواجهون صعوبات مالية حقيقية تهدد استمرار دراستهم.',
         includedInstitutionsDescription:
           'الجامعات الرسمية والخاصة وكليات المجتمع المعتمدة داخل المملكة الأردنية الهاشمية.',
-        contactEmail: 'info@scholarship-initiative.org',
-        contactPhone: '+96265000000',
+        contactEmail: '',
+        contactPhone: '',
         privacyPolicySummary:
           'تُستخدم البيانات المدخلة حصرًا لأغراض التدقيق والمفاضلة الاقتصادية بواسطة لجنة المنح، ولا يتم مشاركتها أو نشرها للعامة.',
         updatedAt: new Date(),
