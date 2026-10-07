@@ -363,7 +363,7 @@ export default function ApplicationForm() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-zinc-200 mb-4 gap-2">
                 <div>
                   <div className="font-bold text-zinc-900 text-sm sm:text-base">إشعار استلام طلب كفالة دراسية</div>
-                  <div className="text-[11px] text-zinc-500 font-normal">مبادرة د. علي للتعليم الجامعي • المملكة الأردنية الهاشمية</div>
+                  <div className="text-[11px] text-zinc-500 font-normal">مبادرة د. علي الرحامنة التعليمية • المملكة الأردنية الهاشمية</div>
                 </div>
                 <div className="font-mono font-semibold text-zinc-900 text-xs bg-zinc-100 px-3.5 py-1.5 rounded-lg border border-zinc-200 self-start sm:self-auto">
                   رقم الطلب: {successData.referenceNumber}

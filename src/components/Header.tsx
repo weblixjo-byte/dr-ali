@@ -12,22 +12,13 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo & Title */}
-        <Link href="/" className="flex items-center gap-3.5 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center group-hover:bg-emerald-700 transition-colors">
             <GraduationCap className="w-5 h-5 stroke-[2.2]" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-zinc-900 text-base sm:text-lg tracking-tight block">
-                مبادرة د. علي التعليمية
-              </span>
-            </div>
-            <span className="text-xs text-zinc-500 font-normal flex items-center gap-1.5 mt-0.5">
-              <span>صندوق كفالة الرسوم الأكاديمية</span>
-              <span className="text-emerald-500 font-bold">•</span>
-              <span className="text-zinc-600">المملكة الأردنية الهاشمية</span>
-            </span>
-          </div>
+          <span className="font-bold text-zinc-900 text-base sm:text-lg tracking-tight block">
+            مبادرة د. علي الرحامنة التعليمية
+          </span>
         </Link>
 
         {/* Desktop Navigation Links */}

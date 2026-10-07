@@ -20,14 +20,9 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center">
                 <GraduationCap className="w-5 h-5 stroke-[2.2]" />
               </div>
-              <div>
-                <span className="font-bold text-white text-lg tracking-tight block">
-                  مبادرة د. علي التعليمية
-                </span>
-                <span className="text-xs text-zinc-400 font-normal flex items-center gap-1.5 mt-0.5">
-                  صندوق كفالة الرسوم الأكاديمية الجامعية
-                </span>
-              </div>
+              <span className="font-bold text-white text-lg tracking-tight block">
+                مبادرة د. علي الرحامنة التعليمية
+              </span>
             </div>
 
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-md font-normal">
@@ -123,7 +118,7 @@ export default function Footer() {
         {/* Bottom Copyright Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-normal text-zinc-500">
           <div className="text-right">
-            <span>© {new Date().getFullYear()} مبادرة د. علي التعليمية لكفالة التعليم الجامعي. كافة الحقوق محفوظة.</span>
+            <span>© {new Date().getFullYear()} مبادرة د. علي الرحامنة التعليمية لكفالة التعليم الجامعي. كافة الحقوق محفوظة.</span>
           </div>
           <div className="text-zinc-500">
             <span>نحو مستقبل أكاديمي واعد لكل طالب وطالبة في الأردن</span>

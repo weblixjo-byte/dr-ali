@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, CheckCircle2, ShieldCheck, School, GraduationCap } from 'lucide-react';
+import { ArrowDown, School, GraduationCap } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -55,18 +55,6 @@ export default function Hero() {
               >
                 <span>الشروط ومعايير الأهلية</span>
               </a>
-            </div>
-
-            {/* Institutional Trust Bullets Strip */}
-            <div className="pt-6 border-t border-zinc-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="flex items-center gap-2.5 bg-zinc-50/70 border border-zinc-200/80 rounded-xl px-4 py-2.5 text-zinc-700 font-medium">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 stroke-[2]" />
-                <span>تغطية مباشرة لرسوم الساعات المعتمدة</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-zinc-50/70 border border-zinc-200/80 rounded-xl px-4 py-2.5 text-zinc-700 font-medium">
-                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 stroke-[2]" />
-                <span>تدقيق رسمي ومحايد دون وساطة</span>
-              </div>
             </div>
           </div>
 
