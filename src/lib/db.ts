@@ -147,7 +147,7 @@ export async function ensureDatabaseIndexes(): Promise<void> {
     if (!existingSettings) {
       const defaultSettings: InitiativeSettings = {
         key: 'initiative_config',
-        title: 'مبادرة المنح الدراسية للطلاب الأكثر حاجة',
+        title: 'مبادرة من حقك تتعلم',
         targetBeneficiariesCount: 6,
         isSubmissionOpen: true,
         submissionStartDate: '2026-02-01',
