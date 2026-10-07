@@ -433,7 +433,7 @@ export default function AdminDashboardPage() {
             </div>
             <div className="min-w-0">
               <span className="font-bold text-sm sm:text-base text-zinc-900 tracking-tight block truncate">
-                مبادرة د. علي الرحامنة التعليمية
+                مبادرة من حقك تتعلم
               </span>
               <span className="text-[11px] text-zinc-500 font-normal block truncate">
                 بوابة الإدارة وتدقيق طلبات الكفالة (سقف 6 مقاعد معتمدة)

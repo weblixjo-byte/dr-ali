@@ -17,7 +17,7 @@ export default function Header() {
             <GraduationCap className="w-5 h-5 stroke-[2.2]" />
           </div>
           <span className="font-bold text-zinc-900 text-sm sm:text-lg tracking-tight block truncate">
-            مبادرة د. علي الرحامنة التعليمية
+            مبادرة من حقك تتعلم
           </span>
         </Link>
 

@@ -20,7 +20,7 @@ export default function Footer() {
                 <GraduationCap className="w-5 h-5 stroke-[2.2]" />
               </div>
               <span className="font-bold text-white text-base sm:text-lg tracking-tight block">
-                مبادرة د. علي الرحامنة التعليمية
+                مبادرة من حقك تتعلم
               </span>
             </div>
 
@@ -111,7 +111,7 @@ export default function Footer() {
         {/* Bottom Copyright Strip */}
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs font-normal text-zinc-500 text-center sm:text-right">
           <div>
-            <span>© {new Date().getFullYear()} مبادرة د. علي الرحامنة التعليمية لكفالة التعليم الجامعي. كافة الحقوق محفوظة.</span>
+            <span>© {new Date().getFullYear()} مبادرة من حقك تتعلم لكفالة التعليم الجامعي. كافة الحقوق محفوظة.</span>
           </div>
           <div>
             <span>نحو مستقبل أكاديمي واعد لكل طالب وطالبة في الأردن</span>
