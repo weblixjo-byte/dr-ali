@@ -59,9 +59,9 @@ export default function Hero() {
           </div>
 
           {/* ======================================================== */}
-          {/* LEFT COLUMN (RTL): Student Visual & Minimal Badges */}
+          {/* LEFT COLUMN (RTL): Student Visual & Responsive Badges */}
           {/* ======================================================== */}
-          <div className="lg:col-span-6 relative flex justify-center items-center">
+          <div className="lg:col-span-6 relative flex flex-col justify-center items-center">
             <div className="relative w-full max-w-[490px]">
               
               {/* Central Student Photo */}
@@ -70,11 +70,11 @@ export default function Hero() {
                 <img
                   src="/hero-student-new.jpg"
                   alt="طالب جامعي"
-                  className="w-full h-auto object-contain mx-auto select-none pointer-events-none"
+                  className="w-full h-auto object-contain mx-auto select-none pointer-events-none rounded-2xl"
                 />
 
-                {/* Floating Card 1 (Top Left): Scholarship Badge */}
-                <div className="absolute top-[28%] -left-2 sm:-left-6 z-20 bg-white/95 backdrop-blur-sm border border-zinc-200/90 rounded-2xl p-4 max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1 duration-200">
+                {/* Floating Card 1 (Top Left): Scholarship Badge (Tablet/Desktop only) */}
+                <div className="hidden sm:block absolute top-[28%] -left-4 md:-left-6 z-20 bg-white/95 backdrop-blur-sm border border-zinc-200/90 rounded-2xl p-4 max-w-[210px] text-right transition-transform hover:-translate-y-1 duration-200">
                   <div className="flex items-center gap-2.5 mb-1.5">
                     <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
                       <GraduationCap className="w-4 h-4 stroke-[2.2]" />
@@ -88,8 +88,8 @@ export default function Hero() {
                   </p>
                 </div>
 
-                {/* Floating Card 2 (Bottom Right): Universities Badge */}
-                <div className="absolute bottom-6 -right-2 sm:-right-6 z-20 bg-white/95 backdrop-blur-sm border border-zinc-200/90 rounded-2xl p-4 max-w-[190px] sm:max-w-[210px] text-right transition-transform hover:-translate-y-1 duration-200">
+                {/* Floating Card 2 (Bottom Right): Universities Badge (Tablet/Desktop only) */}
+                <div className="hidden sm:block absolute bottom-6 -right-4 md:-right-6 z-20 bg-white/95 backdrop-blur-sm border border-zinc-200/90 rounded-2xl p-4 max-w-[210px] text-right transition-transform hover:-translate-y-1 duration-200">
                   <div className="flex items-center gap-2.5 mb-1.5">
                     <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-100">
                       <School className="w-4 h-4 stroke-[2.2]" />
@@ -104,6 +104,37 @@ export default function Hero() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Mobile Only: Badges displayed cleanly in a neat 2-col grid below image */}
+            <div className="grid grid-cols-1 sm:hidden gap-2.5 w-full mt-4">
+              <div className="bg-white border border-zinc-200 rounded-xl p-3.5 text-right flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100 mt-0.5">
+                  <GraduationCap className="w-4 h-4 stroke-[2.2]" />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold text-zinc-900 block">
+                    كفالة الرسوم
+                  </span>
+                  <p className="text-[11px] text-zinc-500 leading-normal mt-0.5">
+                    تغطية الساعات المعتمدة للطلبة المستحقين للدورة الحالية.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white border border-zinc-200 rounded-xl p-3.5 text-right flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-100 mt-0.5">
+                  <School className="w-4 h-4 stroke-[2.2]" />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold text-zinc-900 block">
+                    الجامعات المشمولة
+                  </span>
+                  <p className="text-[11px] text-zinc-500 leading-normal mt-0.5">
+                    كافة الجامعات والكليات الأردنية الرسمية والخاصة المعتمدة.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

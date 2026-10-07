@@ -343,55 +343,55 @@ export default function ApplicationForm() {
   // SUCCESS CONFIRMATION VIEW (OFFICIAL CERTIFICATE RECEIPT)
   if (successData) {
     return (
-      <section id="apply" className="py-20 sm:py-28 bg-white border-b border-zinc-200">
+      <section id="apply" className="py-12 sm:py-24 bg-white border-b border-zinc-200">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
-          <div className="bg-white p-8 sm:p-12 rounded-2xl border border-zinc-200 text-center relative overflow-hidden">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mx-auto mb-5">
-              <Check className="w-7 h-7 stroke-[2.5]" />
+          <div className="bg-white p-5 sm:p-12 rounded-2xl border border-zinc-200 text-center relative overflow-hidden">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mx-auto mb-4 sm:mb-5">
+              <Check className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.5]" />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight mb-2">
+            <h2 className="text-xl sm:text-3xl font-bold text-zinc-900 tracking-tight mb-2">
               تم استلام وتأكيد طلب الكفالة بنجاح
             </h2>
 
-            <p className="text-xs sm:text-sm text-zinc-500 mb-8 max-w-lg mx-auto leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-zinc-500 mb-6 sm:mb-8 max-w-lg mx-auto leading-relaxed font-normal">
               تم تسجيل طلبكم رسمياً لدى أمانة سر المبادرة، وحفظ البيانات في قاعدة البيانات المعتمدة بانتظار إجراءات التدقيق المكتبي ومطابقة الوثائق الرسمية.
             </p>
 
             {/* Official Receipt Card */}
-            <div className="receipt-card border border-zinc-200 rounded-2xl p-6 sm:p-7 bg-zinc-50 mb-8 text-right text-xs">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-zinc-200 mb-4 gap-2">
+            <div className="receipt-card border border-zinc-200 rounded-xl sm:rounded-2xl p-4 sm:p-7 bg-zinc-50 mb-6 sm:mb-8 text-right text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-zinc-200 mb-3.5 gap-2">
                 <div>
                   <div className="font-bold text-zinc-900 text-sm sm:text-base">إشعار استلام طلب كفالة دراسية</div>
                   <div className="text-[11px] text-zinc-500 font-normal">مبادرة د. علي الرحامنة التعليمية • المملكة الأردنية الهاشمية</div>
                 </div>
-                <div className="font-mono font-semibold text-zinc-900 text-xs bg-zinc-100 px-3.5 py-1.5 rounded-lg border border-zinc-200 self-start sm:self-auto">
+                <div className="font-mono font-semibold text-zinc-900 text-xs bg-zinc-100 px-3 py-1.5 rounded-lg border border-zinc-200 self-start sm:self-auto">
                   رقم الطلب: {successData.referenceNumber}
                 </div>
               </div>
 
-              <dl className="space-y-3 text-xs">
-                <div className="flex justify-between py-1.5 border-b border-zinc-100">
+              <dl className="space-y-2.5 sm:space-y-3 text-xs">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-zinc-100 gap-0.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">اسم المتقدم الرباعي:</dt>
                   <dd className="font-semibold text-zinc-900">{formData.fullName}</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-zinc-100">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-zinc-100 gap-0.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">رقم الهاتف للتواصل:</dt>
                   <dd className="font-mono font-semibold text-zinc-900" dir="ltr">{formData.phoneCountryCode} {formData.phoneNumber}</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-zinc-100">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-zinc-100 gap-0.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">المؤسسة والتخصص:</dt>
                   <dd className="font-semibold text-zinc-900">{formData.institutionName} — {formData.major}</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-zinc-100">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-zinc-100 gap-0.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">معدل التوجيهي:</dt>
                   <dd className="font-mono font-semibold text-zinc-900">{formData.tawjihiGpa}% ({formData.tawjihiBranch})</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-zinc-100">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-zinc-100 gap-0.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">المبلغ المطلوب كفالته:</dt>
-                  <dd className="font-mono font-bold text-emerald-800 text-sm bg-emerald-50 px-3 py-0.5 rounded-md border border-emerald-200">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
+                  <dd className="font-mono font-bold text-emerald-800 text-sm bg-emerald-50 px-3 py-0.5 rounded-md border border-emerald-200 self-start sm:self-auto">{calculatedUncovered.toLocaleString('ar-JO')} د.أ</dd>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-zinc-100">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-1.5 border-b border-zinc-100 gap-0.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">تاريخ ووقت التقديم:</dt>
                   <dd className="font-medium text-zinc-800">
                     {new Date(successData.createdAt).toLocaleDateString('ar-JO', {
@@ -403,9 +403,9 @@ export default function ApplicationForm() {
                     })}
                   </dd>
                 </div>
-                <div className="flex justify-between pt-2">
+                <div className="flex flex-col sm:flex-row sm:justify-between pt-2 gap-1.5 sm:gap-2">
                   <dt className="text-zinc-500 font-medium">حالة الطلب الحالية:</dt>
-                  <dd className="font-medium text-emerald-800 flex items-center gap-1.5 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200">
+                  <dd className="font-medium text-emerald-800 flex items-center gap-1.5 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200 self-start sm:self-auto">
                     <Clock className="w-3.5 h-3.5 text-emerald-600 stroke-[2.2]" />
                     <span>قيد التدقيق المكتبي والمطابقة الرسمية</span>
                   </dd>
@@ -413,11 +413,11 @@ export default function ApplicationForm() {
               </dl>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3.5 no-print">
+            <div className="flex flex-col sm:flex-row gap-3 no-print">
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="flex-1 py-3 px-5 rounded-xl border border-zinc-200 text-zinc-800 bg-white hover:bg-zinc-50 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                className="w-full sm:flex-1 py-3 px-5 rounded-xl border border-zinc-200 text-zinc-800 bg-white hover:bg-zinc-50 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <Printer className="w-4 h-4 text-zinc-700 stroke-[2]" />
                 <span>طباعة أو حفظ الإشعار (PDF)</span>
@@ -430,7 +430,7 @@ export default function ApplicationForm() {
                   setStep(1);
                   window.location.reload();
                 }}
-                className="py-3 px-7 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium transition-colors cursor-pointer"
+                className="w-full sm:w-auto py-3 px-7 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium transition-colors cursor-pointer"
               >
                 العودة للصفحة الرئيسية
               </button>
@@ -442,10 +442,10 @@ export default function ApplicationForm() {
   }
 
   return (
-    <section id="apply" className="py-16 sm:py-24 bg-zinc-50/60 border-b border-zinc-200">
+    <section id="apply" className="py-12 sm:py-20 bg-zinc-50/60 border-b border-zinc-200">
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-8">
+        <div className="text-center max-w-xl mx-auto mb-6 sm:mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight leading-tight">
             استمارة طلب كفالة الرسوم الأكاديمية
           </h2>
@@ -454,8 +454,27 @@ export default function ApplicationForm() {
           </p>
         </div>
 
-        {/* Streamlined Stepper */}
-        <div className="flex items-center justify-center gap-2 sm:gap-4 mb-7 text-xs font-medium">
+        {/* Responsive Stepper */}
+        {/* Mobile Stepper Header */}
+        <div className="sm:hidden mb-5 bg-white p-3.5 rounded-xl border border-zinc-200/90 shadow-xs">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-bold text-zinc-900">
+              الخطوة {step} من 3: {step === 1 ? 'البيانات الأكاديمية' : step === 2 ? 'الأسرة والدخل' : 'المصاريف والإقرار'}
+            </span>
+            <span className="text-[11px] font-mono font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+              {step === 1 ? '33%' : step === 2 ? '66%' : '100%'}
+            </span>
+          </div>
+          <div className="w-full h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-emerald-600 transition-all duration-300 rounded-full"
+              style={{ width: `${(step / 3) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Desktop / Tablet Stepper */}
+        <div className="hidden sm:flex items-center justify-center gap-4 mb-7 text-xs font-medium">
           <div className={`flex items-center gap-2 ${step === 1 ? 'text-emerald-700 font-semibold' : 'text-zinc-500'}`}>
             <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold ${
               step === 1 ? 'bg-emerald-600 text-white' : step > 1 ? 'bg-emerald-100 text-emerald-700' : 'bg-zinc-200/80 text-zinc-600'
@@ -465,7 +484,7 @@ export default function ApplicationForm() {
             <span>البيانات الأكاديمية</span>
           </div>
 
-          <div className="w-6 sm:w-10 h-px bg-zinc-200" />
+          <div className="w-10 h-px bg-zinc-200" />
 
           <div className={`flex items-center gap-2 ${step === 2 ? 'text-emerald-700 font-semibold' : 'text-zinc-500'}`}>
             <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold ${
@@ -476,7 +495,7 @@ export default function ApplicationForm() {
             <span>الأسرة والدخل</span>
           </div>
 
-          <div className="w-6 sm:w-10 h-px bg-zinc-200" />
+          <div className="w-10 h-px bg-zinc-200" />
 
           <div className={`flex items-center gap-2 ${step === 3 ? 'text-emerald-700 font-semibold' : 'text-zinc-500'}`}>
             <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold ${
@@ -497,7 +516,7 @@ export default function ApplicationForm() {
         )}
 
         {/* Form Container */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-zinc-200/90 p-6 sm:p-9 text-zinc-900 shadow-sm">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-zinc-200/90 p-4 sm:p-8 text-zinc-900 shadow-xs">
           {/* Honeypot for Anti-Bot */}
           <div style={{ display: 'none' }} aria-hidden="true">
             <input
@@ -512,7 +531,7 @@ export default function ApplicationForm() {
 
           {/* STEP 1: Personal, High School & Academic Study */}
           {step === 1 && (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               {/* Personal Details */}
               <div className="space-y-4">
                 <div>
@@ -525,8 +544,8 @@ export default function ApplicationForm() {
                     required
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
-                    placeholder="أدخل اسمك الرباعي كما هو مدون في الهوية الشخصية"
-                    className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                    placeholder="أدخل اسمك الرباعي كما في الهوية"
+                    className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-xs sm:placeholder:text-sm placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                   />
                 </div>
 
@@ -542,7 +561,7 @@ export default function ApplicationForm() {
                       value={formData.phoneNumber}
                       onChange={(e) => updateField('phoneNumber', e.target.value)}
                       placeholder="07XXXXXXXX"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors text-right"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors text-right"
                     />
                   </div>
 
@@ -554,7 +573,7 @@ export default function ApplicationForm() {
                       id="governorateOrCity"
                       value={formData.governorateOrCity}
                       onChange={(e) => updateField('governorateOrCity', e.target.value)}
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="عمان">عمان</option>
                       <option value="إربد">إربد</option>
@@ -574,7 +593,7 @@ export default function ApplicationForm() {
               </div>
 
               {/* High School (Tawjihi) Details */}
-              <div className="pt-2">
+              <div className="pt-1 sm:pt-2">
                 <div className="pb-2 mb-3.5 border-b border-zinc-100 flex items-center gap-2">
                   <GraduationCap className="w-4 h-4 text-emerald-600" />
                   <span className="text-xs font-semibold text-zinc-900">شهادة الثانوية العامة (التوجيهي)</span>
@@ -595,7 +614,7 @@ export default function ApplicationForm() {
                       value={formData.tawjihiGpa}
                       onChange={(e) => updateField('tawjihiGpa', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="مثال: 85.5"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
 
@@ -607,7 +626,7 @@ export default function ApplicationForm() {
                       id="tawjihiBranch"
                       value={formData.tawjihiBranch}
                       onChange={(e) => updateField('tawjihiBranch', e.target.value)}
-                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="علمي">علمي</option>
                       <option value="أدبي">أدبي</option>
@@ -628,7 +647,7 @@ export default function ApplicationForm() {
                       id="tawjihiYear"
                       value={formData.tawjihiYear}
                       onChange={(e) => updateField('tawjihiYear', e.target.value)}
-                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="2025">2025</option>
                       <option value="2024">2024</option>
@@ -642,7 +661,7 @@ export default function ApplicationForm() {
               </div>
 
               {/* Academic & University Profile */}
-              <div className="pt-2">
+              <div className="pt-1 sm:pt-2">
                 <div className="pb-2 mb-3.5 border-b border-zinc-100 flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-emerald-600" />
                   <span className="text-xs font-semibold text-zinc-900">المرحلة الجامعية</span>
@@ -712,7 +731,7 @@ export default function ApplicationForm() {
                           id="enrollmentStatus"
                           value={formData.enrollmentStatus}
                           onChange={(e) => updateField('enrollmentStatus', e.target.value)}
-                          className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                          className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                         >
                           <option value="enrolled">منتظم في الدراسة حالياً ومطالب بالرسوم</option>
                           <option value="paused">متوقف أو معلق القيد بسبب تراكم الرسوم</option>
@@ -728,7 +747,7 @@ export default function ApplicationForm() {
                           id="academicYearOrSemester"
                           value={formData.academicYearOrSemester}
                           onChange={(e) => updateField('academicYearOrSemester', e.target.value)}
-                          className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                          className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                         >
                           <option value="السنة الأولى">السنة الأولى</option>
                           <option value="السنة الثانية">السنة الثانية</option>
@@ -751,7 +770,7 @@ export default function ApplicationForm() {
                           value={formData.institutionName}
                           onChange={(e) => updateField('institutionName', e.target.value)}
                           placeholder="مثال: الجامعة الأردنية"
-                          className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                          className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                         />
                       </div>
 
@@ -766,7 +785,7 @@ export default function ApplicationForm() {
                           value={formData.major}
                           onChange={(e) => updateField('major', e.target.value)}
                           placeholder="مثال: التمريض"
-                          className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                          className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                         />
                       </div>
                     </div>
@@ -785,7 +804,7 @@ export default function ApplicationForm() {
                         value={formData.institutionName}
                         onChange={(e) => updateField('institutionName', e.target.value)}
                         placeholder="اسم الجامعة الأردنية المستهدفة"
-                        className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                        className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                       />
                     </div>
 
@@ -800,7 +819,7 @@ export default function ApplicationForm() {
                         value={formData.major}
                         onChange={(e) => updateField('major', e.target.value)}
                         placeholder="التخصص المطلوب دراسته"
-                        className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                        className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                       />
                     </div>
                   </div>
@@ -808,7 +827,7 @@ export default function ApplicationForm() {
               </div>
 
               {/* Tuition Details */}
-              <div className="pt-2">
+              <div className="pt-1 sm:pt-2">
                 <div className="pb-2 mb-3.5 border-b border-zinc-100">
                   <span className="text-xs font-semibold text-zinc-900">الرسوم الجامعية ومبلغ الكفالة</span>
                 </div>
@@ -829,7 +848,7 @@ export default function ApplicationForm() {
                       value={formData.periodTuitionFee}
                       onChange={(e) => updateField('periodTuitionFee', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="مثال: 850"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
 
@@ -846,14 +865,14 @@ export default function ApplicationForm() {
                       value={formData.amountAlreadyPaid}
                       onChange={(e) => updateField('amountAlreadyPaid', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="0"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
                 </div>
 
-                <div className="mt-3.5 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-between">
+                <div className="mt-3.5 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-1.5">
                   <span className="text-xs font-medium text-zinc-600">المبلغ الصافي المطلوب كفالته:</span>
-                  <span className="font-mono font-bold text-sm text-emerald-700">
+                  <span className="font-mono font-bold text-sm sm:text-base text-emerald-700">
                     {calculatedUncovered.toLocaleString('ar-JO')} د.أ
                   </span>
                 </div>
@@ -863,7 +882,7 @@ export default function ApplicationForm() {
 
           {/* STEP 2: Household & Income */}
           {step === 2 && (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               <div>
                 <div className="pb-2 mb-4 border-b border-zinc-100">
                   <span className="text-xs font-semibold text-zinc-900">بيانات الأسرة والمعيل</span>
@@ -881,7 +900,7 @@ export default function ApplicationForm() {
                       required
                       value={formData.householdSize}
                       onChange={(e) => updateField('householdSize', Number(e.target.value))}
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
 
@@ -893,7 +912,7 @@ export default function ApplicationForm() {
                       id="actualBreadwinner"
                       value={formData.actualBreadwinner}
                       onChange={(e) => updateField('actualBreadwinner', e.target.value)}
-                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="father">الأب</option>
                       <option value="mother">الأم</option>
@@ -914,7 +933,7 @@ export default function ApplicationForm() {
                       id="fatherStatus"
                       value={formData.fatherStatus}
                       onChange={(e) => updateField('fatherStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="working">يعمل</option>
                       <option value="unemployed">لا يعمل / متعطل</option>
@@ -933,7 +952,7 @@ export default function ApplicationForm() {
                       id="motherStatus"
                       value={formData.motherStatus}
                       onChange={(e) => updateField('motherStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="unemployed">ربة منزل / لا تعمل</option>
                       <option value="working">تعمل</option>
@@ -946,7 +965,7 @@ export default function ApplicationForm() {
               </div>
 
               {/* Income Sources Grid */}
-              <div className="pt-2">
+              <div className="pt-1 sm:pt-2">
                 <div className="pb-2 mb-4 border-b border-zinc-100">
                   <span className="text-xs font-semibold text-zinc-900">مصادر الدخل الشهري للأسرة</span>
                 </div>
@@ -964,7 +983,7 @@ export default function ApplicationForm() {
                         value={formData.fatherIncomeAmount}
                         onChange={(e) => updateField('fatherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="0"
-                        className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                        className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                       />
                     </div>
                   )}
@@ -981,7 +1000,7 @@ export default function ApplicationForm() {
                         value={formData.motherIncomeAmount}
                         onChange={(e) => updateField('motherIncomeAmount', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="0"
-                        className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                        className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                       />
                     </div>
                   )}
@@ -997,7 +1016,7 @@ export default function ApplicationForm() {
                       value={formData.pensionsAmount}
                       onChange={(e) => updateField('pensionsAmount', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="0"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
 
@@ -1012,7 +1031,7 @@ export default function ApplicationForm() {
                       value={formData.regularAidAmount}
                       onChange={(e) => updateField('regularAidAmount', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="0"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
                 </div>
@@ -1022,7 +1041,7 @@ export default function ApplicationForm() {
 
           {/* STEP 3: Expenses, Obligations & Confirmation */}
           {step === 3 && (
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               <div>
                 <div className="pb-2 mb-4 border-b border-zinc-100">
                   <span className="text-xs font-semibold text-zinc-900">السكن والمصاريف الإضافية</span>
@@ -1037,7 +1056,7 @@ export default function ApplicationForm() {
                       id="housingStatus"
                       value={formData.housingStatus}
                       onChange={(e) => updateField('housingStatus', e.target.value)}
-                      className="w-full h-11 px-3.5 text-xs sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors cursor-pointer"
                     >
                       <option value="rented">إيجار</option>
                       <option value="owned">ملك</option>
@@ -1058,7 +1077,7 @@ export default function ApplicationForm() {
                         value={formData.monthlyRent}
                         onChange={(e) => updateField('monthlyRent', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="مثال: 180"
-                        className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                        className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                       />
                     </div>
                   ) : (
@@ -1073,7 +1092,7 @@ export default function ApplicationForm() {
                         value={formData.recurringNecessaryMedicalExpenses}
                         onChange={(e) => updateField('recurringNecessaryMedicalExpenses', e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="0"
-                        className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                        className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                       />
                     </div>
                   )}
@@ -1091,7 +1110,7 @@ export default function ApplicationForm() {
                       value={formData.recurringNecessaryMedicalExpenses}
                       onChange={(e) => updateField('recurringNecessaryMedicalExpenses', e.target.value === '' ? '' : Number(e.target.value))}
                       placeholder="0"
-                      className="w-full h-11 px-3.5 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
+                      className="w-full h-11 px-3.5 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 font-mono focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors"
                     />
                   </div>
                 )}
@@ -1106,13 +1125,13 @@ export default function ApplicationForm() {
                     onChange={(e) => updateField('additionalContext', e.target.value)}
                     rows={2}
                     placeholder="بيان أي ظروف استثنائية أو التزامات..."
-                    className="w-full p-3 text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors resize-none"
+                    className="w-full p-3 text-base sm:text-sm rounded-xl border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-colors resize-none"
                   />
                 </div>
               </div>
 
               {/* Declarations (Mandatory) */}
-              <div className="pt-2">
+              <div className="pt-1 sm:pt-2">
                 <div className="pb-2 mb-3.5 border-b border-zinc-100">
                   <span className="text-xs font-semibold text-zinc-900">الإقرارات والتعهدات الرسمية</span>
                 </div>
@@ -1178,26 +1197,26 @@ export default function ApplicationForm() {
           )}
 
           {/* Stepper Navigation Buttons */}
-          <div className="mt-8 pt-5 border-t border-zinc-100 flex items-center justify-between gap-3">
+          <div className="mt-7 sm:mt-8 pt-4 sm:pt-5 border-t border-zinc-100 flex items-center justify-between gap-2.5 sm:gap-3">
             {step > 1 ? (
               <button
                 type="button"
                 onClick={handlePrev}
                 disabled={isSubmitting}
-                className="py-2.5 px-5 rounded-xl border border-zinc-200 text-zinc-700 bg-white hover:bg-zinc-50 text-xs sm:text-sm font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="flex-1 sm:flex-initial py-3 sm:py-2.5 px-4 sm:px-5 rounded-xl border border-zinc-200 text-zinc-700 bg-white hover:bg-zinc-50 text-xs sm:text-sm font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4 stroke-[2]" />
                 <span>الخطوة السابقة</span>
               </button>
             ) : (
-              <div></div>
+              <div className="hidden sm:block"></div>
             )}
 
             {step < 3 ? (
               <button
                 type="button"
                 onClick={handleNext}
-                className="py-2.5 px-7 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium flex items-center gap-2 transition-colors cursor-pointer"
+                className="flex-1 sm:flex-initial py-3 sm:py-2.5 px-6 sm:px-7 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
                 <span>متابعة</span>
                 <ChevronLeft className="w-4 h-4 stroke-[2]" />
@@ -1206,7 +1225,7 @@ export default function ApplicationForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="py-2.5 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:bg-zinc-300 text-white text-xs sm:text-sm font-medium flex items-center gap-2.5 transition-colors cursor-pointer"
+                className="flex-1 sm:flex-initial py-3 sm:py-2.5 px-6 sm:px-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:bg-zinc-300 text-white text-xs sm:text-sm font-medium flex items-center justify-center gap-2.5 transition-colors cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

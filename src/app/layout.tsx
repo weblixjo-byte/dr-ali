@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_Arabic } from 'next/font/google';
 import './globals.css';
 
@@ -8,6 +8,13 @@ const notoArabic = Noto_Sans_Arabic({
   variable: '--font-noto-arabic',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
 
 export const metadata: Metadata = {
   title: 'مبادرة د. علي الرحامنة التعليمية',
